@@ -4,7 +4,7 @@
 
 </div>
 
-<span class="c13 c6">iOS Design Doc</span>
+# <span class="c13 c6">iOS Design Doc</span>
 
 <span class="c13 c6"></span>
 
@@ -14,7 +14,7 @@ Nicholas Ensey, Pranav Srinivasan, Ronghua Wang</span>
 <span class="c16 c6">Application Name: </span><span
 class="c11">Orbscape</span>
 
-### <span class="c13 c6">General Description:</span>
+# <span class="c13 c6">General Description:</span>
 
 <span class="c1">Our app is a game where the player controls a ball,
 utilizing the phone’s gyro controls, to complete mazes. More
@@ -36,9 +36,9 @@ customized using the star currency. </span>
 
 <span class="c1"></span>
 
-### <span class="c6">Framework List:</span><span class="c13 c6"> </span>
+# <span class="c6">Framework List:</span><span class="c13 c6"> </span>
 
--   <span class="c1">Required</span>
+####   <span class="c1">Required</span>
 
 <!-- -->
 
@@ -47,7 +47,7 @@ customized using the star currency. </span>
 
 <!-- -->
 
--   <span class="c1">Chosen</span>
+####   <span class="c1">Chosen</span>
 
 <!-- -->
 
@@ -58,7 +58,7 @@ customized using the star currency. </span>
     the game</span>
 -   <span class="c1">Animation for menu options</span>
 
-### <span class="c13 c6">Operational Descriptions:</span>
+# <span class="c13 c6">Operational Descriptions:</span>
 
 -   <span class="c1">Play Button: moves the user to the level select
     screen</span>
@@ -84,9 +84,9 @@ customized using the star currency. </span>
 
 <span class="c13 c6"></span>
 
-### <span class="c6 c13">Screens:</span>
+# <span class="c6 c13">Screens:</span>
 
--   <span class="c1">Splash Screen</span>
+###   <span class="c1">Splash Screen</span>
 
 <span class="c1">Displays the company name and logo while the app begins
 loading. This screen will fade away after a few seconds and take the
@@ -99,7 +99,9 @@ style="width: 179.07px; height: 374.18px; margin-left: -10.95px; margin-top: -21
 <span class="c1">  
 </span>
 
--   <span class="c1">Title Screen</span>
+------------------------------------------------------------------------
+
+###   <span class="c1">Title Screen</span>
 
 <span class="c1">The first page the user sees after loading in. The user
 has the option to click on: </span>
@@ -122,7 +124,7 @@ style="width: 334.55px; height: 345.17px; margin-left: -13.20px; margin-top: -23
 
 <span class="c1"></span>
 
--   <span class="c1">Level Select Screen</span>
+###   <span class="c1">Level Select Screen</span>
 
 <span class="c1">The user chooses to play between 3 set difficulties,
 which changes the maze’s layout based on their choice. Harder
@@ -137,7 +139,7 @@ style="width: 144.00px; height: 312.48px; margin-left: 0.00px; margin-top: 0.00p
 
 <span class="c1"></span>
 
--   <span class="c1">Play Screen</span>
+###   <span class="c1">Play Screen</span>
 
 <span class="c1">The user plays the selected level and receives stars
 based on the level of difficulty and the amount of time taken to
@@ -165,7 +167,9 @@ style="width: 274.00px; height: 276.00px; margin-left: 0.00px; margin-top: 0.00p
 
 <span class="c1"></span>
 
--   <span class="c1">Pause Screen </span>
+------------------------------------------------------------------------
+
+###   <span class="c1">Pause Screen </span>
 
 <span class="c1">The pause button is available for the user to click on
 during the gameplay. Clicking on this button will take the user to a pop
@@ -196,7 +200,7 @@ style="width: 126.00px; height: 277.38px; margin-left: 0.00px; margin-top: 0.00p
 
 <span class="c1"></span>
 
--   <span class="c1">Settings Screen</span>
+###   <span class="c1">Settings Screen</span>
 
 <span class="c1">This screen allows the user to change the sound volume,
 music volume, as well as view the credits for the app. Sound and music
@@ -211,7 +215,7 @@ style="width: 127.50px; height: 276.25px; margin-left: 0.00px; margin-top: 0.00p
 
 <span class="c1"></span>
 
--   <span class="c1">Customization Screen</span>
+###   <span class="c1">Customization Screen</span>
 
 <span class="c1">The user can customize the appearance of their ball,
 the sound effects that play when the ball collides, and the theme of the
@@ -235,7 +239,7 @@ style="width: 486.50px; height: 465.45px; margin-left: 0.00px; margin-top: 0.00p
 
 <span class="c1"></span>
 
-<span class="c16 c6">Flow Diagram</span><span class="c1"> </span>
+# <span class="c16 c6">Flow Diagram</span><span class="c1"> </span>
 
 -   <span class="c1">The Current layout design was implemented in Figma,
     which can be viewed in detail in the following link. </span>
