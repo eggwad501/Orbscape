@@ -92,10 +92,7 @@ customized using the star currency. </span>
 loading. This screen will fade away after a few seconds and take the
 user to the main title screen. </span>
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 160.28px; height: 346.81px;"><img src="imagesReadMe/image7.png"
-style="width: 179.07px; height: 374.18px; margin-left: -10.95px; margin-top: -21.78px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
-
+![image7](https://github.com/user-attachments/assets/5764392e-d404-466d-a23b-90e50d3a76fc)
 <span class="c1">  
 </span>
 
@@ -114,9 +111,7 @@ has the option to click on: </span>
 
 <span class="c1"></span>
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 140.50px; height: 305.99px;"><img src="imagesReadMe/image5.png"
-style="width: 334.55px; height: 345.17px; margin-left: -13.20px; margin-top: -23.58px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+![image5](https://github.com/user-attachments/assets/453f59f6-9b45-4067-9fab-72a72364ddd1)
 
 ------------------------------------------------------------------------
 
@@ -131,9 +126,7 @@ which changes the maze’s layout based on their choice. Harder
 difficulties will increase the complexity and length of the maze, but
 will also reward a higher amount of stars upon completion.</span>
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 144.00px; height: 312.48px;"><img src="imagesReadMe/image4.png"
-style="width: 144.00px; height: 312.48px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+![image4](https://github.com/user-attachments/assets/d179f0d3-8c39-477b-a2c8-fc96daf0ebc5)
 
 ------------------------------------------------------------------------
 
@@ -149,15 +142,10 @@ number of stars collected in the maze along the way. There would be
 three separate view controllers for play, level, and completion screens
 respectively.</span>
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 624.00px; height: 245.33px;"><img src="imagesReadMe/image6.png"
-style="width: 624.00px; height: 245.33px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+![image6](https://github.com/user-attachments/assets/342416d6-e0bd-4a31-9aa3-3d9008a354e5)
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 271.00px; height: 284.00px;"><img src="imagesReadMe/image1.png"
-style="width: 271.00px; height: 284.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span><span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 274.00px; height: 276.00px;"><img src="imagesReadMe/image9.png"
-style="width: 274.00px; height: 276.00px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+![image1](https://github.com/user-attachments/assets/6efcec20-5e27-4cf5-bdcb-2017e9426838)
+![image9](https://github.com/user-attachments/assets/f3b16338-fc86-42b7-8622-3c68565794a6)
 
 <span class="c1"></span>
 
@@ -184,9 +172,7 @@ various buttons that they can click on such as: </span>
 -   <span class="c1">Quit: takes the player back to the main title
     screen </span>
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 126.00px; height: 277.38px;"><img src="imagesReadMe/image8.png"
-style="width: 126.00px; height: 277.38px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+![image8](https://github.com/user-attachments/assets/ec444250-6af0-4301-978f-0a987cfde9a1)
 
 <span class="c1"></span>
 
@@ -207,9 +193,7 @@ music volume, as well as view the credits for the app. Sound and music
 volumes are independent of one another and can be adjusted to the user’s
 preferences.</span>
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 127.50px; height: 276.25px;"><img src="imagesReadMe/image2.png"
-style="width: 127.50px; height: 276.25px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+![image2](https://github.com/user-attachments/assets/11c5821b-cee4-4d14-a0cd-5d9ae942906f)
 
 ------------------------------------------------------------------------
 
@@ -231,9 +215,7 @@ stars on an undesired choice.</span>
 <span class="c1">Currently, the customizable items have not been
 designed, these are placeholders. </span>
 
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 486.50px; height: 465.45px;"><img src="imagesReadMe/image10.png"
-style="width: 486.50px; height: 465.45px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+![image10](https://github.com/user-attachments/assets/36042e59-e61c-4da6-9b7c-beb6a582fc1a)
 
 ------------------------------------------------------------------------
 
@@ -246,7 +228,5 @@ style="width: 486.50px; height: 465.45px; margin-left: 0.00px; margin-top: 0.00p
 -   <span class="c11 c17"><a
     href="https://www.google.com/url?q=https://www.figma.com/design/IM4lBrR99H0XduL9IWbpjD/IOS-Project?node-id%3D0-1%26t%3DvlSxxYaI81Yb5NDC-1&amp;sa=D&amp;source=editors&amp;ust=1721471227671138&amp;usg=AOvVaw1UX4T8Zx7-jxzjhlBGEWUd"
     class="c14">Figma File</a></span><span class="c1"> </span>
-
-<span
-style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 617.00px; height: 505.00px;"><img src="imagesReadMe/image3.png"
-style="width: 624.00px; height: 505.00px; margin-left: -7.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" /></span>
+    
+![image3](https://github.com/user-attachments/assets/63f76919-e15c-4335-a9f5-62385ae4a01a)
