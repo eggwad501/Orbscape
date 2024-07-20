@@ -126,7 +126,7 @@ which changes the maze’s layout based on their choice. Harder
 difficulties will increase the complexity and length of the maze, but
 will also reward a higher amount of stars upon completion.</span>
 
-![image4](https://github.com/user-attachments/assets/d179f0d3-8c39-477b-a2c8-fc96daf0ebc5)
+![image4](https://github.com/user-attachments/assets/9d9cd5b4-c6a5-46bb-8556-172c6cc6ef0a)
 
 ------------------------------------------------------------------------
 
@@ -193,7 +193,7 @@ music volume, as well as view the credits for the app. Sound and music
 volumes are independent of one another and can be adjusted to the user’s
 preferences.</span>
 
-![image2](https://github.com/user-attachments/assets/11c5821b-cee4-4d14-a0cd-5d9ae942906f)
+![image2](https://github.com/user-attachments/assets/854140e1-f60f-411c-941f-530bf62a2567)
 
 ------------------------------------------------------------------------
 
