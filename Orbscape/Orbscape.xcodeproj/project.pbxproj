@@ -12,8 +12,12 @@
 		1F291BDE2C521DFC00D2B510 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BDD2C521DFC00D2B510 /* ViewController.swift */; };
 		1F291BE12C521DFC00D2B510 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BE02C521DFC00D2B510 /* Base */; };
 		1F291BE42C521DFC00D2B510 /* Orbscape.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BE22C521DFC00D2B510 /* Orbscape.xcdatamodeld */; };
-		1F291BE62C521DFD00D2B510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BE52C521DFD00D2B510 /* Assets.xcassets */; };
 		1F291BE92C521DFD00D2B510 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BE82C521DFD00D2B510 /* Base */; };
+		1F291BF12C521E8D00D2B510 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BF02C521E8D00D2B510 /* GameScene.sks */; };
+		1F291BF32C521E9300D2B510 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BF22C521E9300D2B510 /* Actions.sks */; };
+		1F291BF52C521E9800D2B510 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF42C521E9800D2B510 /* GameScene.swift */; };
+		1F291BF72C521EA000D2B510 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF62C521EA000D2B510 /* GameViewController.swift */; };
+		1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BF82C52202F00D2B510 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +27,13 @@
 		1F291BDD2C521DFC00D2B510 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1F291BE02C521DFC00D2B510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F291BE32C521DFC00D2B510 /* Orbscape.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Orbscape.xcdatamodel; sourceTree = "<group>"; };
-		1F291BE52C521DFD00D2B510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F291BE82C521DFD00D2B510 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F291BEA2C521DFD00D2B510 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Orbscape/Info.plist; sourceTree = SOURCE_ROOT; };
+		1F291BF02C521E8D00D2B510 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = ../../../ballTest/ballTest/GameScene.sks; sourceTree = "<group>"; };
+		1F291BF22C521E9300D2B510 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Actions.sks; path = ../../../ballTest/ballTest/Actions.sks; sourceTree = "<group>"; };
+		1F291BF42C521E9800D2B510 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = ../../../ballTest/ballTest/GameScene.swift; sourceTree = "<group>"; };
+		1F291BF62C521EA000D2B510 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = ../../../ballTest/ballTest/GameViewController.swift; sourceTree = "<group>"; };
+		1F291BF82C52202F00D2B510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../ballTest/ballTest/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +70,14 @@
 				1F291BDB2C521DFC00D2B510 /* SceneDelegate.swift */,
 				1F291BDD2C521DFC00D2B510 /* ViewController.swift */,
 				1F291BDF2C521DFC00D2B510 /* Main.storyboard */,
-				1F291BE52C521DFD00D2B510 /* Assets.xcassets */,
+				1F291BF82C52202F00D2B510 /* Assets.xcassets */,
 				1F291BE72C521DFD00D2B510 /* LaunchScreen.storyboard */,
 				1F291BEA2C521DFD00D2B510 /* Info.plist */,
 				1F291BE22C521DFC00D2B510 /* Orbscape.xcdatamodeld */,
+				1F291BF02C521E8D00D2B510 /* GameScene.sks */,
+				1F291BF22C521E9300D2B510 /* Actions.sks */,
+				1F291BF42C521E9800D2B510 /* GameScene.swift */,
+				1F291BF62C521EA000D2B510 /* GameViewController.swift */,
 			);
 			path = Orbscape;
 			sourceTree = "<group>";
@@ -128,9 +140,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F291BE62C521DFD00D2B510 /* Assets.xcassets in Resources */,
+				1F291BF12C521E8D00D2B510 /* GameScene.sks in Resources */,
 				1F291BE92C521DFD00D2B510 /* Base in Resources */,
 				1F291BE12C521DFC00D2B510 /* Base in Resources */,
+				1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */,
+				1F291BF32C521E9300D2B510 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,9 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F291BF52C521E9800D2B510 /* GameScene.swift in Sources */,
 				1F291BE42C521DFC00D2B510 /* Orbscape.xcdatamodeld in Sources */,
 				1F291BDE2C521DFC00D2B510 /* ViewController.swift in Sources */,
 				1F291BDA2C521DFC00D2B510 /* AppDelegate.swift in Sources */,
+				1F291BF72C521EA000D2B510 /* GameViewController.swift in Sources */,
 				1F291BDC2C521DFC00D2B510 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
