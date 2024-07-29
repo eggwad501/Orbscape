@@ -52,6 +52,7 @@ class GameScene: SKScene {
         }
         
         ballObject = SKSpriteNode(imageNamed: "ball")
+        ballObject.size = CGSize(width: 32, height: 32)
         ballObject.position = CGPoint(x: -200, y: 200)
         ballObject.physicsBody = SKPhysicsBody(circleOfRadius: CGRectGetHeight(ballObject.frame) / 2)
         ballObject?.physicsBody?.mass = 5
@@ -61,7 +62,17 @@ class GameScene: SKScene {
         ballObject.physicsBody?.collisionBitMask = Collision.ballBody
         ballObject.physicsBody?.contactTestBitMask = Collision.wallBody
         ballObject.physicsBody?.affectedByGravity = true
+        
         addChild(ballObject)
+    }
+    
+    func makeMazeEasy(){
+        
+    }
+    
+    // 4 x 4 maze
+    func makePresetMazeEasy(){
+        
     }
     
     
