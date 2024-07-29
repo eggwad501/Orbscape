@@ -15,6 +15,9 @@ struct Collision {
     static let wallBody: UInt32 = 0x1 << 2
 }
 
+// requests MazeMaker to generate a maze for the game
+var delegate: MazeGenerator?
+
 class GameScene: SKScene {
     
     var entities = [GKEntity]()
@@ -28,7 +31,6 @@ class GameScene: SKScene {
     var manager: CMMotionManager?
     
     override func sceneDidLoad() {
-
         self.lastUpdateTime = 0
         
         // Get label node from scene and store it for use later
@@ -51,6 +53,8 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
         
+        makeMazeEasy()
+        
         ballObject = SKSpriteNode(imageNamed: "ball")
         ballObject.size = CGSize(width: 32, height: 32)
         ballObject.position = CGPoint(x: -200, y: 200)
@@ -67,7 +71,11 @@ class GameScene: SKScene {
     }
     
     func makeMazeEasy(){
-        
+        var mazeMaker = MazeMaker()
+        let rows = 7
+        let cols = 7
+        var maze = mazeMaker.createMaze(rows, cols)
+        mazeMaker.printMaze(maze)
     }
     
     // 4 x 4 maze
