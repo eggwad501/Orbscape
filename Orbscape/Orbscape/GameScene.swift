@@ -70,20 +70,45 @@ class GameScene: SKScene {
         addChild(ballObject)
     }
     
+    // makes a maze
     func makeMazeEasy(){
         var mazeMaker = MazeMaker()
-        let rows = 7
-        let cols = 7
+        let rows = 9
+        let cols = 9
         var maze = mazeMaker.createMaze(rows, cols)
         mazeMaker.printMaze(maze)
+        // print(maze)
+        loadMaze(maze)
     }
     
-    // 4 x 4 maze
-    func makePresetMazeEasy(){
+    // loads the maze into the game
+    func loadMaze(_ maze: [[Int]]){
+        var rowIndex = 0
+        var colIndex = 0
+        for row in maze{
+            for col in maze{
+                let wallObject = SKSpriteNode(imageNamed: "bricksx64")
+                wallObject.position = CGPoint(x: 64 * colIndex - 240, y: 64 * rowIndex - 240)
+                wallObject.size = CGSize(width: 64, height: 64)
+                wallObject.physicsBody?.categoryBitMask = Collision.wallBody
+                wallObject.physicsBody?.collisionBitMask = Collision.wallBody
+                if(maze[rowIndex][colIndex] == 0){
+                    wallObject.texture = SKTexture(imageNamed: "star")
+                }
+                else{
+                    wallObject.physicsBody = SKPhysicsBody(rectangleOf: wallObject.size)
+                }
+                wallObject.physicsBody?.isDynamic = false // object is pinned
+                addChild(wallObject)
+                
+                colIndex += 1
+            }
+            rowIndex += 1
+            colIndex = 0
+        }
+        print("MAZE LOADED IN")
+    }
         
-    }
-    
-    
     func touchDown(atPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
