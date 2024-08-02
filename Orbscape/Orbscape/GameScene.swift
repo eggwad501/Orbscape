@@ -11,15 +11,17 @@ import CoreMotion
 
 struct Collision {
     static let ballBody: UInt32 = 0x1 << 0
-    static let finishHoleBody: UInt32 = 0x1 << 1
-    static let wallBody: UInt32 = 0x1 << 2
-    static let starBody: UInt32 = 0x1 << 3
+    static let wallBody: UInt32 = 0x1 << 1
+    static let starBody: UInt32 = 0x1 << 2
+    static let finishHoleBody: UInt32 = 0x1 << 3
 }
 
 // requests MazeMaker to generate a maze for the game
 var delegate: MazeGenerator?
+var tileSet: SKTileSet!
+var tileMap: SKTileMapNode!
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -33,8 +35,20 @@ class GameScene: SKScene {
     
     var cameraNode = SKCameraNode()
     
+    // performance testers
+    var startTime = CFAbsoluteTime()
+    var endTime = CFAbsoluteTime()
+    
+    func elapsedTime(_ startTime: Double, _ endTime: Double, _ msg: String){
+        print(msg)
+        print(endTime - startTime)
+    }
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
+        
+        // set up collisions
+        physicsWorld.contactDelegate = self
         
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
@@ -61,14 +75,31 @@ class GameScene: SKScene {
         addChild(cameraNode)
         camera = cameraNode
         
+        // tile setup
+        guard let tileSet = SKTileSet(named: "Sample Grid Tile Set") else {
+            fatalError("Tile set not found")
+        }
+        let tileSize = CGSize(width: 64, height: 64)
+        let columns = 10
+        let rows = 10
+
+        tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
+        for column in 0..<columns {
+            for row in 0..<rows {
+                let tileGroup = tileSet.tileGroups.first(where: { $0.name == "Grass" })
+                tileMap.setTileGroup(tileGroup, forColumn: column, row: row)
+            }
+        }
+        tileMap.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(tileMap)
+        
         // makes a maze of some difficulty
-        let difficultyLevel = 25
+        let difficultyLevel = 3
         let squareSize = difficultyLevel * 4 - 1
-        let startTime = CFAbsoluteTimeGetCurrent()
+        startTime = CFAbsoluteTimeGetCurrent()
         makeSquareMaze(difficultyLevel)
-        let endTime = CFAbsoluteTimeGetCurrent()
-        let elapsedTime = endTime - startTime
-        print("Total Maze Time taken: \(elapsedTime) seconds")
+        endTime = CFAbsoluteTimeGetCurrent()
+        elapsedTime(startTime, endTime, "Toal Maze Time taken")
         /*
          String compares are cheaper than expected, keep the string
          Array math is fast, sprite loading is slow
@@ -91,8 +122,8 @@ class GameScene: SKScene {
         ballObject.physicsBody?.allowsRotation = true
         ballObject.physicsBody?.isDynamic = true
         ballObject.physicsBody?.categoryBitMask = Collision.ballBody
-        ballObject.physicsBody?.collisionBitMask = Collision.ballBody
-        ballObject.physicsBody?.contactTestBitMask = Collision.wallBody
+        ballObject.physicsBody?.collisionBitMask = Collision.wallBody | Collision.starBody
+        ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody
         ballObject.physicsBody?.affectedByGravity = true
         
         addChild(ballObject)
@@ -106,49 +137,73 @@ class GameScene: SKScene {
         let rows = difficulty * 4 - 1
         let cols = difficulty * 4 - 1
         
-        var startTime = CFAbsoluteTimeGetCurrent()
-        
+        startTime = CFAbsoluteTimeGetCurrent()
         var maze = mazeMaker.createMaze(rows, cols)
-        
-        var endTime = CFAbsoluteTimeGetCurrent()
-        var elapsedTime = endTime - startTime
-        print("create Maze Time taken: \(elapsedTime) seconds")
+        endTime = CFAbsoluteTimeGetCurrent()
+        elapsedTime(startTime, endTime, "create Maze Time taken")
         
         mazeMaker.printMaze(maze)
+        
         startTime = CFAbsoluteTimeGetCurrent()
-        
         loadMaze(maze)
-        
         endTime = CFAbsoluteTimeGetCurrent()
-        elapsedTime = endTime - startTime
-        print("load Maze Time taken: \(elapsedTime) seconds")
+        elapsedTime(startTime, endTime, "load Maze time taken")
     }
     
-    // loads the maze into the game
+    // loads the maze into the game, tile version
+    func loadMazeTile(_ maze: [[Int]]){
+        
+    }
+    
+    // loads the maze into the game, node version
     func loadMaze(_ maze: [[Int]]){
         var rowIndex = 0
         var colIndex = 0
+        var mazeObject: SKSpriteNode!
         for row in maze{
             for col in maze{
-                let wallObject = SKSpriteNode(imageNamed: "bricksx64")
-                wallObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
-                wallObject.size = CGSize(width: 64, height: 64)
-                wallObject.physicsBody?.categoryBitMask = Collision.wallBody
-                wallObject.physicsBody?.collisionBitMask = Collision.wallBody
                 if(maze[rowIndex][colIndex] == 1){
-                    wallObject.physicsBody = SKPhysicsBody(rectangleOf: wallObject.size)
+                    mazeObject = SKSpriteNode(imageNamed: "bricksx64")
+                    mazeObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
+                    mazeObject.size = CGSize(width: 64, height: 64)
+                    mazeObject.physicsBody = SKPhysicsBody(rectangleOf: mazeObject.size)
+                    mazeObject.physicsBody?.categoryBitMask = Collision.wallBody
+                    mazeObject.physicsBody?.collisionBitMask = Collision.ballBody
+                    mazeObject.physicsBody?.contactTestBitMask = Collision.ballBody
                 }
                 else{
-                    wallObject.texture = SKTexture(imageNamed: "star")
-                    wallObject.size = CGSize(width: 32, height: 32)
+                    mazeObject = SKSpriteNode(imageNamed: "star")
+                    mazeObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
+                    mazeObject.size = CGSize(width: 32, height: 32)
+                    mazeObject.physicsBody = SKPhysicsBody(rectangleOf: mazeObject.size)
+                    mazeObject.physicsBody?.categoryBitMask = Collision.starBody
+                    mazeObject.physicsBody?.collisionBitMask = Collision.ballBody
+                    mazeObject.physicsBody?.contactTestBitMask = Collision.ballBody
                 }
-                wallObject.physicsBody?.isDynamic = false // object is pinned
-                addChild(wallObject)
+                mazeObject.physicsBody?.isDynamic = false // object is pinned
+                addChild(mazeObject)
                 
                 colIndex += 1
             }
             rowIndex += 1
             colIndex = 0
+        }
+    }
+    
+    // runs when the ball collides with something else
+    func didBegin(_ contact: SKPhysicsContact) {
+        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
+        let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
+        // Handle collision between player and wall
+        if(otherObject.categoryBitMask == Collision.wallBody){
+            print("Player collided with a wall")
+        }
+        else if(otherObject.categoryBitMask == Collision.starBody){
+            print("Player collected a star")
+            otherObject.node?.removeFromParent()
+        }
+        else{
+            print("Error")
         }
     }
         
