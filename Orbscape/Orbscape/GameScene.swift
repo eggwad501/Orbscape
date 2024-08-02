@@ -55,7 +55,7 @@ class GameScene: SKScene {
         }
         
         // makes a maze of some difficulty
-        let difficultyLevel = 2
+        let difficultyLevel = 3
         let squareSize = difficultyLevel * 4 - 1
         let startTime = CFAbsoluteTimeGetCurrent()
         makeSquareMaze(difficultyLevel)
@@ -65,7 +65,7 @@ class GameScene: SKScene {
         /*
          String compares are cheaper than expected, keep the string
          Array math is fast, sprite loading is slow
-         Difficulty and Time taken to load maze
+         Difficulty(not rows/cols) and Time taken to load maze
          75 = 31.443s
          65 = 15.062s
          60 = 09.911s
@@ -133,6 +133,7 @@ class GameScene: SKScene {
                 }
                 else{
                     wallObject.texture = SKTexture(imageNamed: "star")
+                    wallObject.size = CGSize(width: 32, height: 32)
                 }
                 wallObject.physicsBody?.isDynamic = false // object is pinned
                 addChild(wallObject)
