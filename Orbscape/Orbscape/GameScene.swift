@@ -62,7 +62,7 @@ class GameScene: SKScene {
         camera = cameraNode
         
         // makes a maze of some difficulty
-        let difficultyLevel = 66
+        let difficultyLevel = 25
         let squareSize = difficultyLevel * 4 - 1
         let startTime = CFAbsoluteTimeGetCurrent()
         makeSquareMaze(difficultyLevel)
@@ -75,11 +75,11 @@ class GameScene: SKScene {
          Difficulty(not rows/cols) and Time taken to load maze
          75 = 31.443s
          65 = 15.062s
-         60 = 09.911s
+         60 = 09.911s, 11 fps
          55 = 06.029s
-         50 = 03.412s
-         40 = 01.750s
-         25 = 00.341s
+         50 = 03.412s, 24fps
+         40 = 01.750s, 36fps
+         25 = 00.341s, 60 fps, 9.8k nodes
         */
         let ballStartX = squareSize * 64 / 2 - 200 - 32
         let ballStartY = squareSize * 64 + 200
