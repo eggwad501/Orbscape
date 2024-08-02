@@ -23,11 +23,11 @@ class MazeMaker: MazeGenerator{
         let startX = 0
         let startY = cols / 2
         let endX = rows - 1
-        let endY = cols - 1
+        let endY = cols / 2
         
         // initially create a maze of only walls
         var maze = Array(repeating: Array(repeating: 1, count: cols), count: rows)
-        var stack: [(Int, Int)] = [(startX, startY)]
+        var stack: [(Int, Int)] = [(startX-1, startY)]
         maze[startX][startY] = 0 // Start point
         maze[endX][endY] = 0 // End point
         
@@ -37,12 +37,11 @@ class MazeMaker: MazeGenerator{
             let (currentX, currentY) = currentPos
             
             var neighbors = [(Int, Int)]()
-            
             for direction in directions {
                 let nextX = currentX + direction.0 * 2
                 let nextY = currentY + direction.1 * 2
                 
-                if nextX >= 0 && nextX < rows && nextY >= 0 && nextY < cols && maze[nextX][nextY] == 1 {
+                if nextX > 0 && nextX < rows && nextY > 0 && nextY < cols-1 && (maze[nextX][nextY] == 1) {
                     neighbors.append((nextX, nextY))
                 }
             }
@@ -52,6 +51,8 @@ class MazeMaker: MazeGenerator{
                 let (nx, ny) = chosen
                 maze[(currentX + nx) / 2][(currentY + ny) / 2] = 0
                 maze[nx][ny] = 0
+                //printMaze(maze)
+                //print("===========================")
                 stack.append((nx, ny))
             } else {
                 stack.removeLast()
@@ -61,6 +62,8 @@ class MazeMaker: MazeGenerator{
         return maze
     }
 
+    // prints the maze in a readable format
+    // O's are free spaces and X's are walls
     func printMaze(_ maze: [[Int]]) {
         var result: String = ""
         for row in maze {
@@ -69,5 +72,23 @@ class MazeMaker: MazeGenerator{
             print(line)
             result += line + "\n"
         }
+    }
+    
+    // returns the amount of free space found in the maze
+    func calcFreeSpace(_ maze: [[Int]]) -> Int {
+        var r = 0
+        var c = 0
+        var count = 0
+            for row in maze{
+                for col in maze{
+                    if(maze[r][c] == 0){
+                        count += 1
+                    }
+                    c += 1
+                }
+                r += 1
+                c = 0
+            }
+        return count
     }
 }

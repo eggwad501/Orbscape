@@ -53,7 +53,8 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
         
-        makeMazeEasy()
+        // makes a maze of difficulty 100
+        makeSquareMaze(100)
         
         ballObject = SKSpriteNode(imageNamed: "ball")
         ballObject.size = CGSize(width: 32, height: 32)
@@ -71,13 +72,14 @@ class GameScene: SKScene {
     }
     
     // makes a maze
-    func makeMazeEasy(){
+    // its size depends on the entered difficult
+    func makeSquareMaze(_ difficulty: Int){
         var mazeMaker = MazeMaker()
-        let rows = 9
-        let cols = 9
+        // magic number to avoid double-walls
+        let rows = difficulty * 4 - 1
+        let cols = difficulty * 4 - 1
         var maze = mazeMaker.createMaze(rows, cols)
         mazeMaker.printMaze(maze)
-        // print(maze)
         loadMaze(maze)
     }
     
