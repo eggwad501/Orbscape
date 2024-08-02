@@ -31,6 +31,8 @@ class GameScene: SKScene {
     var ballObject: SKSpriteNode!
     var manager: CMMotionManager?
     
+    var cameraNode = SKCameraNode()
+    
     override func sceneDidLoad() {
         self.lastUpdateTime = 0
         
@@ -54,8 +56,13 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
         
+        // makeshift camera, can delete
+        cameraNode.position = CGPoint(x: frame.midX, y: frame.midY)
+        addChild(cameraNode)
+        camera = cameraNode
+        
         // makes a maze of some difficulty
-        let difficultyLevel = 3
+        let difficultyLevel = 66
         let squareSize = difficultyLevel * 4 - 1
         let startTime = CFAbsoluteTimeGetCurrent()
         makeSquareMaze(difficultyLevel)
@@ -206,6 +213,8 @@ class GameScene: SKScene {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
+        
+        cameraNode.position = ballObject.position
         
         self.lastUpdateTime = currentTime
         if let gravityX = manager?.deviceMotion?.gravity.x,
