@@ -13,6 +13,7 @@ struct Collision {
     static let ballBody: UInt32 = 0x1 << 0
     static let finishHoleBody: UInt32 = 0x1 << 1
     static let wallBody: UInt32 = 0x1 << 2
+    static let starBody: UInt32 = 0x1 << 3
 }
 
 // requests MazeMaker to generate a maze for the game
@@ -53,12 +54,31 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
         
-        // makes a maze of difficulty 100
-        makeSquareMaze(100)
-        
+        // makes a maze of some difficulty
+        let difficultyLevel = 2
+        let squareSize = difficultyLevel * 4 - 1
+        let startTime = CFAbsoluteTimeGetCurrent()
+        makeSquareMaze(difficultyLevel)
+        let endTime = CFAbsoluteTimeGetCurrent()
+        let elapsedTime = endTime - startTime
+        print("Total Maze Time taken: \(elapsedTime) seconds")
+        /*
+         String compares are cheaper than expected, keep the string
+         Array math is fast, sprite loading is slow
+         Difficulty and Time taken to load maze
+         75 = 31.443s
+         65 = 15.062s
+         60 = 09.911s
+         55 = 06.029s
+         50 = 03.412s
+         40 = 01.750s
+         25 = 00.341s
+        */
+        let ballStartX = squareSize * 64 / 2 - 200 - 32
+        let ballStartY = squareSize * 64 + 200
         ballObject = SKSpriteNode(imageNamed: "ball")
         ballObject.size = CGSize(width: 32, height: 32)
-        ballObject.position = CGPoint(x: -200, y: 200)
+        ballObject.position = CGPoint(x: ballStartX, y: ballStartY)
         ballObject.physicsBody = SKPhysicsBody(circleOfRadius: CGRectGetHeight(ballObject.frame) / 2)
         ballObject?.physicsBody?.mass = 5
         ballObject.physicsBody?.allowsRotation = true
@@ -74,13 +94,27 @@ class GameScene: SKScene {
     // makes a maze
     // its size depends on the entered difficult
     func makeSquareMaze(_ difficulty: Int){
-        var mazeMaker = MazeMaker()
+        let mazeMaker = MazeMaker()
         // magic number to avoid double-walls
         let rows = difficulty * 4 - 1
         let cols = difficulty * 4 - 1
+        
+        var startTime = CFAbsoluteTimeGetCurrent()
+        
         var maze = mazeMaker.createMaze(rows, cols)
+        
+        var endTime = CFAbsoluteTimeGetCurrent()
+        var elapsedTime = endTime - startTime
+        print("create Maze Time taken: \(elapsedTime) seconds")
+        
         mazeMaker.printMaze(maze)
+        startTime = CFAbsoluteTimeGetCurrent()
+        
         loadMaze(maze)
+        
+        endTime = CFAbsoluteTimeGetCurrent()
+        elapsedTime = endTime - startTime
+        print("load Maze Time taken: \(elapsedTime) seconds")
     }
     
     // loads the maze into the game
@@ -90,15 +124,15 @@ class GameScene: SKScene {
         for row in maze{
             for col in maze{
                 let wallObject = SKSpriteNode(imageNamed: "bricksx64")
-                wallObject.position = CGPoint(x: 64 * colIndex - 240, y: 64 * rowIndex - 240)
+                wallObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
                 wallObject.size = CGSize(width: 64, height: 64)
                 wallObject.physicsBody?.categoryBitMask = Collision.wallBody
                 wallObject.physicsBody?.collisionBitMask = Collision.wallBody
-                if(maze[rowIndex][colIndex] == 0){
-                    wallObject.texture = SKTexture(imageNamed: "star")
+                if(maze[rowIndex][colIndex] == 1){
+                    wallObject.physicsBody = SKPhysicsBody(rectangleOf: wallObject.size)
                 }
                 else{
-                    wallObject.physicsBody = SKPhysicsBody(rectangleOf: wallObject.size)
+                    wallObject.texture = SKTexture(imageNamed: "star")
                 }
                 wallObject.physicsBody?.isDynamic = false // object is pinned
                 addChild(wallObject)
@@ -108,7 +142,6 @@ class GameScene: SKScene {
             rowIndex += 1
             colIndex = 0
         }
-        print("MAZE LOADED IN")
     }
         
     func touchDown(atPoint pos : CGPoint) {
