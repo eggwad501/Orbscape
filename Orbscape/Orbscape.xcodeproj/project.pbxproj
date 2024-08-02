@@ -17,6 +17,7 @@
 		1F291BF32C521E9300D2B510 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BF22C521E9300D2B510 /* Actions.sks */; };
 		1F291BF52C521E9800D2B510 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF42C521E9800D2B510 /* GameScene.swift */; };
 		1F291BF72C521EA000D2B510 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF62C521EA000D2B510 /* GameViewController.swift */; };
+		1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F5193422C5D5EE600D085F0 /* MazeMap.sks */; };
 		1F67D15D2C580B04009289C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F67D15C2C580B04009289C6 /* Assets.xcassets */; };
 		1F67D15F2C581EE2009289C6 /* MazeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67D15E2C581EE2009289C6 /* MazeMaker.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		1F291BF22C521E9300D2B510 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		1F291BF42C521E9800D2B510 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		1F291BF62C521EA000D2B510 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		1F5193422C5D5EE600D085F0 /* MazeMap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MazeMap.sks; sourceTree = "<group>"; };
 		1F67D15C2C580B04009289C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F67D15E2C581EE2009289C6 /* MazeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeMaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +83,7 @@
 				1F291BF42C521E9800D2B510 /* GameScene.swift */,
 				1F291BF62C521EA000D2B510 /* GameViewController.swift */,
 				1F67D15E2C581EE2009289C6 /* MazeMaker.swift */,
+				1F5193422C5D5EE600D085F0 /* MazeMap.sks */,
 			);
 			path = Orbscape;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				1F291BE12C521DFC00D2B510 /* Base in Resources */,
 				1F291BF32C521E9300D2B510 /* Actions.sks in Resources */,
 				1F67D15D2C580B04009289C6 /* Assets.xcassets in Resources */,
+				1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
