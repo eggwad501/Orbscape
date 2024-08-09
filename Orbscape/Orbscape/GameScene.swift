@@ -30,7 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime : TimeInterval = 0
     
     var ballObject: SKSpriteNode!
-    var manager: CMMotionManager?
+    let manager = CMMotionManager()
     
     var cameraNode = SKCameraNode()
     
@@ -51,10 +51,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func sceneDidLoad() {
+        
+        self.camera = cameraNode
+        
         self.lastUpdateTime = 0
         
         // set up collisions
-        physicsWorld.contactDelegate = self
+        self.physicsWorld.contactDelegate = self
         
         // makeshift camera, can delete
         cameraNode.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -70,6 +73,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let columns = 10
         let rows = 10
 
+        // gravity manager construction
+        manager.startAccelerometerUpdates()
+        manager.accelerometerUpdateInterval = 0.1
+        manager.startAccelerometerUpdates(to: OperationQueue.main) {
+            (data, error) in
+            if let error = error {
+                print("Accelerometer error: \(error.localizedDescription)")
+            } else if let acceleration = data?.acceleration {
+                self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
+            }
+        }
+        
+        // tile map construction
         tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
         for column in 0..<columns {
             for row in 0..<rows {
