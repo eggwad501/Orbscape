@@ -20,6 +20,7 @@ struct Collision {
 var delegate: MazeGenerator?
 var tileSet: SKTileSet!
 var tileMap: SKTileMapNode!
+var mazeArray: [[Int]]!
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -38,6 +39,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // performance testers
     var startTime = CFAbsoluteTime()
     var endTime = CFAbsoluteTime()
+    
+    // garbage collector
+    var timeSinceGC: TimeInterval = 0
     
     func elapsedTime(_ startTime: Double, _ endTime: Double, _ msg: String){
         print(msg)
@@ -76,6 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         camera = cameraNode
         
         // tile setup
+        // TODO: takes a long time to load for big maps
         guard let tileSet = SKTileSet(named: "Sample Grid Tile Set") else {
             fatalError("Tile set not found")
         }
@@ -91,10 +96,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
         tileMap.position = CGPoint(x: frame.midX, y: frame.midY)
-        addChild(tileMap)
+        //addChild(tileMap)
         
         // makes a maze of some difficulty
-        let difficultyLevel = 3
+        let difficultyLevel = 5
         let squareSize = difficultyLevel * 4 - 1
         startTime = CFAbsoluteTimeGetCurrent()
         makeSquareMaze(difficultyLevel)
@@ -103,6 +108,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         /*
          String compares are cheaper than expected, keep the string
          Array math is fast, sprite loading is slow
+         The camera sees 11x22 sprites at all times
+         Keep 22x44 loaded at all times
          Difficulty(not rows/cols) and Time taken to load maze
          75 = 31.443s
          65 = 15.062s
@@ -138,69 +145,104 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let cols = difficulty * 4 - 1
         
         startTime = CFAbsoluteTimeGetCurrent()
-        var maze = mazeMaker.createMaze(rows, cols)
+        mazeArray = mazeMaker.createMaze(rows, cols)
         endTime = CFAbsoluteTimeGetCurrent()
-        elapsedTime(startTime, endTime, "create Maze Time taken")
+        //elapsedTime(startTime, endTime, "create Maze Time taken")
         
-        mazeMaker.printMaze(maze)
+        //mazeMaker.printMaze(mazeArray)
         
         startTime = CFAbsoluteTimeGetCurrent()
-        loadMaze(maze)
+        loadMaze(mazeArray)
         endTime = CFAbsoluteTimeGetCurrent()
-        elapsedTime(startTime, endTime, "load Maze time taken")
+        //elapsedTime(startTime, endTime, "load Maze time taken")
     }
     
-    // loads the maze into the game, tile version
-    func loadMazeTile(_ maze: [[Int]]){
+    // check if the node is visible to the camera
+    func isNodeVisible(_ node: SKNode) -> Bool {
+        let cameraView = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
+            
+        // Convert the node's position to the scene's coordinate system
+        let nodePosition = node.position
         
+        // Convert the node's position from the scene's coordinate system to the view's coordinate system
+        let nodePositionInView = cameraView.contains(nodePosition)
+        
+        // Check if the node's position is within the bounds of the view
+        //return view!.bounds.contains(nodePositionInView)
+        return nodePositionInView
     }
     
     // loads the maze into the game, node version
     func loadMaze(_ maze: [[Int]]){
         var rowIndex = 0
         var colIndex = 0
+        var visibles = 0
+        var walls = 0
         var mazeObject: SKSpriteNode!
         for row in maze{
             for col in maze{
+                mazeObject = SKSpriteNode(imageNamed: "Error")
+                mazeObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
+                // change what maze object is based on mazeArray
                 if(maze[rowIndex][colIndex] == 1){
-                    mazeObject = SKSpriteNode(imageNamed: "bricksx64")
-                    mazeObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
+                    mazeObject.texture = SKTexture(imageNamed: "bricksx64")
                     mazeObject.size = CGSize(width: 64, height: 64)
                     mazeObject.physicsBody = SKPhysicsBody(rectangleOf: mazeObject.size)
                     mazeObject.physicsBody?.categoryBitMask = Collision.wallBody
                     mazeObject.physicsBody?.collisionBitMask = Collision.ballBody
                     mazeObject.physicsBody?.contactTestBitMask = Collision.ballBody
+                    mazeObject.name = "wall"
+                    addChild(mazeObject)
+                    /*
+                    if isNodeVisible(mazeObject, in: self) {
+                        addChild(mazeObject)
+                    }
+                     */
+                    walls += 1
+                    if(isNodeVisible(mazeObject)){
+                        visibles += 1
+                    }
                 }
-                else{
-                    mazeObject = SKSpriteNode(imageNamed: "star")
-                    mazeObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
+                else if(Int.random(in: 1..<100) < 0){
+                    mazeObject.texture = SKTexture(imageNamed: "star")
                     mazeObject.size = CGSize(width: 32, height: 32)
                     mazeObject.physicsBody = SKPhysicsBody(rectangleOf: mazeObject.size)
                     mazeObject.physicsBody?.categoryBitMask = Collision.starBody
                     mazeObject.physicsBody?.collisionBitMask = Collision.ballBody
                     mazeObject.physicsBody?.contactTestBitMask = Collision.ballBody
+                    addChild(mazeObject)
                 }
                 mazeObject.physicsBody?.isDynamic = false // object is pinned
-                addChild(mazeObject)
                 
                 colIndex += 1
             }
             rowIndex += 1
             colIndex = 0
-        }
+        } // end of loop
+        /* attempt to use union of sprite nodes
+        let wallUnion = SKPhysicsBody(bodies: wallList)
+        wallUnion.isDynamic = false
+        let mazeNode = SKNode()
+        mazeNode.physicsBody = wallUnion
+        addChild(mazeNode)
+         */
+        print("Walls: \(walls) Visibles: \(visibles)")
     }
     
     // runs when the ball collides with something else
     func didBegin(_ contact: SKPhysicsContact) {
         let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
-        // Handle collision between player and wall
+        // Handle collision between ball and wall
+        // TODO: add sfx when colliding with wall or star
         if(otherObject.categoryBitMask == Collision.wallBody){
-            print("Player collided with a wall")
+            //print("Player collided with a wall")
         }
+        // handle collision between ball and star
         else if(otherObject.categoryBitMask == Collision.starBody){
-            print("Player collected a star")
+            //print("Player collected a star")
             otherObject.node?.removeFromParent()
+            // TODO: add star to player's account
         }
         else{
             print("Error")
@@ -269,13 +311,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             entity.update(deltaTime: dt)
         }
         
+        // enable/disable wall nodes
+        /*
+        for object in children where (object.name == "wall"){
+            if isNodeVisible(object, in: self) {
+                if object.parent == nil {
+                    addChild(object)
+                }
+            } else {
+                object.removeFromParent()
+            }
+        }
+        */
+        
         cameraNode.position = ballObject.position
         
         self.lastUpdateTime = currentTime
-        if let gravityX = manager?.deviceMotion?.gravity.x,
-           let gravityY = manager?.deviceMotion?.gravity.y,
-           ballObject != nil {
-            ballObject.physicsBody?.applyImpulse(CGVector(dx: CGFloat(gravityX) * 200, dy: CGFloat(gravityY) * 200))
-        }
+        //print("Camera position: \(cameraNode.position)")
     }
 }
