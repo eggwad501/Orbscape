@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomizeVC: UIViewController {
+class CustomizeVC: UIGameplayVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

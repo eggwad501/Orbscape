@@ -8,7 +8,7 @@
 import UIKit
 
 class ConfirmItemVC: UIGameplayVC {
-    var delegate: UIViewController!
+    var delegate: UIGameplayVC!
     
     var itemIcon: UIImage?
     var itemName: String = ""
@@ -16,8 +16,6 @@ class ConfirmItemVC: UIGameplayVC {
     var itemIndex: Int = -1
     
     var selectedIdentifier = "selectedIdentifier"
-
-    
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,46 +23,47 @@ class ConfirmItemVC: UIGameplayVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //super.gradientLayer
-
-        // Do any additional setup after loading the view.
+        self.popoverPresentationController?.backgroundColor = UIColor.clear
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
+        // so there would be no gradient applied in this view controller
     }
     
     // updates the values before the screen is shown
     override func viewWillAppear(_ animated: Bool) {
         iconImageView.image = itemIcon
         nameLabel.text = "\(itemName)"
-        costLabel.text = "\(itemCost)"
+        costLabel.text = "\(itemCost) ★"
     }
     
-    
+    // update the game with the selected theme
     @IBAction func confirmButton(_ sender: Any) {
         if itemIndex != -1 {
-            super.updateBackground(colors: themesList[itemIndex].colors)
+            backgroundColors = themesList[itemIndex].colors
+            self.dismiss(animated: true, completion: nil)
+            super.showNavigationBar()
+            
+            let themeVC = delegate as! blurBackgroundChanger
+            themeVC.removeBlurredBackgroundView()
+            themeVC.updateBackground(colors: backgroundColors)
         }
     }
     
+    // dismiss the confirmation
+    @IBAction func quitButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        let themeVC = delegate as! blurBackgroundChanger
+        themeVC.removeBlurredBackgroundView()
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == addSegueIdentifier,
-//           let destination = segue.destination as? AddTimerVC {
-//            destination.delegate = self
-//        }
         if segue.identifier == selectedIdentifier,
            let destination = segue.destination as? ThemesVC {
             destination.delegate = self
-            destination.colorsSelected = themesList[itemIndex].colors
+            //destination.colorsSelected = themesList[itemIndex].colors
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

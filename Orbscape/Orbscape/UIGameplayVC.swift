@@ -6,41 +6,34 @@
 //
 
 import UIKit
+import SwiftUI
+
+var backgroundColors: Array<CGColor> = [
+    CGColor(red: 0.74, green: 0.33, blue: 0.44, alpha: 1.0),
+    CGColor(red: 0.98, green: 0.64, blue: 0.44, alpha: 1.0)]
+
 
 class UIGameplayVC: UIViewController {
-    
     var gradientLayer = CAGradientLayer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
         gradientLayer.frame = view.bounds
-        gradientLayer.colors = [
-            UIColor.systemBlue.cgColor,
-            UIColor.systemGreen.cgColor
-        ]
+        gradientLayer.colors = backgroundColors
+        gradientLayer.name = "gradientLayer"
         view.layer.insertSublayer(gradientLayer, at: 0)
-
-        // Do any additional setup after loading the view.
     }
     
-    func updateBackground (colors:Array<CGColor>) {
-        let newLayer = CAGradientLayer()
-        newLayer.frame = view.bounds
-        newLayer.colors = colors
-        view.layer.replaceSublayer(gradientLayer, with: newLayer)
+    // hide Navigation Bar
+    func hideNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // show Navigation Bar
+    func showNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    */
-
 }
