@@ -18,8 +18,22 @@
 		1F291BF52C521E9800D2B510 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF42C521E9800D2B510 /* GameScene.swift */; };
 		1F291BF72C521EA000D2B510 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF62C521EA000D2B510 /* GameViewController.swift */; };
 		1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F5193422C5D5EE600D085F0 /* MazeMap.sks */; };
-		1F67D15D2C580B04009289C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F67D15C2C580B04009289C6 /* Assets.xcassets */; };
 		1F67D15F2C581EE2009289C6 /* MazeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67D15E2C581EE2009289C6 /* MazeMaker.swift */; };
+		1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BF82C52202F00D2B510 /* Assets.xcassets */; };
+		BFEF66812C5669D300CA9B18 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFEF66802C5669D300CA9B18 /* Gameplay.storyboard */; };
+		BFEF668D2C58673F00CA9B18 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF668C2C58673F00CA9B18 /* HomeScreenVC.swift */; };
+		BFEF668F2C586DF900CA9B18 /* LevelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF668E2C586DF900CA9B18 /* LevelsVC.swift */; };
+		BFEF66912C586E1E00CA9B18 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF66902C586E1E00CA9B18 /* SettingsVC.swift */; };
+		BFEF66932C586E3600CA9B18 /* CustomizeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF66922C586E3600CA9B18 /* CustomizeVC.swift */; };
+		BFEF66952C58728000CA9B18 /* logoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF66942C58728000CA9B18 /* logoIcon.png */; };
+		BFEF66972C587DD700CA9B18 /* ThemesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF66962C587DD700CA9B18 /* ThemesVC.swift */; };
+		BFEF66992C5880A600CA9B18 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF66982C5880A500CA9B18 /* Themes.swift */; };
+		BFEF669B2C5891BB00CA9B18 /* UIGameplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF669A2C5891BB00CA9B18 /* UIGameplayVC.swift */; };
+		BFEF669D2C58926300CA9B18 /* ConfirmItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF669C2C58926300CA9B18 /* ConfirmItemVC.swift */; };
+		BFEF66C32C5FDE7E00CA9B18 /* backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF66C22C5FDE7D00CA9B18 /* backButton.png */; };
+		BFEF66C72C62DA3400CA9B18 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF66C62C62DA3300CA9B18 /* CustomNavigationBar.swift */; };
+		BFEF66E92C647F0B00CA9B18 /* ballAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF66E82C647F0B00CA9B18 /* ballAnimationView.swift */; };
+		BFEF66EB2C6495CE00CA9B18 /* mazeTEMP.png in Resources */ = {isa = PBXBuildFile; fileRef = BFEF66EA2C6495CE00CA9B18 /* mazeTEMP.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,8 +50,22 @@
 		1F291BF42C521E9800D2B510 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		1F291BF62C521EA000D2B510 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F5193422C5D5EE600D085F0 /* MazeMap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MazeMap.sks; sourceTree = "<group>"; };
-		1F67D15C2C580B04009289C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F67D15E2C581EE2009289C6 /* MazeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeMaker.swift; sourceTree = "<group>"; };
+		1F291BF82C52202F00D2B510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BFEF66802C5669D300CA9B18 /* Gameplay.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Gameplay.storyboard; sourceTree = "<group>"; };
+		BFEF668C2C58673F00CA9B18 /* HomeScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenVC.swift; sourceTree = "<group>"; };
+		BFEF668E2C586DF900CA9B18 /* LevelsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsVC.swift; sourceTree = "<group>"; };
+		BFEF66902C586E1E00CA9B18 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		BFEF66922C586E3600CA9B18 /* CustomizeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeVC.swift; sourceTree = "<group>"; };
+		BFEF66942C58728000CA9B18 /* logoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoIcon.png; sourceTree = "<group>"; };
+		BFEF66962C587DD700CA9B18 /* ThemesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesVC.swift; sourceTree = "<group>"; };
+		BFEF66982C5880A500CA9B18 /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		BFEF669A2C5891BB00CA9B18 /* UIGameplayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGameplayVC.swift; sourceTree = "<group>"; };
+		BFEF669C2C58926300CA9B18 /* ConfirmItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmItemVC.swift; sourceTree = "<group>"; };
+		BFEF66C22C5FDE7D00CA9B18 /* backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backButton.png; sourceTree = "<group>"; };
+		BFEF66C62C62DA3300CA9B18 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		BFEF66E82C647F0B00CA9B18 /* ballAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ballAnimationView.swift; sourceTree = "<group>"; };
+		BFEF66EA2C6495CE00CA9B18 /* mazeTEMP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mazeTEMP.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +101,18 @@
 				1F291BD92C521DFC00D2B510 /* AppDelegate.swift */,
 				1F291BDB2C521DFC00D2B510 /* SceneDelegate.swift */,
 				1F291BDD2C521DFC00D2B510 /* ViewController.swift */,
-				1F67D15C2C580B04009289C6 /* Assets.xcassets */,
+				BFEF668C2C58673F00CA9B18 /* HomeScreenVC.swift */,
+				BFEF669A2C5891BB00CA9B18 /* UIGameplayVC.swift */,
 				1F291BDF2C521DFC00D2B510 /* Main.storyboard */,
+				BFEF66802C5669D300CA9B18 /* Gameplay.storyboard */,
+				BFEF66E82C647F0B00CA9B18 /* ballAnimationView.swift */,
+				BFEF669C2C58926300CA9B18 /* ConfirmItemVC.swift */,
+				BFEF66962C587DD700CA9B18 /* ThemesVC.swift */,
+				BFEF66982C5880A500CA9B18 /* Themes.swift */,
+				BFEF668E2C586DF900CA9B18 /* LevelsVC.swift */,
+				BFEF66902C586E1E00CA9B18 /* SettingsVC.swift */,
+				BFEF66922C586E3600CA9B18 /* CustomizeVC.swift */,
+				1F291BF82C52202F00D2B510 /* Assets.xcassets */,
 				1F291BE72C521DFD00D2B510 /* LaunchScreen.storyboard */,
 				1F291BEA2C521DFD00D2B510 /* Info.plist */,
 				1F291BE22C521DFC00D2B510 /* Orbscape.xcdatamodeld */,
@@ -84,6 +122,10 @@
 				1F291BF62C521EA000D2B510 /* GameViewController.swift */,
 				1F67D15E2C581EE2009289C6 /* MazeMaker.swift */,
 				1F5193422C5D5EE600D085F0 /* MazeMap.sks */,
+				BFEF66942C58728000CA9B18 /* logoIcon.png */,
+				BFEF66C22C5FDE7D00CA9B18 /* backButton.png */,
+				BFEF66C62C62DA3300CA9B18 /* CustomNavigationBar.swift */,
+				BFEF66EA2C6495CE00CA9B18 /* mazeTEMP.png */,
 			);
 			path = Orbscape;
 			sourceTree = "<group>";
@@ -146,9 +188,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFEF66812C5669D300CA9B18 /* Gameplay.storyboard in Resources */,
 				1F291BF12C521E8D00D2B510 /* GameScene.sks in Resources */,
 				1F291BE92C521DFD00D2B510 /* Base in Resources */,
 				1F291BE12C521DFC00D2B510 /* Base in Resources */,
+				BFEF66EB2C6495CE00CA9B18 /* mazeTEMP.png in Resources */,
+				BFEF66952C58728000CA9B18 /* logoIcon.png in Resources */,
+				1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */,
+				BFEF66C32C5FDE7E00CA9B18 /* backButton.png in Resources */,
 				1F291BF32C521E9300D2B510 /* Actions.sks in Resources */,
 				1F67D15D2C580B04009289C6 /* Assets.xcassets in Resources */,
 				1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */,
@@ -163,12 +210,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F291BF52C521E9800D2B510 /* GameScene.swift in Sources */,
+				BFEF66992C5880A600CA9B18 /* Themes.swift in Sources */,
 				1F291BE42C521DFC00D2B510 /* Orbscape.xcdatamodeld in Sources */,
 				1F67D15F2C581EE2009289C6 /* MazeMaker.swift in Sources */,
+				BFEF66932C586E3600CA9B18 /* CustomizeVC.swift in Sources */,
 				1F291BDE2C521DFC00D2B510 /* ViewController.swift in Sources */,
+				BFEF66972C587DD700CA9B18 /* ThemesVC.swift in Sources */,
 				1F291BDA2C521DFC00D2B510 /* AppDelegate.swift in Sources */,
+				BFEF669B2C5891BB00CA9B18 /* UIGameplayVC.swift in Sources */,
+				BFEF66E92C647F0B00CA9B18 /* ballAnimationView.swift in Sources */,
+				BFEF669D2C58926300CA9B18 /* ConfirmItemVC.swift in Sources */,
+				BFEF66C72C62DA3400CA9B18 /* CustomNavigationBar.swift in Sources */,
+				BFEF668D2C58673F00CA9B18 /* HomeScreenVC.swift in Sources */,
+				BFEF668F2C586DF900CA9B18 /* LevelsVC.swift in Sources */,
 				1F291BF72C521EA000D2B510 /* GameViewController.swift in Sources */,
 				1F291BDC2C521DFC00D2B510 /* SceneDelegate.swift in Sources */,
+				BFEF66912C586E1E00CA9B18 /* SettingsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
