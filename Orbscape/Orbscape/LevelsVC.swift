@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LevelsVC: UIViewController {
+class LevelsVC: UIGameplayVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()

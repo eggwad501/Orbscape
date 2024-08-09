@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,9 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NX-NG-JHK">
-                                <rect key="frame" x="129" y="477" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NX-NG-JHK">
+                                <rect key="frame" x="161" y="447" width="71" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="PLAY">
@@ -27,9 +27,8 @@
                                     <segue destination="Uf6-fg-pxy" kind="show" id="pPf-X6-Mwh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwK-ie-ww3">
-                                <rect key="frame" x="98" y="557" width="199" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwK-ie-ww3">
+                                <rect key="frame" x="112.66666666666669" y="527" width="168" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CUSTOMIZE">
@@ -39,9 +38,8 @@
                                     <segue destination="kTC-cz-hmo" kind="show" id="pRt-h8-mTG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umo-EH-fq9">
-                                <rect key="frame" x="129" y="636" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umo-EH-fq9">
+                                <rect key="frame" x="136" y="606" width="121" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="SETTING">
@@ -51,27 +49,43 @@
                                     <segue destination="XcQ-Qx-ZWR" kind="show" id="Myo-nk-R1d"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ORBSCAPE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrm-A8-s0e">
-                                <rect key="frame" x="74" y="225" width="244" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ORBSCAPE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrm-A8-s0e">
+                                <rect key="frame" x="74.666666666666686" y="195" width="244" height="55"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="46"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mazeTEMP.png" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-RJ-Z5D">
+                                <rect key="frame" x="-55" y="712" width="501" height="253"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zrm-A8-s0e" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="0da-3y-0Yc"/>
+                            <constraint firstItem="zrm-A8-s0e" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="92" id="2l7-3x-0hp"/>
+                            <constraint firstItem="dwK-ie-ww3" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Bo5-2L-Kok"/>
+                            <constraint firstItem="9NX-NG-JHK" firstAttribute="top" secondItem="zrm-A8-s0e" secondAttribute="bottom" constant="197" id="KGJ-tr-PHB"/>
+                            <constraint firstItem="9NX-NG-JHK" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="QoA-Su-UHH"/>
+                            <constraint firstItem="umo-EH-fq9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="TBq-sZ-sUm"/>
+                            <constraint firstItem="dwK-ie-ww3" firstAttribute="top" secondItem="9NX-NG-JHK" secondAttribute="bottom" constant="33" id="m2V-Em-fwc"/>
+                            <constraint firstItem="umo-EH-fq9" firstAttribute="top" secondItem="dwK-ie-ww3" secondAttribute="bottom" constant="32" id="tPd-ET-MTc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dVR-4f-GOo"/>
+                    <connections>
+                        <outlet property="mazeImage" destination="u5u-RJ-Z5D" id="B9p-xI-INy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1052.6717557251909" y="-34.507042253521128"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Custom Navigation Controller-->
         <scene sceneID="7Me-rE-oWE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aGR-Ja-UXW" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aGR-Ja-UXW" customClass="CustomNavigationController" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zhc-1o-HWX">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -101,7 +115,7 @@
         <!--LEVELS-->
         <scene sceneID="Bi1-qb-Kbi">
             <objects>
-                <viewController id="Uf6-fg-pxy" customClass="HomeScreenVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Uf6-fg-pxy" customClass="LevelsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LhL-mY-yHs">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,27 +127,24 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCk-FE-EAV">
-                                <rect key="frame" x="129" y="477" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCk-FE-EAV">
+                                <rect key="frame" x="160" y="447" width="73" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="EASY">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-kT-3Q2">
-                                <rect key="frame" x="98" y="557" width="199" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-kT-3Q2">
+                                <rect key="frame" x="137" y="527" width="119" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="MEDIUM">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jc-PY-aLp">
-                                <rect key="frame" x="129" y="636" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jc-PY-aLp">
+                                <rect key="frame" x="156" y="606" width="81" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="HARD">
@@ -143,6 +154,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ySQ-N7-fhP"/>
                         <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eAe-kT-3Q2" firstAttribute="top" secondItem="hCk-FE-EAV" secondAttribute="bottom" constant="33" id="S48-wu-TJn"/>
+                            <constraint firstItem="1jc-PY-aLp" firstAttribute="top" secondItem="eAe-kT-3Q2" secondAttribute="bottom" constant="32" id="VT9-hl-3qU"/>
+                            <constraint firstItem="hCk-FE-EAV" firstAttribute="centerX" secondItem="LhL-mY-yHs" secondAttribute="centerX" id="knp-0S-Wf5"/>
+                            <constraint firstItem="hCk-FE-EAV" firstAttribute="top" secondItem="ySQ-N7-fhP" secondAttribute="top" constant="344" id="l3M-xa-e0M"/>
+                            <constraint firstItem="1jc-PY-aLp" firstAttribute="centerX" secondItem="LhL-mY-yHs" secondAttribute="centerX" id="lRf-wR-sv6"/>
+                            <constraint firstItem="eAe-kT-3Q2" firstAttribute="centerX" secondItem="LhL-mY-yHs" secondAttribute="centerX" id="tgb-uG-svA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="LEVELS" style="editor" id="UY1-cd-5kl"/>
                 </viewController>
@@ -153,32 +172,29 @@
         <!--CUSTOMIZE-->
         <scene sceneID="F6Z-FS-QO0">
             <objects>
-                <viewController id="kTC-cz-hmo" customClass="HomeScreenVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kTC-cz-hmo" customClass="CustomizeVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EDo-7W-Gnj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZk-0D-qek">
-                                <rect key="frame" x="129" y="477" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZk-0D-qek">
+                                <rect key="frame" x="153" y="447" width="87" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="SKINS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz6-W9-aF4">
-                                <rect key="frame" x="80" y="557" width="235" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sz6-W9-aF4">
+                                <rect key="frame" x="79" y="527" width="235" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="SOUND EFFECTS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alw-Dz-AP9">
-                                <rect key="frame" x="128" y="642" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alw-Dz-AP9">
+                                <rect key="frame" x="146.66666666666666" y="612" width="100" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="THEME">
@@ -191,6 +207,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dXf-ak-Pyu"/>
                         <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qZk-0D-qek" firstAttribute="top" secondItem="dXf-ak-Pyu" secondAttribute="top" constant="344" id="A96-zw-rE6"/>
+                            <constraint firstItem="Sz6-W9-aF4" firstAttribute="top" secondItem="qZk-0D-qek" secondAttribute="bottom" constant="33" id="ALS-1m-Plj"/>
+                            <constraint firstItem="Sz6-W9-aF4" firstAttribute="centerX" secondItem="EDo-7W-Gnj" secondAttribute="centerX" id="XUK-3D-tGF"/>
+                            <constraint firstItem="alw-Dz-AP9" firstAttribute="top" secondItem="Sz6-W9-aF4" secondAttribute="bottom" constant="38" id="ZIT-hE-6go"/>
+                            <constraint firstItem="alw-Dz-AP9" firstAttribute="centerX" secondItem="EDo-7W-Gnj" secondAttribute="centerX" id="yht-vz-vHf"/>
+                            <constraint firstItem="qZk-0D-qek" firstAttribute="centerX" secondItem="EDo-7W-Gnj" secondAttribute="centerX" id="yly-O4-faA"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="CUSTOMIZE" style="editor" id="Yp8-OS-eBm"/>
                 </viewController>
@@ -201,47 +225,65 @@
         <!--SETTING-->
         <scene sceneID="nx8-uM-9aC">
             <objects>
-                <viewController id="XcQ-Qx-ZWR" customClass="HomeScreenVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XcQ-Qx-ZWR" customClass="SettingsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jeB-Xc-Jfo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lgx-Bo-F0l">
-                                <rect key="frame" x="74" y="187" width="244" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="lgx-Bo-F0l">
+                                <rect key="frame" x="74.666666666666686" y="222" width="244" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MOi-Af-zRt"/>
+                                    <constraint firstAttribute="width" constant="240" id="UHe-Lc-NPl"/>
+                                </constraints>
                             </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WCC-07-i4L">
-                                <rect key="frame" x="72" y="308" width="244" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WCC-07-i4L">
+                                <rect key="frame" x="74.666666666666686" y="345" width="244" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="4Eo-il-4im"/>
+                                    <constraint firstAttribute="height" constant="30" id="wrM-ht-brx"/>
+                                </constraints>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MUSIC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enN-Ov-ZnV">
-                                <rect key="frame" x="147" y="355" width="94" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUSIC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enN-Ov-ZnV">
+                                <rect key="frame" x="149.66666666666666" y="394" width="94" height="35"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SOUND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tp-wt-eQ2">
-                                <rect key="frame" x="142" y="242" width="104" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SOUND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tp-wt-eQ2">
+                                <rect key="frame" x="144.66666666666666" y="279" width="104" height="35"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivg-VJ-j92">
-                                <rect key="frame" x="128" y="460" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivg-VJ-j92">
+                                <rect key="frame" x="135.66666666666666" y="499" width="121.99999999999997" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CREDITS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Q1d-Ku-Rlz" kind="show" id="Mau-GK-xw9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rx9-bw-Zc8"/>
                         <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lgx-Bo-F0l" firstAttribute="centerX" secondItem="jeB-Xc-Jfo" secondAttribute="centerX" id="2w2-98-S0n"/>
+                            <constraint firstItem="WCC-07-i4L" firstAttribute="centerX" secondItem="jeB-Xc-Jfo" secondAttribute="centerX" id="9xm-iA-fAp"/>
+                            <constraint firstItem="WCC-07-i4L" firstAttribute="top" secondItem="6tp-wt-eQ2" secondAttribute="bottom" constant="31" id="Odz-Gp-c7f"/>
+                            <constraint firstItem="ivg-VJ-j92" firstAttribute="top" secondItem="enN-Ov-ZnV" secondAttribute="bottom" constant="70" id="YaU-bs-Qg6"/>
+                            <constraint firstItem="enN-Ov-ZnV" firstAttribute="top" secondItem="WCC-07-i4L" secondAttribute="bottom" constant="19" id="cpb-vz-dXg"/>
+                            <constraint firstItem="6tp-wt-eQ2" firstAttribute="centerX" secondItem="jeB-Xc-Jfo" secondAttribute="centerX" id="ju7-Ht-Pny"/>
+                            <constraint firstItem="enN-Ov-ZnV" firstAttribute="centerX" secondItem="jeB-Xc-Jfo" secondAttribute="centerX" id="qXg-tv-tbH"/>
+                            <constraint firstItem="ivg-VJ-j92" firstAttribute="centerX" secondItem="jeB-Xc-Jfo" secondAttribute="centerX" id="rev-jY-3Wx"/>
+                            <constraint firstItem="lgx-Bo-F0l" firstAttribute="top" secondItem="Rx9-bw-Zc8" secondAttribute="top" constant="119" id="sOf-0B-Y6s"/>
+                            <constraint firstItem="6tp-wt-eQ2" firstAttribute="top" secondItem="lgx-Bo-F0l" secondAttribute="bottom" constant="27" id="vpo-Xg-4xv"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SETTING" id="cqT-hq-u0c"/>
+                    <navigationItem key="navigationItem" title="SETTING" style="editor" id="cqT-hq-u0c"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZC1-Zy-viz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -255,9 +297,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Coe-b0-neg">
-                                <rect key="frame" x="16" y="175" width="361" height="643"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Coe-b0-neg">
+                                <rect key="frame" x="16" y="197" width="361" height="621"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -269,47 +310,62 @@
                                             <rect key="frame" x="0.0" y="0.0" width="361" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lnj-1C-gPn">
-                                                    <rect key="frame" x="38" y="11" width="75" height="68"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lnj-1C-gPn">
+                                                    <rect key="frame" x="38" y="11" width="68" height="68"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="GGQ-JZ-poW"/>
+                                                        <constraint firstAttribute="height" constant="68" id="bra-x5-wGw"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFX-nu-lPj">
-                                                    <rect key="frame" x="133" y="47" width="61" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFX-nu-lPj">
+                                                    <rect key="frame" x="126" y="47" width="61" height="28"/>
                                                     <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="23"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-tF-M50">
-                                                    <rect key="frame" x="133" y="11" width="61" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-tF-M50">
+                                                    <rect key="frame" x="126" y="11" width="61" height="28"/>
                                                     <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="23"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstItem="oFX-nu-lPj" firstAttribute="leading" secondItem="Lnj-1C-gPn" secondAttribute="trailing" constant="20" id="7sl-8A-OaD"/>
+                                                <constraint firstItem="Lnj-1C-gPn" firstAttribute="leading" secondItem="bip-cC-hRM" secondAttribute="leading" constant="38" id="CSG-lg-gSH"/>
+                                                <constraint firstItem="xy6-tF-M50" firstAttribute="top" secondItem="bip-cC-hRM" secondAttribute="top" constant="11" id="JUX-fP-f9R"/>
+                                                <constraint firstItem="oFX-nu-lPj" firstAttribute="top" secondItem="xy6-tF-M50" secondAttribute="bottom" constant="8" symbolic="YES" id="Jh0-sZ-7tr"/>
+                                                <constraint firstItem="Lnj-1C-gPn" firstAttribute="centerY" secondItem="bip-cC-hRM" secondAttribute="centerY" id="kUG-ZL-XvJ"/>
+                                                <constraint firstItem="xy6-tF-M50" firstAttribute="leading" secondItem="Lnj-1C-gPn" secondAttribute="trailing" constant="20" id="yHt-hV-dxJ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="itemIcon" destination="Lnj-1C-gPn" id="hj7-4u-7Ec"/>
                                             <outlet property="itemName" destination="xy6-tF-M50" id="n1B-S5-I6f"/>
                                             <outlet property="itemStatus" destination="oFX-nu-lPj" id="rq2-CQ-807"/>
-                                            <segue destination="FqY-Y7-nAR" kind="presentation" identifier="selectedIdentifier" id="eXt-rY-jdu"/>
+                                            <segue destination="FqY-Y7-nAR" kind="presentation" identifier="selectedIdentifier" modalPresentationStyle="overFullScreen" id="eXt-rY-jdu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVi-6s-puR">
-                                <rect key="frame" x="289" y="103" width="61" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="23"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVi-6s-puR">
+                                <rect key="frame" x="243" y="142" width="113" height="28"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="19B-33-Fbe"/>
                         <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="19B-33-Fbe" firstAttribute="trailing" secondItem="Coe-b0-neg" secondAttribute="trailing" constant="16" id="24O-W5-M2K"/>
+                            <constraint firstItem="gVi-6s-puR" firstAttribute="top" secondItem="19B-33-Fbe" secondAttribute="top" constant="39" id="O8W-mA-Ef3"/>
+                            <constraint firstItem="Coe-b0-neg" firstAttribute="leading" secondItem="19B-33-Fbe" secondAttribute="leading" constant="16" id="cHM-Nk-AWH"/>
+                            <constraint firstItem="Coe-b0-neg" firstAttribute="top" secondItem="19B-33-Fbe" secondAttribute="top" constant="94" id="jqr-Qu-7HN"/>
+                            <constraint firstItem="19B-33-Fbe" firstAttribute="bottom" secondItem="Coe-b0-neg" secondAttribute="bottom" id="tvN-8t-Zd3"/>
+                            <constraint firstItem="19B-33-Fbe" firstAttribute="trailing" secondItem="gVi-6s-puR" secondAttribute="trailing" constant="37" id="vAa-7Y-OZC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="THEME" style="editor" id="ZPD-C6-QLj"/>
                     <connections>
@@ -324,38 +380,37 @@
         <scene sceneID="WPw-kl-FEv">
             <objects>
                 <viewController id="FqY-Y7-nAR" customClass="ConfirmItemVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rtF-Tg-Cgt">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="rtF-Tg-Cgt">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LT4-cD-CI5">
-                                <rect key="frame" x="289" y="103" width="61" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="trx-Kn-oDe">
-                                <rect key="frame" x="142" y="226" width="75" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="trx-Kn-oDe">
+                                <rect key="frame" x="129" y="191" width="135" height="135"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="135" id="K32-cQ-Bm7"/>
+                                    <constraint firstAttribute="width" constant="135" id="iNp-xJ-zFO"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAT-70-2RY">
-                                <rect key="frame" x="149" y="314" width="61" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAT-70-2RY">
+                                <rect key="frame" x="96.666666666666686" y="352" width="200" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="uW7-1O-8WT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWk-Lf-6oJ">
-                                <rect key="frame" x="142" y="363" width="61" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWk-Lf-6oJ">
+                                <rect key="frame" x="96.666666666666686" y="388" width="200" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ZSi-pA-4U7"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="23"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTd-jv-5Tq">
-                                <rect key="frame" x="142" y="475" width="133" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTd-jv-5Tq">
+                                <rect key="frame" x="130" y="471" width="133" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CONFIRM">
@@ -365,18 +420,39 @@
                                     <action selector="confirmButton:" destination="FqY-Y7-nAR" eventType="touchUpInside" id="eVy-dV-tzZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYb-5M-jk7">
-                                <rect key="frame" x="128" y="545" width="136" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYb-5M-jk7">
+                                <rect key="frame" x="162.66666666666666" y="541" width="68" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="QUIT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="quitButton:" destination="FqY-Y7-nAR" eventType="touchUpInside" id="lSK-4Y-aXh"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcd-Xt-od2">
+                                <rect key="frame" x="245" y="94" width="113" height="28"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="esG-Pj-mtW"/>
-                        <color key="backgroundColor" red="0.21568627450980415" green="0.51804055364909785" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="esG-Pj-mtW" firstAttribute="trailing" secondItem="Rcd-Xt-od2" secondAttribute="trailing" constant="35" id="8Zo-Pz-eaJ"/>
+                            <constraint firstItem="iTd-jv-5Tq" firstAttribute="centerX" secondItem="rtF-Tg-Cgt" secondAttribute="centerX" id="9CD-zP-i9N"/>
+                            <constraint firstItem="oAT-70-2RY" firstAttribute="top" secondItem="trx-Kn-oDe" secondAttribute="bottom" constant="26" id="9Q9-QX-Ysb"/>
+                            <constraint firstItem="trx-Kn-oDe" firstAttribute="centerX" secondItem="rtF-Tg-Cgt" secondAttribute="centerX" id="BUi-FE-b2R"/>
+                            <constraint firstItem="iWk-Lf-6oJ" firstAttribute="top" secondItem="oAT-70-2RY" secondAttribute="bottom" constant="8" symbolic="YES" id="IAW-Ai-Bxs"/>
+                            <constraint firstItem="iTd-jv-5Tq" firstAttribute="top" secondItem="iWk-Lf-6oJ" secondAttribute="bottom" constant="55" id="NRp-vf-aIW"/>
+                            <constraint firstItem="trx-Kn-oDe" firstAttribute="top" secondItem="esG-Pj-mtW" secondAttribute="top" constant="191" id="UF6-XR-dmG"/>
+                            <constraint firstItem="Rcd-Xt-od2" firstAttribute="top" secondItem="esG-Pj-mtW" secondAttribute="top" constant="94" id="Xfb-AO-JAv"/>
+                            <constraint firstItem="FYb-5M-jk7" firstAttribute="top" secondItem="iTd-jv-5Tq" secondAttribute="bottom" constant="23" id="cgR-bC-9Ur"/>
+                            <constraint firstItem="FYb-5M-jk7" firstAttribute="centerX" secondItem="rtF-Tg-Cgt" secondAttribute="centerX" id="gvd-MD-7rN"/>
+                            <constraint firstItem="oAT-70-2RY" firstAttribute="centerX" secondItem="rtF-Tg-Cgt" secondAttribute="centerX" id="naU-Kd-DC3"/>
+                            <constraint firstItem="iWk-Lf-6oJ" firstAttribute="centerX" secondItem="rtF-Tg-Cgt" secondAttribute="centerX" id="sNQ-lr-eo3"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="THEME" style="editor" id="Ygw-aj-vXM"/>
                     <connections>
@@ -387,13 +463,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EbU-Tc-dJx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3353" y="-73"/>
+            <point key="canvasLocation" x="3351.9083969465646" y="-73.239436619718319"/>
+        </scene>
+        <!--CREDITS-->
+        <scene sceneID="aXX-Li-Nc6">
+            <objects>
+                <viewController id="Q1d-Ku-Rlz" customClass="SettingsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dSc-kk-5ZJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ir-TQ-JVd">
+                                <rect key="frame" x="81.666666666666671" y="150" width="229.66666666666663" height="542"/>
+                                <string key="text">
+Team Seven Studios
+ 
+—
+
+Nhat Tran
+
+Nicholas Ensey
+
+Ronghua Wang
+
+Pranav Srinivasan
+
+—
+
+Made for 
+CS 371L 
+
+Professor 
+Dr. William C. Bulko</string>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Oin-RE-CCp"/>
+                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3Ir-TQ-JVd" firstAttribute="top" secondItem="Oin-RE-CCp" secondAttribute="top" constant="47" id="P3L-ge-4EW"/>
+                            <constraint firstItem="3Ir-TQ-JVd" firstAttribute="centerX" secondItem="dSc-kk-5ZJ" secondAttribute="centerX" id="WVN-uw-Qqs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="CREDITS" style="editor" id="7R4-Fw-mN8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oqf-td-7ba" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2675.5725190839694" y="633.80281690140851"/>
         </scene>
     </scenes>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
+        <image name="mazeTEMP.png" width="1707" height="1699"/>
         <systemColor name="scrollViewTexturedBackgroundColor">
             <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
