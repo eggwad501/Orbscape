@@ -28,8 +28,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var graphs = [String : GKGraph]()
     
     private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
     
     var ballObject: SKSpriteNode!
     var manager: CMMotionManager?
@@ -42,6 +40,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // garbage collector
     var timeSinceGC: TimeInterval = 0
+    var timeSinceStart: TimeInterval = 0
+    var wallList: [SKSpriteNode] = []
+    var visibleWallList: [SKSpriteNode] = []
+    var hiddenWallList: [SKSpriteNode] = []
     
     func elapsedTime(_ startTime: Double, _ endTime: Double, _ msg: String){
         print(msg)
@@ -53,26 +55,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // set up collisions
         physicsWorld.contactDelegate = self
-        
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-        
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-        
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
-        }
         
         // makeshift camera, can delete
         cameraNode.position = CGPoint(x: frame.midX, y: frame.midY)
@@ -98,13 +80,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tileMap.position = CGPoint(x: frame.midX, y: frame.midY)
         //addChild(tileMap)
         
-        // makes a maze of some difficulty
-        let difficultyLevel = 5
-        let squareSize = difficultyLevel * 4 - 1
-        startTime = CFAbsoluteTimeGetCurrent()
-        makeSquareMaze(difficultyLevel)
-        endTime = CFAbsoluteTimeGetCurrent()
-        elapsedTime(startTime, endTime, "Toal Maze Time taken")
         /*
          String compares are cheaper than expected, keep the string
          Array math is fast, sprite loading is slow
@@ -117,10 +92,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
          55 = 06.029s
          50 = 03.412s, 24fps
          40 = 01.750s, 36fps
+         35 = 01.032s, 54fps
          25 = 00.341s, 60 fps, 9.8k nodes
         */
-        let ballStartX = squareSize * 64 / 2 - 200 - 32
-        let ballStartY = squareSize * 64 + 200
+        
+        let difficultyLevel = 25
+        let squareSize = difficultyLevel * 4 - 1
+        
+        // creates the ball
+        let ballStartX = squareSize * 64 / 2 - 32
+        let ballStartY = 100
         ballObject = SKSpriteNode(imageNamed: "ball")
         ballObject.size = CGSize(width: 32, height: 32)
         ballObject.position = CGPoint(x: ballStartX, y: ballStartY)
@@ -132,8 +113,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ballObject.physicsBody?.collisionBitMask = Collision.wallBody | Collision.starBody
         ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody
         ballObject.physicsBody?.affectedByGravity = true
-        
         addChild(ballObject)
+        
+        // makes a maze of some difficulty
+        startTime = CFAbsoluteTimeGetCurrent()
+        makeSquareMaze(difficultyLevel)
+        endTime = CFAbsoluteTimeGetCurrent()
+        elapsedTime(startTime, endTime, "Toal Maze Time taken")
     }
     
     // makes a maze
@@ -149,7 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         endTime = CFAbsoluteTimeGetCurrent()
         //elapsedTime(startTime, endTime, "create Maze Time taken")
         
-        //mazeMaker.printMaze(mazeArray)
+        mazeMaker.printMaze(mazeArray)
         
         startTime = CFAbsoluteTimeGetCurrent()
         loadMaze(mazeArray)
@@ -169,7 +155,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Check if the node's position is within the bounds of the view
         //return view!.bounds.contains(nodePositionInView)
-        return nodePositionInView
+        //return nodePositionInView
+        return cameraNode.contains(node)
     }
     
     // loads the maze into the game, node version
@@ -181,30 +168,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         var mazeObject: SKSpriteNode!
         for row in maze{
             for col in maze{
-                mazeObject = SKSpriteNode(imageNamed: "Error")
-                mazeObject.position = CGPoint(x: 64 * colIndex - 200, y: 64 * rowIndex - 200)
+                let position = CGPoint(x: 64 * colIndex, y: -64 * rowIndex)
                 // change what maze object is based on mazeArray
                 if(maze[rowIndex][colIndex] == 1){
-                    mazeObject.texture = SKTexture(imageNamed: "bricksx64")
+                    mazeObject = SKSpriteNode(imageNamed: "bricksx64")
                     mazeObject.size = CGSize(width: 64, height: 64)
+                    mazeObject.position = position
                     mazeObject.physicsBody = SKPhysicsBody(rectangleOf: mazeObject.size)
                     mazeObject.physicsBody?.categoryBitMask = Collision.wallBody
                     mazeObject.physicsBody?.collisionBitMask = Collision.ballBody
                     mazeObject.physicsBody?.contactTestBitMask = Collision.ballBody
                     mazeObject.name = "wall"
-                    addChild(mazeObject)
-                    /*
-                    if isNodeVisible(mazeObject, in: self) {
-                        addChild(mazeObject)
-                    }
-                     */
+                    wallList.append(mazeObject)
                     walls += 1
+                    addChild(mazeObject)
                     if(isNodeVisible(mazeObject)){
                         visibles += 1
+                        visibleWallList.append(mazeObject)
+                        //addChild(mazeObject)
                     }
                 }
-                else if(Int.random(in: 1..<100) < 0){
-                    mazeObject.texture = SKTexture(imageNamed: "star")
+                else if(Int.random(in: 1..<100) < 25){
+                    // 25% chance to generate a star at an empty tile
+                    mazeObject = SKSpriteNode(imageNamed: "star")
+                    mazeObject.position = position
                     mazeObject.size = CGSize(width: 32, height: 32)
                     mazeObject.physicsBody = SKPhysicsBody(rectangleOf: mazeObject.size)
                     mazeObject.physicsBody?.categoryBitMask = Collision.starBody
@@ -219,7 +206,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rowIndex += 1
             colIndex = 0
         } // end of loop
-        /* attempt to use union of sprite nodes
+        
+        /* an attempt to use union of sprite nodes
         let wallUnion = SKPhysicsBody(bodies: wallList)
         wallUnion.isDynamic = false
         let mazeNode = SKNode()
@@ -247,86 +235,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else{
             print("Error")
         }
-    }
-        
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
+    }    
     
     override func update(_ currentTime: TimeInterval) {
         
         // Called before each frame is rendered
-        
         // Initialize _lastUpdateTime if it has not already been
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
+            cameraNode.position = ballObject.position
         }
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
+        timeSinceGC += dt
+        timeSinceStart += dt
+        if(timeSinceGC > 1){
+            var index = 0
+            for wall in visibleWallList{
+                if(!isNodeVisible(wall)){
+                    print(index)
+                    //visibleWallList.remove(at: index)
+                }
+                index += 1
+            }
+            print(visibleWallList.count)
+            timeSinceGC = 0
+        }
         
         // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
         
-        // enable/disable wall nodes
-        /*
-        for object in children where (object.name == "wall"){
-            if isNodeVisible(object, in: self) {
-                if object.parent == nil {
-                    addChild(object)
-                }
-            } else {
-                object.removeFromParent()
-            }
+        // TESTING to see if nodes are recreated after moving back camera
+        if(timeSinceStart > 10){
+            cameraNode.position.y += 3
         }
-        */
-        
-        cameraNode.position = ballObject.position
+        else{
+            cameraNode.position.y -= 5
+        }
         
         self.lastUpdateTime = currentTime
-        //print("Camera position: \(cameraNode.position)")
     }
 }
