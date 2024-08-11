@@ -285,13 +285,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // TESTING to see if nodes are recreated after moving back camera
-        if(timeSinceStart > 10){
-            cameraNode.position.y += 3
-        }
-        else{
-            cameraNode.position.y -= 5
-        }
-        
+//        if(timeSinceStart > 10){
+//            cameraNode.position.y += 3
+//        }
+//        else{
+//            cameraNode.position.y -= 5
+//        }
+//        
         self.lastUpdateTime = currentTime
     }
 }
