@@ -32,6 +32,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     
+    var gradientObject: SKSpriteNode!
+    
     var cameraNode = SKCameraNode()
     
     // performance testers
@@ -118,7 +120,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // creates the ball
         let ballStartX = squareSize * 64 / 2 - 32
         let ballStartY = 100
-        ballObject = SKSpriteNode(imageNamed: "ball")
+        
+        //ballObject = SKSpriteNode(imageNamed: "ball")
+        
+        let texture = SKTexture(image: currentSkin.skin)
+        ballObject = SKSpriteNode(texture: texture)
+        
         ballObject.size = CGSize(width: 32, height: 32)
         ballObject.position = CGPoint(x: ballStartX, y: ballStartY)
         ballObject.physicsBody = SKPhysicsBody(circleOfRadius: CGRectGetHeight(ballObject.frame) / 2)
@@ -136,6 +143,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         makeSquareMaze(difficultyLevel)
         endTime = CFAbsoluteTimeGetCurrent()
         elapsedTime(startTime, endTime, "Toal Maze Time taken")
+        
+        
+        // create a gradient
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame.size = frame.size
+        gradientLayer.position = CGPoint(x: ballStartX, y: ballStartY)
+        gradientLayer.colors = currentTheme.colors
+
+        // convert the gradient into an image
+        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        // add the gradient as a game obj
+        let gradientTexture = SKTexture(image: gradientImage!)
+        gradientObject = SKSpriteNode(texture: gradientTexture)
+        gradientObject.size = CGSize(width: frame.width, height: frame.height)
+        gradientObject.position = CGPoint(x: frame.width/2, y: frame.height/2)
+        gradientObject.zPosition = -1
+        addChild(gradientObject)
     }
     
     // makes a maze
@@ -239,11 +267,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
         // Handle collision between ball and wall
         // TODO: add sfx when colliding with wall or star
-        if(otherObject.categoryBitMask == Collision.wallBody){
+        if(otherObject.categoryBitMask == Collision.wallBody) {
             //print("Player collided with a wall")
         }
         // handle collision between ball and star
-        else if(otherObject.categoryBitMask == Collision.starBody){
+        else if(otherObject.categoryBitMask == Collision.starBody) {
             //print("Player collected a star")
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
@@ -261,6 +289,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.lastUpdateTime = currentTime
             cameraNode.position = ballObject.position
         }
+        cameraNode.position = ballObject.position
+        
+        
+        gradientObject.position = cameraNode.position
+        //print(ballObject.position)
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
@@ -292,6 +325,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            cameraNode.position.y -= 5
 //        }
 //        
+        
         self.lastUpdateTime = currentTime
     }
 }
