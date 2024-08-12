@@ -255,9 +255,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func generateWall(_ position: CGPoint, _ wall: CGRect, _ color: UIColor){
         let mazeWall = SKShapeNode(rect: wall)
         mazeWall.fillColor = .white
-        
-        //mazeWall.position = position
-        mazeWall.physicsBody = SKPhysicsBody(rectangleOf: wall.size, center: CGPoint(x: wall.midX, y: wall.midY))
+        mazeWall.physicsBody = SKPhysicsBody(polygonFrom: mazeWall.path!)
         mazeWall.physicsBody?.categoryBitMask = Collision.wallBody
         mazeWall.physicsBody?.collisionBitMask = Collision.ballBody
         mazeWall.physicsBody?.contactTestBitMask = Collision.ballBody
