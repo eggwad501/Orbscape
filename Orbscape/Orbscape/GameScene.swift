@@ -31,6 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
+    let tileSize = 64
     
     var cameraNode = SKCameraNode()
     
@@ -136,7 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
          25 = 00.341s, 60 fps, 9.8k nodes
         */
         
-        let difficultyLevel = 1
+        let difficultyLevel = 2
         let squareSize = difficultyLevel * 4 - 1
         
         // creates the ball
@@ -201,16 +202,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // loads the maze into the game scene
     func loadMaze(){
-        let tileSize = 64
         var subRow = 0
         var subCol = 0
         var rowIndex = 0
         var colIndex = 0
-        var wallsMade = 0
-        var wallsSkipped = 0
         let mazeSize = mazeArray.count - 1
-        while(rowIndex < mazeSize){
-            while(colIndex < mazeSize){
+        while(rowIndex <= mazeSize){
+            while(colIndex <= mazeSize){
                 let position = CGPoint(x: tileSize * colIndex, y: -tileSize * rowIndex)
                 if(mazeArray[rowIndex][colIndex] == 1){
                     var horizontalLength = 0
@@ -222,26 +220,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         horizontalLength += 1
                         mazeArray[rowIndex][subCol] = -1
                         subCol += 1
-                        print("row: \(rowIndex), subCol: \(subCol)")
                     }
                     print(position)
-                    let horizontalWall = CGRect(x: position.x, y: position.y, width: CGFloat(horizontalLength * tileSize), height: -CGFloat(tileSize))
+                    let horizontalWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(horizontalLength * tileSize), height: -CGFloat(tileSize))
                     generateWall(position, horizontalWall, .red)
-                    wallsMade += 1
+                    
                     
                     mazeArray[rowIndex][colIndex] = 1 // have vert wall start at the same pos as hori wall
                     while(subRow <= mazeSize && mazeArray[subRow][colIndex] == 1){ // go downwards
                         verticalLength += 1
                         mazeArray[subRow][colIndex] = -1
                         subRow += 1
-                        print("subRow: \(subRow), col: \(colIndex)")
                     }
-                    var downWall = CGRect(x: position.x, y: position.y, width: CGFloat(tileSize), height: CGFloat(-verticalLength * tileSize))
+                    var downWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(tileSize), height: CGFloat(-verticalLength * tileSize))
                     generateWall(position, downWall, UIColor.green)
-                    wallsMade += 1
+                    
                 }
                 else if(mazeArray[rowIndex][colIndex] == -1){
-                    wallsSkipped += 1
+                    
                 }
                 else{
                     generateStar(position, 00)
@@ -253,15 +249,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rowIndex += 1
             colIndex = 0
         }
-        //print("Made: \(wallsMade) Skipped: \(wallsSkipped)")
     }
     
     // generates a wall of variable length or height with fixed tile size at this position
     func generateWall(_ position: CGPoint, _ wall: CGRect, _ color: UIColor){
         let mazeWall = SKShapeNode(rect: wall)
-        mazeWall.fillColor = color
-        mazeWall.position = position
-        mazeWall.physicsBody = SKPhysicsBody(rectangleOf: wall.size)
+        mazeWall.fillColor = .white
+        
+        //mazeWall.position = position
+        mazeWall.physicsBody = SKPhysicsBody(rectangleOf: wall.size, center: CGPoint(x: wall.midX, y: wall.midY))
         mazeWall.physicsBody?.categoryBitMask = Collision.wallBody
         mazeWall.physicsBody?.collisionBitMask = Collision.ballBody
         mazeWall.physicsBody?.contactTestBitMask = Collision.ballBody
@@ -301,7 +297,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // handle collision between ball and star
         else if(ballObject.categoryBitMask == Collision.ballBody && otherObject.categoryBitMask == Collision.starBody){
             print("Player collected a star")
-            //otherObject.node?.removeFromParent()
+            otherObject.node?.removeFromParent()
             // TODO: add star to player's account
         }
         else{
@@ -339,7 +335,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        else{
 //            cameraNode.position.y -= 1
 //        }
-        //cameraNode.position = ballObject.position
+        cameraNode.position = ballObject.position
         self.lastUpdateTime = currentTime
     }
 }
