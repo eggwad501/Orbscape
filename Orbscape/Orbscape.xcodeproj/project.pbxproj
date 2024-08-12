@@ -19,11 +19,8 @@
 		1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BF82C52202F00D2B510 /* Assets.xcassets */; };
 		1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F5193422C5D5EE600D085F0 /* MazeMap.sks */; };
 		1F67D15F2C581EE2009289C6 /* MazeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67D15E2C581EE2009289C6 /* MazeMaker.swift */; };
-<<<<<<< HEAD
-=======
 		BFC118A72C6870540087D567 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC118A62C6870540087D567 /* Globals.swift */; };
 		BFC118A92C697F610087D567 /* HappyPopsSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFC118A82C697F610087D567 /* HappyPopsSound.mp3 */; };
->>>>>>> de67e40a322f2435182ed3c477cf60a273eaeb96
 		BFEF66812C5669D300CA9B18 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFEF66802C5669D300CA9B18 /* Gameplay.storyboard */; };
 		BFEF668D2C58673F00CA9B18 /* HomeScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF668C2C58673F00CA9B18 /* HomeScreenVC.swift */; };
 		BFEF668F2C586DF900CA9B18 /* LevelsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF668E2C586DF900CA9B18 /* LevelsVC.swift */; };

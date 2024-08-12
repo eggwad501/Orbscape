@@ -38,7 +38,7 @@ var skinsList = [
         cost: 100
     ),
     Skins(
-        skin: UIImage(named: "elmoSkin")!,
+        skin: UIImage(named: "ElmoSkin")!,
         name: "Elmo",
         cost: 100
     ),
