@@ -9,16 +9,10 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-let displaySize: CGRect = UIScreen.main.bounds
-
-
 class GameViewController: UIViewController {
-    var gradientLayer = CAGradientLayer()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
             
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -31,7 +25,6 @@ class GameViewController: UIViewController {
             }
                 
             view.ignoresSiblingOrder = true
-            
         }
     }
 

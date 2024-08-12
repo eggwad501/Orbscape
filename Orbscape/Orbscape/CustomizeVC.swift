@@ -7,23 +7,48 @@
 
 import UIKit
 
-class CustomizeVC: UIGameplayVC {
+enum CustomizeTypes {
+  case skins, soundEffects, themes
+}
 
+class CustomizeVC: UIGameplayVC {
+    
+    var skinsIdentifier = "skinsIdentifier"
+    var soundEffectsIdentifier = "soundEffectsIdentifier"
+    var themesIdentifier = "themesIdentifier"
+
+    @IBOutlet weak var skinDisplayView: UIView!
+    
+    // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // display ball
+    override func viewWillAppear(_ animated: Bool) {
+        let image = imageView(view: skinDisplayView, image: currentSkin.skin)
+        skinDisplayView.backgroundColor = UIColor.clear
+        skinDisplayView.addSubview(image)
+        ballAnimation(view: self.skinDisplayView)
     }
-    */
+    
+    // pass information on what type of customization
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case skinsIdentifier:
+            let destination = segue.destination as? ThemesVC
+            destination?.types = CustomizeTypes.skins
+            
+        case soundEffectsIdentifier:
+            let destination = segue.destination as? ThemesVC
+            destination?.types = CustomizeTypes.soundEffects
 
+        case themesIdentifier:
+            let destination = segue.destination as? ThemesVC
+            destination?.types = CustomizeTypes.themes
+        
+        default:
+            break
+        }
+    }
 }
