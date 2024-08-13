@@ -22,6 +22,7 @@ class PauseVC: UIGameplayVC {
         gameDelegate.removeBlurredBackgroundView()
     }
     
+    // sent over current vc to pause vc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == confirmIdentifier,
            let destination = segue.destination as? QuitConfirmVC {

@@ -16,7 +16,7 @@ class QuitConfirmVC: UIGameplayVC {
         super.viewDidLoad()
     }
     
-
+    // dismiss to tap to start vc
     @IBAction func quitButton(_ sender: Any) {
         gameDelegate.dismiss(animated: true, completion: nil)
         pauseDelegate.removeBlurredBackgroundView()
@@ -27,6 +27,7 @@ class QuitConfirmVC: UIGameplayVC {
         }
     }
     
+    // dismiss to pause vc
     @IBAction func cancelButton(_ sender: Any) {
          self.dismiss(animated: true, completion: nil)
         pauseDelegate.removeBlurredBackgroundView()

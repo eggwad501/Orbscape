@@ -54,8 +54,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func sceneDidLoad() {
-<<<<<<< HEAD
-=======
         
 //        // Define the L-shape path with a gap
 //                let lShapePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 20000, height: 10))
@@ -81,7 +79,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                // Add the L-shape node to the scene
 //                addChild(lShapeNode)
         
->>>>>>> a2805f5f23aedb49aea6657806e065bd58d35835
         self.camera = cameraNode
         //pauseButton.image.
         
@@ -320,22 +317,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Handle collision between ball and wall
         // TODO: add sfx when colliding with wall or star
-<<<<<<< HEAD
-        if(ballObject.categoryBitMask == Collision.ballBody && otherObject.categoryBitMask == Collision.wallBody){
-=======
         if(otherObject.categoryBitMask == Collision.wallBody) {
->>>>>>> main
             //print("Player collided with a wall")
         }
         
         // handle collision between ball and star
-<<<<<<< HEAD
-        else if(ballObject.categoryBitMask == Collision.ballBody && otherObject.categoryBitMask == Collision.starBody){
-            print("Player collected a star")
-=======
         else if(otherObject.categoryBitMask == Collision.starBody) {
             //print("Player collected a star")
->>>>>>> main
+
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
         }
@@ -377,15 +366,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            cameraNode.position.y += 3
 //        }
 //        else{
-<<<<<<< HEAD
-//            cameraNode.position.y -= 1
-//        }
-        cameraNode.position = ballObject.position
-=======
 //            cameraNode.position.y -= 5
 //        }
         
->>>>>>> main
         self.lastUpdateTime = currentTime
     }
 }
