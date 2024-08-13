@@ -8,22 +8,19 @@
 import UIKit
 
 class LevelsVC: UIGameplayVC {
-
+    
+    @IBOutlet weak var iconImageView: UIView!
+    
+    // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let image = imageView(view: iconImageView, image: currentSkin.skin)
+        iconImageView.backgroundColor = UIColor.clear
+        iconImageView.addSubview(image)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // play ball animation
+    override func viewWillAppear(_ animated: Bool) {
+        ballAnimation(view: self.iconImageView)
     }
-    */
-
 }

@@ -9,25 +9,12 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-let displaySize: CGRect = UIScreen.main.bounds
-
-
 class GameViewController: UIViewController {
-    var gradientLayer = CAGradientLayer()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
             
         if let view = self.view as! SKView? {
-            let debug = false
-            if(debug){
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.showsQuadCount = true
-                view.showsPhysics = true
-            }
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
@@ -38,7 +25,6 @@ class GameViewController: UIViewController {
             }
                 
             view.ignoresSiblingOrder = true
-            
         }
     }
 

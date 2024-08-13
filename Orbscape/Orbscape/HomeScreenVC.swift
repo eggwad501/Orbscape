@@ -11,12 +11,11 @@ import SwiftUI
 class HomeScreenVC: UIGameplayVC {
     
     @IBOutlet weak var mazeImage: UIImageView!
-    
     var balls: Array<ballAnimationView>! = []
 
+    // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         balls.append(self.createBalls(color: UIColor.white, horzPos: -20, distance: 250, duration: 2.5))
         balls.append(self.createBalls(color: UIColor.white, horzPos: 90, distance: 120, duration: 1.5))
         balls.append(self.createBalls(color: UIColor.white, horzPos: 230, distance: 100, duration: 2.5))
@@ -27,7 +26,7 @@ class HomeScreenVC: UIGameplayVC {
         mazeImage.layer.opacity = 0.3
     }
     
-    
+    // plays animation
     override func viewWillAppear(_ animated: Bool) {
         for ball in balls {
             bounceAnimation(duration: TimeInterval(ball.duration), distance: CGFloat(ball.distance), object: ball)
@@ -35,7 +34,8 @@ class HomeScreenVC: UIGameplayVC {
         mazeAnimation(duration: TimeInterval(3.0), distance: CGFloat(100))
     }
     
-    func createBalls(color: UIColor, horzPos: Int, distance: Int, duration: Float) -> ballAnimationView {
+    // initialize ball objects ready for animation
+    private func createBalls(color: UIColor, horzPos: Int, distance: Int, duration: Float) -> ballAnimationView {
         let ball = ballAnimationView(fillColor: color, horzPos: horzPos, distance: distance, duration: duration)
         ball.frame = CGRect(
             x: horzPos, y: Int(self.view.bounds.height), width: 30, height: 30)
@@ -46,7 +46,8 @@ class HomeScreenVC: UIGameplayVC {
         return ball
     }
     
-    func bounceAnimation(duration: TimeInterval, distance: CGFloat, object: ballAnimationView) {
+    // bounce looping animation for the ball
+    private func bounceAnimation(duration: TimeInterval, distance: CGFloat, object: ballAnimationView) {
         object.frame.origin.x = CGFloat(object.horzPos)
         object.frame.origin.y = self.view.bounds.height
         UIView.animate (
@@ -59,7 +60,8 @@ class HomeScreenVC: UIGameplayVC {
         )
     }
     
-    func mazeAnimation(duration: TimeInterval, distance: CGFloat) {
+    // rotational looping animation for the maze image
+    private func mazeAnimation(duration: TimeInterval, distance: CGFloat) {
         self.mazeImage.frame.origin.x = -50
         self.mazeImage.frame.origin.y = self.view.bounds.height - 100
         UIView.animate (
