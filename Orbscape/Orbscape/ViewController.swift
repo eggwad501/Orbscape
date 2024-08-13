@@ -8,18 +8,23 @@
 import UIKit
 import CoreData
 
-let appDelegate = UIApplication.shared.delegate as! AppDelegate
-let context = appDelegate.persistentContainer.viewContext
+// protocols for retreival as well as saving context
+
+
 
 class ViewController: UIViewController {
 
-    var player: Player?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        player = Player(context: context)
-        player?.stars = 0
-        player?.runTime = 0.0
-        // Do any additional setup after loading the view.
+    func retrieveTheme() -> [NSManagedObject]{
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Theme")
+        var fetchedResults: [NSManagedObject]? = nil
+        
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            print("Error occured while retrieving data")
+            abort()
+        }
+        return fetchedResults!
     }
     
     func saveContext () {
@@ -33,6 +38,16 @@ class ViewController: UIViewController {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+
+    var player: Player?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        player = Player(context: context)
+        player?.stars = 0
+        player?.runTime = 0.0
+        // Do any additional setup after loading the view.
     }
     
     func storePlayer(stars: Int, runTime: Double){
@@ -63,40 +78,29 @@ class ViewController: UIViewController {
         saveContext()
     }
     
-    func buyTheme(curTheme: Theme?){
-        if(player!.stars > curTheme!.themeCost){
-            player?.addToAvailableThemes(curTheme!)
-            player?.stars -= curTheme!.themeCost
-        }
-        else {
-            print("insufficient stars")
-        }
-        saveContext()
-    }
+//    func buyTheme(curTheme: Theme?){
+//        if(player!.stars > curTheme!.themeCost){
+//            player?.addToAvailableThemes(curTheme!)
+//            player?.stars -= curTheme!.themeCost
+//        }
+//        else {
+//            print("insufficient stars")
+//        }
+//        saveContext()
+//    }
     
-    func buySkin(curSkin: Skin?){
-        if(player!.stars > curSkin!.skinCost){
-            player?.addToAvailableSkins(curSkin!)
-            player?.stars -= curSkin!.skinCost
-        }
-        else {
-            print("insufficient stars")
-        }
-        saveContext()
-        
-    }
-    
-    func buySound(curSound: Sound?){
-        if(player!.stars > curSound!.soundCost){
-            player?.addToAvailableSounds(curSound!)
-            player?.stars -= curSound!.soundCost
-        }
-        else {
-            print("insufficient stars")
-        }
-        saveContext()
-    }
-    
+
+//    func buySound(curSound: Sound?){
+//        if(player!.stars > curSound!.soundCost){
+//            player?.addToAvailableSounds(curSound!)
+//            player?.stars -= curSound!.soundCost
+//        }
+//        else {
+//            print("insufficient stars")
+//        }
+//        saveContext()
+//    }
+//    
     func equipTheme(curTheme: Theme?){
         player?.selectedTheme = curTheme
         saveContext()
@@ -112,31 +116,19 @@ class ViewController: UIViewController {
         saveContext()
     }
     
-    func retrievePlayer() -> [NSManagedObject]{
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Player")
-        var fetchedResults: [NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            print("Error occured while retrieving data")
-            abort()
-        }
-        return fetchedResults!
-    }
+//    func retrievePlayer() -> [NSManagedObject]{
+//        let request: NSFetchRequest<Theme> = Theme.fetchRequest()
+//        
+//        do {
+//            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+//        } catch {
+//            print("Error occured while retrieving data")
+//            abort()
+//        }
+//        return fetchedResults!
+//    }
+//    
     
-    func retrieveTheme() -> [NSManagedObject]{
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Theme")
-        var fetchedResults: [NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            print("Error occured while retrieving data")
-            abort()
-        }
-        return fetchedResults!
-    }
     
     func retrieveSound() -> [NSManagedObject]{
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Sound")
