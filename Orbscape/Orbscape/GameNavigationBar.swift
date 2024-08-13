@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class GameNavigationController: UINavigationController {
+class UIGameNavigationController: UINavigationController {
     // load in custom navigation bar
     override func viewDidLoad() {
         super.viewDidLoad()
