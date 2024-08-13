@@ -25,6 +25,13 @@ class GameViewController: UIGameplayVC {
         pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
         
         if let view = self.view as! SKView? {
+            let debug = false
+            if(debug){
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.showsQuadCount = true
+                view.showsPhysics = true
+            }
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
