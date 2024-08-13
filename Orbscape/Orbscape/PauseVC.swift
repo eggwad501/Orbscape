@@ -7,23 +7,31 @@
 
 import UIKit
 
-class PauseVC: UIViewController {
-
+class PauseVC: UIGameplayVC {
+    var gameDelegate: UIGameplayVC!
+    var confirmIdentifier = "confirmIdentifier"
+    
+    // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // dismiss screen with cancel
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        gameDelegate.removeBlurredBackgroundView()
     }
-    */
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == confirmIdentifier,
+           let destination = segue.destination as? QuitConfirmVC {
+            destination.gameDelegate = gameDelegate
+            destination.pauseDelegate = self
+            overlayBlurredBackgroundView()
+        }
+    }
+    
+    // empty; so there would be no gradient applied in this view controller
+    override func viewIsAppearing(_ animated: Bool) {
+    }
 }

@@ -24,10 +24,6 @@ var mazeArray: [[Int]]!
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    @IBOutlet weak var numStarsLabel: UILabel! // TODO: update star count
-    @IBOutlet weak var timerLabel: UILabel! // TODO: update timer
-    @IBOutlet weak var pauseButton: UIBarButtonItem!
-    
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -58,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func sceneDidLoad() {
         self.camera = cameraNode
+        //pauseButton.image.
         
         self.lastUpdateTime = 0
         

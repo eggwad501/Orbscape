@@ -136,7 +136,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7I7-oO-Nv5" kind="show" id="gKX-AL-tju"/>
+                                    <segue destination="Jab-2t-IVr" kind="show" id="kG3-gO-3yY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-kT-3Q2">
@@ -146,6 +146,9 @@
                                 <state key="normal" title="MEDIUM">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Jab-2t-IVr" kind="show" id="Vx6-Wr-HSV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jc-PY-aLp">
                                 <rect key="frame" x="156" y="606" width="81" height="47"/>
@@ -154,6 +157,9 @@
                                 <state key="normal" title="HARD">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Jab-2t-IVr" kind="show" id="7n2-vL-3Mk"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnP-Dl-sgB">
                                 <rect key="frame" x="154" y="233" width="85" height="85"/>
@@ -184,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HlC-6h-NIu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1923" y="-758"/>
+            <point key="canvasLocation" x="1156" y="-758"/>
         </scene>
         <!--CUSTOMIZE-->
         <scene sceneID="F6Z-FS-QO0">
@@ -579,38 +585,34 @@ Dr. William C. Bulko</string>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0AZ-hP-T6v"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
-                        <connections>
-                            <outlet property="numStarsLabel" destination="hfH-Wy-YmI" id="i9F-RZ-HPr"/>
-                            <outlet property="timerLabel" destination="WbZ-Ig-8UF" id="aN9-lv-JKH"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="bpf-96-Yhx">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="lBU-O9-dvZ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8iU-3Y-gfH">
-                                <rect key="frame" x="16" y="0.0" width="108" height="44"/>
+                        <barButtonItem key="leftBarButtonItem" width="95" style="plain" id="gM2-7k-m1O">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0xT-zV-QPm">
+                                <rect key="frame" x="16" y="0.0" width="95" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="PauseButton">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <segue destination="6ta-3b-5F9" kind="show" id="69k-db-7oB"/>
+                                    <segue destination="6ta-3b-5F9" kind="presentation" identifier="pauseIdentifier" modalPresentationStyle="overFullScreen" id="X3R-GG-esf"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="pauseButton" destination="lBU-O9-dvZ" id="6EA-om-sha"/>
+                        <outlet property="pauseButton" destination="0xT-zV-QPm" id="mIy-NN-4d0"/>
+                        <outlet property="starCountLabel" destination="hfH-Wy-YmI" id="ekT-S2-jWL"/>
+                        <outlet property="timerLabel" destination="WbZ-Ig-8UF" id="0xM-36-IEl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hma-tA-92T" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2696.9465648854962" y="-758.45070422535218"/>
+            <point key="canvasLocation" x="2676" y="-758"/>
         </scene>
-        <!--LEVELS-->
+        <!--PauseVC-->
         <scene sceneID="xz5-VY-ofW">
             <objects>
-                <viewController id="6ta-3b-5F9" customClass="EndGameVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6ta-3b-5F9" customClass="PauseVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VgK-AW-Ra2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -623,70 +625,63 @@ Dr. William C. Bulko</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibw-aJ-SY2">
-                                <rect key="frame" x="132.66666666666666" y="447" width="127.99999999999997" height="47"/>
+                                <rect key="frame" x="132.66666666666666" y="434" width="127.99999999999997" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="RESTART">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b1Q-By-7rb" kind="show" id="bPr-Ia-4gi"/>
+                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="confirmIdentifier" modalPresentationStyle="overFullScreen" id="23K-dN-4p2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJq-zu-64r">
-                                <rect key="frame" x="127" y="527" width="139" height="47"/>
+                                <rect key="frame" x="127" y="514" width="139" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="SETTINGS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <segue destination="XcQ-Qx-ZWR" kind="show" id="AYL-Vg-SCl"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9C-kF-d49">
-                                <rect key="frame" x="139" y="606" width="115" height="47"/>
+                                <rect key="frame" x="139" y="593" width="115" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CANCEL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="6ta-3b-5F9" eventType="touchUpInside" id="0c9-KG-ZnE"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Nx-wh-Gug">
-                                <rect key="frame" x="154" y="233" width="85" height="85"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="85" id="jif-TD-uxT"/>
-                                    <constraint firstAttribute="width" constant="85" id="kp5-dD-RbL"/>
-                                </constraints>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTL-vN-pyy">
+                                <rect key="frame" x="152.66666666666666" y="190" width="88" height="87"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="playButton" imagePadding="0.0"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0P-KY-Bf2"/>
-                        <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8Nx-wh-Gug" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="5JS-Od-v07"/>
-                            <constraint firstItem="8Nx-wh-Gug" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="130" id="C5j-bQ-xE8"/>
+                            <constraint firstItem="zTL-vN-pyy" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="DFr-3O-Fe6"/>
                             <constraint firstItem="AJq-zu-64r" firstAttribute="top" secondItem="Ibw-aJ-SY2" secondAttribute="bottom" constant="33" id="O6b-gT-h2M"/>
-                            <constraint firstItem="Ibw-aJ-SY2" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="344" id="TUB-0W-HY6"/>
+                            <constraint firstItem="Ibw-aJ-SY2" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="434" id="TUB-0W-HY6"/>
+                            <constraint firstItem="zTL-vN-pyy" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="190" id="Z90-8B-nkA"/>
                             <constraint firstItem="Ibw-aJ-SY2" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="loY-jp-qag"/>
                             <constraint firstItem="Y9C-kF-d49" firstAttribute="top" secondItem="AJq-zu-64r" secondAttribute="bottom" constant="32" id="q59-SU-upb"/>
                             <constraint firstItem="Y9C-kF-d49" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="vYM-fm-El0"/>
                             <constraint firstItem="AJq-zu-64r" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="y2C-4R-e87"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="LEVELS" style="editor" id="iJ3-16-KzA"/>
-                    <connections>
-                        <outlet property="iconImageView" destination="8Nx-wh-Gug" id="4nx-S8-oF9"/>
-                    </connections>
+                    <navigationItem key="navigationItem" style="editor" id="iJ3-16-KzA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WId-SN-Qob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3575" y="-758"/>
+            <point key="canvasLocation" x="3533.5877862595416" y="-1463.3802816901409"/>
         </scene>
-        <!--LEVELS-->
+        <!--Quit ConfirmVC-->
         <scene sceneID="mNd-bh-s4i">
             <objects>
-                <viewController id="b1Q-By-7rb" customClass="EndGameVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="b1Q-By-7rb" customClass="QuitConfirmVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="L81-W2-kjG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -698,66 +693,221 @@ Dr. William C. Bulko</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzZ-L2-PTJ">
-                                <rect key="frame" x="169" y="449" width="68" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OzZ-L2-PTJ">
+                                <rect key="frame" x="162.66666666666666" y="443" width="68" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="g0Q-ES-GpH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="QUIT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="quitButton:" destination="b1Q-By-7rb" eventType="touchUpInside" id="WOl-EG-r96"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr2-Wv-X2R">
-                                <rect key="frame" x="139" y="504" width="115" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARE YOU SURE?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mf-xy-5wD">
+                                <rect key="frame" x="85" y="280" width="223" height="35"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB3-dT-kmo">
+                                <rect key="frame" x="93.666666666666686" y="324" width="206" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="WAL-cd-HwC"/>
+                                </constraints>
+                                <string key="text">Restarting the game 
+will cost 50 ★ </string>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cr2-Wv-X2R">
+                                <rect key="frame" x="139" y="521" width="115" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="r2C-GI-RCu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CANCEL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelButton:" destination="b1Q-By-7rb" eventType="touchUpInside" id="bUu-or-Phi"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ARE YOU SURE?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mf-xy-5wD">
-                                <rect key="frame" x="82" y="334" width="223" height="35"/>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KkQ-Bk-XPJ"/>
+                        <constraints>
+                            <constraint firstItem="OzZ-L2-PTJ" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="IrV-wM-1jh"/>
+                            <constraint firstItem="aB3-dT-kmo" firstAttribute="top" secondItem="0mf-xy-5wD" secondAttribute="bottom" constant="9" id="Jmy-BR-XiL"/>
+                            <constraint firstItem="Cr2-Wv-X2R" firstAttribute="top" secondItem="OzZ-L2-PTJ" secondAttribute="bottom" constant="31" id="KZX-Hj-NPh"/>
+                            <constraint firstItem="0mf-xy-5wD" firstAttribute="top" secondItem="KkQ-Bk-XPJ" secondAttribute="top" constant="280" id="Vok-0Z-pxK"/>
+                            <constraint firstItem="aB3-dT-kmo" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="eXt-dd-sPd"/>
+                            <constraint firstItem="Cr2-Wv-X2R" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="fpz-G7-QZZ"/>
+                            <constraint firstItem="OzZ-L2-PTJ" firstAttribute="top" secondItem="aB3-dT-kmo" secondAttribute="bottom" constant="58" id="qUX-MI-oQd"/>
+                            <constraint firstItem="0mf-xy-5wD" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="qZS-6b-Orh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" style="editor" id="P6W-vI-asU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MnN-sS-1yi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4294" y="-1463"/>
+        </scene>
+        <!--PauseVC-->
+        <scene sceneID="yDC-Os-Rj8">
+            <objects>
+                <viewController id="Cag-E7-BW8" customClass="PauseVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y0P-MF-aXi">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVa-CL-9uR">
+                                <rect key="frame" x="196" y="103" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="37"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIJ-be-mku">
+                                <rect key="frame" x="146" y="705" width="101" height="53"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="34"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="HOME">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KND-kO-6v3">
+                                <rect key="frame" x="128.66666666666666" y="424" width="135.99999999999997" height="74"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="62"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPLETED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1E-1i-oTe">
+                                <rect key="frame" x="85.666666666666686" y="496" width="222" height="44"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="37"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 ★" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLK-kH-0qA">
+                                <rect key="frame" x="145.66666666666666" y="579" width="102" height="48"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXw-Ot-rDx">
+                                <rect key="frame" x="175" y="630" width="43" height="35"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restarting the game will cost 50 ★ " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB3-dT-kmo">
-                                <rect key="frame" x="23" y="369" width="348" height="24"/>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="iWZ-hl-QNO"/>
+                        <constraints>
+                            <constraint firstItem="Y1E-1i-oTe" firstAttribute="top" secondItem="KND-kO-6v3" secondAttribute="bottom" constant="-2" id="0x0-MN-lOr"/>
+                            <constraint firstItem="DLK-kH-0qA" firstAttribute="top" secondItem="Y1E-1i-oTe" secondAttribute="bottom" constant="39" id="1Kx-X8-5lJ"/>
+                            <constraint firstItem="WXw-Ot-rDx" firstAttribute="centerX" secondItem="Y0P-MF-aXi" secondAttribute="centerX" id="6CB-9b-WKz"/>
+                            <constraint firstItem="YIJ-be-mku" firstAttribute="centerX" secondItem="Y0P-MF-aXi" secondAttribute="centerX" id="AD8-mI-pDH"/>
+                            <constraint firstItem="KND-kO-6v3" firstAttribute="top" secondItem="iWZ-hl-QNO" secondAttribute="top" constant="365" id="Mzj-dx-EPj"/>
+                            <constraint firstItem="DLK-kH-0qA" firstAttribute="centerX" secondItem="Y0P-MF-aXi" secondAttribute="centerX" id="PFd-Uk-92e"/>
+                            <constraint firstItem="KND-kO-6v3" firstAttribute="centerX" secondItem="Y0P-MF-aXi" secondAttribute="centerX" id="TO2-tM-bFL"/>
+                            <constraint firstItem="YIJ-be-mku" firstAttribute="top" secondItem="WXw-Ot-rDx" secondAttribute="bottom" constant="40" id="ab9-L4-X4a"/>
+                            <constraint firstItem="WXw-Ot-rDx" firstAttribute="top" secondItem="DLK-kH-0qA" secondAttribute="bottom" constant="3" id="pVI-xP-Trm"/>
+                            <constraint firstItem="YIJ-be-mku" firstAttribute="centerX" secondItem="Y0P-MF-aXi" secondAttribute="centerX" id="qQE-9c-epB"/>
+                            <constraint firstItem="Y1E-1i-oTe" firstAttribute="centerX" secondItem="Y0P-MF-aXi" secondAttribute="centerX" id="zdo-oj-F21"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" style="editor" id="rNT-uT-D6G"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5K-2R-Pk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3533.5877862595416" y="-758.45070422535218"/>
+        </scene>
+        <!--Tap To StartVC-->
+        <scene sceneID="3GR-jQ-hK4">
+            <objects>
+                <viewController id="Jab-2t-IVr" customClass="TapToStartVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Dq-Yc-sGF">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-xX-rzY">
+                                <rect key="frame" x="196" y="103" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="37"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUo-sX-Lbe">
+                                <rect key="frame" x="102.66666666666669" y="491.99999999999994" width="188" height="47.333333333333314"/>
+                                <string key="text">Rotate Your Phone 
+to Move</string>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Go3-0L-0P9">
+                                <rect key="frame" x="154" y="233" width="85" height="85"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="hkY-Dn-Bx0"/>
+                                    <constraint firstAttribute="height" constant="85" id="yoo-W8-fI5"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP TO START" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPQ-wt-KWR">
+                                <rect key="frame" x="97.666666666666686" y="434" width="198" height="35"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="KkQ-Bk-XPJ"/>
+                        <viewLayoutGuide key="safeArea" id="gbU-qh-lCC"/>
                         <color key="backgroundColor" systemColor="scrollViewTexturedBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="OzZ-L2-PTJ" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="8Rz-E4-jNB"/>
-                            <constraint firstItem="Cr2-Wv-X2R" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="PHM-Bd-wuz"/>
-                            <constraint firstItem="OzZ-L2-PTJ" firstAttribute="top" secondItem="Cr2-Wv-X2R" secondAttribute="bottom" constant="32" id="SdY-lR-737"/>
+                            <constraint firstItem="VPQ-wt-KWR" firstAttribute="top" secondItem="Go3-0L-0P9" secondAttribute="bottom" constant="116" id="Omh-dT-1Gm"/>
+                            <constraint firstItem="Go3-0L-0P9" firstAttribute="top" secondItem="gbU-qh-lCC" secondAttribute="top" constant="130" id="c6X-0d-Si4"/>
+                            <constraint firstItem="cUo-sX-Lbe" firstAttribute="top" secondItem="VPQ-wt-KWR" secondAttribute="bottom" constant="23" id="fzk-dF-fAW"/>
+                            <constraint firstItem="cUo-sX-Lbe" firstAttribute="centerX" secondItem="2Dq-Yc-sGF" secondAttribute="centerX" id="gXI-Pm-HRH"/>
+                            <constraint firstItem="Go3-0L-0P9" firstAttribute="centerX" secondItem="2Dq-Yc-sGF" secondAttribute="centerX" id="i6p-Ib-G5K"/>
+                            <constraint firstItem="VPQ-wt-KWR" firstAttribute="centerX" secondItem="2Dq-Yc-sGF" secondAttribute="centerX" id="ndc-S7-jpQ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="N3s-kg-ffi" appends="YES" id="yMn-cz-e7r"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="LEVELS" style="editor" id="P6W-vI-asU"/>
+                    <navigationItem key="navigationItem" style="editor" id="jHn-du-jcq"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="Go3-0L-0P9" id="cvU-ZQ-9yN"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MnN-sS-1yi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uvp-Xh-rS7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="N3s-kg-ffi">
+                    <connections>
+                        <segue destination="7I7-oO-Nv5" kind="show" animates="NO" id="CwK-vm-BBz"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4344" y="-758"/>
+            <point key="canvasLocation" x="1937" y="-758"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Vx6-Wr-HSV"/>
         <segue reference="81A-sU-f1F"/>
-        <segue reference="AYL-Vg-SCl"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="PauseButton" width="84" height="125"/>
         <image name="backButton.png" width="23.666666030883789" height="41"/>
         <image name="mazeTEMP.png" width="1707" height="1699"/>
+        <image name="playButton" width="64" height="73"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

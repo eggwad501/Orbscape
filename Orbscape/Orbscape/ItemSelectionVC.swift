@@ -179,24 +179,6 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
         }
     }
     
-    // create the blur effect when the confirm vc shows up
-    func overlayBlurredBackgroundView() {
-        let blurredBackgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
-        blurredBackgroundView.frame = self.view.bounds
-        view.addSubview(blurredBackgroundView)
-        super.hideNavigationBar()
-        }
-        
-    // remove the blur effect
-    func removeBlurredBackgroundView() {
-        for subview in view.subviews {
-            if subview.isKind(of: UIVisualEffectView.self) {
-                subview.removeFromSuperview()
-            }
-        }
-        super.showNavigationBar()
-    }
-    
     // immediate update of the background to the selected colors
     func updateBackground(index: Int) {
         let newLayer = CAGradientLayer()

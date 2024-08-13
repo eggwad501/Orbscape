@@ -19,8 +19,12 @@ class UIGameNavigationController: UINavigationController {
         self.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
         
         self.navigationBar.barTintColor = UIColor.clear
-        //self.na
-
     }
+    
+    func removeViewController() {
+        self.viewControllers.remove(at: 1)
+    }
+    
+    
 }
 

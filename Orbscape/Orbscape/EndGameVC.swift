@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EndGameVC: UIViewController {
+class EndGameVC: UIGameplayVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
