@@ -21,6 +21,7 @@ class itemsTableViewCell: UITableViewCell {
 }
 
 class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSelectChanger {
+    
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var starCountLabel: UILabel!
@@ -80,6 +81,9 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
     
     // the cell appearance for each item type
     private func cellAppearance(row: Int, cell: itemsTableViewCell) -> itemsTableViewCell {
+        for view in cell.itemImage.subviews {
+            view.removeFromSuperview()
+        }
         switch types {
         case CustomizeTypes.skins?:
             cell.itemName?.text = skinsList[row].name
@@ -94,8 +98,13 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
 
         case CustomizeTypes.soundEffects?:
             cell.itemName?.text = soundsList[row].name
+            
+            let image = imageView(view: cell.itemImage, image: soundsList[row].image!)
+            if !soundsList[row].purchased {
+                image.layer.opacity = 0.5
+            }
+            cell.itemImage?.addSubview(image)
             cell.itemStatus?.text = lockedDisplay(item: soundsList[row], itemImage: cell.itemImage)
-            // TODO: add sound
             
         case CustomizeTypes.themes?:
             cell.itemName?.text = themesList[row].name
@@ -109,7 +118,7 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
             let image = imageView(view: cell.itemImage, image: gradientImage!)
             
             if !themesList[row].purchased {
-                gradient.opacity = 0.5
+                image.layer.opacity = 0.5
             }
             cell.itemImage?.addSubview(image)
             cell.itemStatus?.text = lockedDisplay(item: themesList[row], itemImage: cell.itemImage)
@@ -138,11 +147,6 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
         }
     }
     
-    // updates the table before the screen is shown
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
-    
     // sent over necessary data to respective view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -152,6 +156,7 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
             destination.delegate = self
             destination.types = types
             destination.itemIndex = selectedIndex
+            //destination.itemsTableViewCell = tableView.cellForRow(at: selectedIndex)
             
             switch types {
             case CustomizeTypes.skins?:
@@ -162,6 +167,7 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
             case CustomizeTypes.soundEffects?:
                 destination.itemCost = soundsList[selectedIndex].cost
                 destination.itemName = soundsList[selectedIndex].name
+                destination.itemImage = soundsList[selectedIndex].image
                 
             case CustomizeTypes.themes?:
                 destination.itemCost = themesList[selectedIndex].cost
@@ -177,24 +183,6 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
         if segue.identifier == selectedIdentifier {
             
         }
-    }
-    
-    // create the blur effect when the confirm vc shows up
-    func overlayBlurredBackgroundView() {
-        let blurredBackgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
-        blurredBackgroundView.frame = self.view.bounds
-        view.addSubview(blurredBackgroundView)
-        super.hideNavigationBar()
-        }
-        
-    // remove the blur effect
-    func removeBlurredBackgroundView() {
-        for subview in view.subviews {
-            if subview.isKind(of: UIVisualEffectView.self) {
-                subview.removeFromSuperview()
-            }
-        }
-        super.showNavigationBar()
     }
     
     // immediate update of the background to the selected colors
