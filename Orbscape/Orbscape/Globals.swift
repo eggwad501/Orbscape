@@ -30,6 +30,10 @@ var currentSkin: Skins = skinsList[retrieveItem(identifier: "Skin")[1].value(for
 var currentSound: SoundEffects = soundsList[retrieveItem(identifier: "Sound")[1].value(forKey: "equippedIndex") as! Int]
 var currentStarsCount = retrieveItem(identifier: "Player")[0].value(forKey: "stars") as! Int
 
+// Needs CORE DATA
+var soundVolume: Float = 0.5
+var musicVolume: Float = 0.5
+
 var skinsList = [
     Skins(
         skin: UIImage(named: "blueSkin")!,
@@ -98,6 +102,55 @@ var soundsList = [
         ind: 0,
         id: "Sound",
         purchase: true
+    ),
+    SoundEffects(
+        sound: Bundle.main.url(forResource: "beam", withExtension: "wav")!,
+        name: "Laser",
+        cost: 100,
+        ind: 0,
+        id: "Sound"
+    ),
+    SoundEffects(
+        sound: Bundle.main.url(forResource: "fairy", withExtension: "wav")!,
+        name: "Fairy",
+        cost: 100,
+        ind: 0,
+        id: "Sound"
+    ),
+    SoundEffects(
+        sound: Bundle.main.url(forResource: "cowbell", withExtension: "wav")!,
+        name: "Cowbell",
+        cost: 100,
+        ind: 0,
+        id: "Sound"
+    ),
+    SoundEffects(
+        sound: Bundle.main.url(forResource: "tap", withExtension: "wav")!,
+        name: "Tap",
+        cost: 100,
+        ind: 0,
+        id: "Sound"
+    ),
+    SoundEffects(
+        sound: Bundle.main.url(forResource: "dog", withExtension: "wav")!,
+        name: "bark",
+        cost: 100,
+        ind: 0,
+        id: "Sound"
+    ),
+    SoundEffects(
+        sound: Bundle.main.url(forResource: "cat", withExtension: "wav")!,
+        name: "Meow",
+        cost: 100,
+        ind: 0,
+        id: "Sound"
+    ),
+    SoundEffects(
+        sound: Bundle.main.url(forResource: "pig", withExtension: "mp3")!,
+        name: "Oink",
+        cost: 100,
+        ind: 0,
+        id: "Sound"
     )
 ]
 

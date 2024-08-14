@@ -278,6 +278,9 @@
                                     <constraint firstAttribute="height" constant="30" id="MOi-Af-zRt"/>
                                     <constraint firstAttribute="width" constant="240" id="UHe-Lc-NPl"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="changedSoundSlider:" destination="XcQ-Qx-ZWR" eventType="valueChanged" id="MMf-OV-Aq6"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WCC-07-i4L">
                                 <rect key="frame" x="74.666666666666686" y="345" width="244" height="31"/>
@@ -285,6 +288,9 @@
                                     <constraint firstAttribute="width" constant="240" id="4Eo-il-4im"/>
                                     <constraint firstAttribute="height" constant="30" id="wrM-ht-brx"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="changedMusicSlider:" destination="XcQ-Qx-ZWR" eventType="valueChanged" id="wmD-tU-SRM"/>
+                                </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MUSIC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enN-Ov-ZnV">
                                 <rect key="frame" x="149.66666666666666" y="394" width="94" height="35"/>
@@ -326,6 +332,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SETTING" style="editor" id="cqT-hq-u0c"/>
+                    <connections>
+                        <outlet property="musicSlider" destination="WCC-07-i4L" id="rLS-qm-Ajt"/>
+                        <outlet property="soundSlider" destination="lgx-Bo-F0l" id="5Tg-Vs-6Hd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZC1-Zy-viz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -588,7 +598,7 @@ Dr. William C. Bulko</string>
                     </view>
                     <navigationItem key="navigationItem" id="bpf-96-Yhx">
                         <barButtonItem key="leftBarButtonItem" width="95" style="plain" id="gM2-7k-m1O">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0xT-zV-QPm">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0xT-zV-QPm">
                                 <rect key="frame" x="16" y="0.0" width="95" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -895,7 +905,7 @@ to Move</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Vx6-Wr-HSV"/>
+        <segue reference="7n2-vL-3Mk"/>
         <segue reference="81A-sU-f1F"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
