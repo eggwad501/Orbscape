@@ -80,6 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                addChild(lShapeNode)
         
         self.camera = cameraNode
+        //pauseButton.image.
         
         self.lastUpdateTime = 0
         
@@ -316,22 +317,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // Handle collision between ball and wall
         // TODO: add sfx when colliding with wall or star
-<<<<<<< HEAD
-        if(ballObject.categoryBitMask == Collision.ballBody && otherObject.categoryBitMask == Collision.wallBody){
-=======
         if(otherObject.categoryBitMask == Collision.wallBody) {
->>>>>>> main
             //print("Player collided with a wall")
         }
         
         // handle collision between ball and star
-<<<<<<< HEAD
-        else if(ballObject.categoryBitMask == Collision.ballBody && otherObject.categoryBitMask == Collision.starBody){
-            print("Player collected a star")
-=======
         else if(otherObject.categoryBitMask == Collision.starBody) {
             //print("Player collected a star")
->>>>>>> main
+
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
         }
@@ -373,15 +366,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            cameraNode.position.y += 3
 //        }
 //        else{
-<<<<<<< HEAD
-//            cameraNode.position.y -= 1
-//        }
-        cameraNode.position = ballObject.position
-=======
 //            cameraNode.position.y -= 5
 //        }
         
->>>>>>> main
         self.lastUpdateTime = currentTime
     }
 }
