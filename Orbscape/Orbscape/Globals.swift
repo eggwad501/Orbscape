@@ -20,7 +20,8 @@ var skinsList = [
     Skins(
         skin: UIImage(named: "blueSkin")!,
         name: "Blue",
-        cost: 100
+        cost: 100,
+        purchase: true
     ),
     Skins(
         skin: UIImage(named: "greenSkin")!,
@@ -63,7 +64,8 @@ var soundsList = [
     SoundEffects(
         sound: Bundle.main.url(forResource: "HappyPopsSound", withExtension: "mp3")!,
         name: "Pop",
-        cost: 100
+        cost: 100,
+        purchase: true
     )
 ]
 
@@ -72,7 +74,8 @@ var themesList = [
         colors: [CGColor(red: 0.74, green: 0.33, blue: 0.44, alpha: 1.0),
                  CGColor(red: 0.98, green: 0.64, blue: 0.44, alpha: 1.0)],
         name: "Peach",
-        cost: 100
+        cost: 100,
+        purchase: true
     ),
     Themes(
         colors: [CGColor(red: 0.91, green: 0.49, blue: 0.73, alpha: 1.0),
