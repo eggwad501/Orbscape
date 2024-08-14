@@ -13,10 +13,9 @@ import CoreData
 class PurchasableItems {
     var name: String
     var cost: Int
-    var indexx: Int
     var purchased: Bool = false
     
-    func retrieveItem(identifier: String) -> [NSManagedObject]{
+    func retrieveItem(identifier: String) -> [NSManagedObject] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
         var fetchedResults: [NSManagedObject]? = nil
         
@@ -29,14 +28,12 @@ class PurchasableItems {
         return fetchedResults!
     }
     
-    init(name: String, cost: Int, ind: Int, id: String) {
-        
+    init (name: String, cost: Int, ind: Int, id: String) {
         self.name = name
         self.cost = cost
-        self.indexx = ind
         
         let results = retrieveItem(identifier: id)
-        if let isPurchased = (results[ind].value(forKey: "purchased")) as? Bool{
+        if let isPurchased = (results[ind].value(forKey: "purchased")) as? Bool {
             self.purchased = isPurchased
         }
     }
@@ -65,9 +62,9 @@ class Themes: PurchasableItems {
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
     
-    init (colors: Array<CGColor>, name: String, cost: Int, purchase: Bool) {
+    init (colors: Array<CGColor>, name: String, cost: Int, ind: Int, id: String, purchase: Bool) {
         self.colors = colors
-        super.init(name: name, cost: cost)
+        super.init(name: name, cost: cost, ind: ind, id: id)
         self.purchased = purchase
     }
 }
@@ -80,9 +77,9 @@ class Skins: PurchasableItems {
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
     
-    init (skin: UIImage, name: String, cost: Int, purchase: Bool) {
+    init (skin: UIImage, name: String, cost: Int, ind: Int, id: String, purchase: Bool) {
         self.skin = skin
-        super.init(name: name, cost: cost)
+        super.init(name: name, cost: cost, ind: ind, id: id)
         self.purchased = purchase
     }
 }
@@ -96,9 +93,9 @@ class SoundEffects: PurchasableItems {
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
     
-    init (sound: URL, name: String, cost: Int, purchase: Bool) {
+    init (sound: URL, name: String, cost: Int, ind: Int, id: String, purchase: Bool) {
         self.sound = sound
-        super.init(name: name, cost: cost)
+        super.init(name: name, cost: cost, ind: ind, id: id)
         self.purchased = purchase
     }
 }

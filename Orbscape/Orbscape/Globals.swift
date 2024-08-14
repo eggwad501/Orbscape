@@ -12,7 +12,7 @@ import CoreData
 
 // the following will be saved in coredata
 
-func retrieveItem(identifier: String) -> [NSManagedObject]{
+func retrieveItem(identifier: String) -> [NSManagedObject] {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
     var fetchedResults: [NSManagedObject]? = nil
     
@@ -61,7 +61,7 @@ var skinsList = [
         id: "Skin"
     ),
     Skins(
-        skin: UIImage(named: "ElmoSkin")!,
+        skin: UIImage(named: "elmoSkin")!,
         name: "Elmo",
         cost: 100,
         ind: 4,
@@ -97,7 +97,7 @@ var soundsList = [
         cost: 100,
         ind: 0,
         id: "Sound",
-      purchase: true
+        purchase: true
     )
 ]
 
