@@ -8,6 +8,7 @@
 import SpriteKit
 import GameplayKit
 import CoreMotion
+import AVFoundation
 
 struct Collision {
     static let ballBody: UInt32 = 0x1 << 0
@@ -36,6 +37,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var difficultyLevel = 5
     
     var gradientObject: SKSpriteNode!
+    
+    // Audio
+    var audioPlayer: AVAudioPlayer?
+    var lastCollisionTime: TimeInterval = 0
+    let soundCooldown: TimeInterval = 0.1
     
     var cameraNode = SKCameraNode()
     
@@ -69,6 +75,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(cameraNode)
         camera = cameraNode
         
+        cameraNode.xScale = 0.5
+        cameraNode.yScale = 0.5
+        
         // tile setup
         // TODO: takes a long time to load for big maps
         guard let tileSet = SKTileSet(named: "Sample Grid Tile Set") else {
@@ -80,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         // gravity manager construction
         manager.startAccelerometerUpdates()
-        manager.accelerometerUpdateInterval = 0.1
+        manager.accelerometerUpdateInterval = 0.15
         manager.startAccelerometerUpdates(to: OperationQueue.main) {
             (data, error) in
             if let error = error {
@@ -308,6 +317,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // handle collision between ball and star
         else if(otherObject.categoryBitMask == Collision.starBody) {
             //print("Player collected a star")
+            
+            let currentTime = CFAbsoluteTimeGetCurrent()
+            
+            if currentTime - lastCollisionTime < soundCooldown {
+                return
+            }
+            lastCollisionTime = currentTime
+            
+            
+            if let player = audioPlayer, player.isPlaying {
+                return
+            } else {
+                do {
+                    if audioPlayer == nil {
+                        audioPlayer = try AVAudioPlayer(contentsOf: currentSound.sound)
+                        audioPlayer?.volume = soundVolume
+                    }
+                    audioPlayer?.volume = soundVolume
+                    audioPlayer?.play()
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
 
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
