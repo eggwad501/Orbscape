@@ -250,12 +250,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ballObject.physicsBody?.allowsRotation = true
         ballObject.physicsBody?.isDynamic = true
         ballObject.physicsBody?.categoryBitMask = Collision.ballBody
-        ballObject.physicsBody?.collisionBitMask = Collision.wallBody | Collision.starBody
+        ballObject.physicsBody?.collisionBitMask = Collision.wallBody
         ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody
         ballObject.physicsBody?.affectedByGravity = true
         
         ballObject.physicsBody?.restitution = 0.0
-        ballObject.physicsBody?.friction = 0.0
         ballObject.physicsBody?.linearDamping = 0.0
         
         addChild(ballObject)
