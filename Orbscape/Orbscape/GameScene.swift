@@ -368,7 +368,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        else{
 //            cameraNode.position.y -= 5
 //        }
-        
+//        
         self.lastUpdateTime = currentTime
     }
 }

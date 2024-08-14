@@ -207,6 +207,7 @@
 				1F7816922C69B000000E0D26 /* collide.mp3 in Resources */,
 				1F291BE12C521DFC00D2B510 /* Base in Resources */,
 				1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */,
+				BFEF66C32C5FDE7E00CA9B18 /* backButton.png in Resources */,
 				BFC118A92C697F610087D567 /* HappyPopsSound.mp3 in Resources */,
 				BFEF66C32C5FDE7E00CA9B18 /* backButton.png in Resources */,
 				1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */,
