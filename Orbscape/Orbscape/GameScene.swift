@@ -57,6 +57,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func sceneDidLoad() {
         self.camera = cameraNode
+        //pauseButton.image.
         
         self.lastUpdateTime = 0
         
@@ -307,6 +308,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // handle collision between ball and star
         else if(otherObject.categoryBitMask == Collision.starBody) {
             //print("Player collected a star")
+
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
         }
@@ -342,15 +344,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
-        
-        // TESTING to see if nodes are recreated after moving back camera
-//        if(timeSinceStart > 10){
-//            cameraNode.position.y += 3
-//        }
-//        else{
-//            cameraNode.position.y -= 1
-//        }
+
         cameraNode.position = ballObject.position
+        
         self.lastUpdateTime = currentTime
     }
 }

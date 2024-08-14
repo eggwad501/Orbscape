@@ -70,4 +70,22 @@ class UIGameplayVC: UIViewController {
         view.layer.cornerRadius = 20.0
         return gradient
     }
+    
+    // create the blur effect when the confirm vc shows up
+    func overlayBlurredBackgroundView() {
+        let blurredBackgroundView = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterialDark))
+        blurredBackgroundView.frame = self.view.bounds
+        view.addSubview(blurredBackgroundView)
+        hideNavigationBar()
+        }
+        
+    // remove the blur effect
+    func removeBlurredBackgroundView() {
+        for subview in view.subviews {
+            if subview.isKind(of: UIVisualEffectView.self) {
+                subview.removeFromSuperview()
+            }
+        }
+        showNavigationBar()
+    }
 }

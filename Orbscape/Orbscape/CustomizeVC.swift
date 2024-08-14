@@ -12,7 +12,7 @@ enum CustomizeTypes {
 }
 
 class CustomizeVC: UIGameplayVC {
-    
+ 
     var skinsIdentifier = "skinsIdentifier"
     var soundEffectsIdentifier = "soundEffectsIdentifier"
     var themesIdentifier = "themesIdentifier"
@@ -46,6 +46,7 @@ class CustomizeVC: UIGameplayVC {
         case themesIdentifier:
             let destination = segue.destination as? ThemesVC
             destination?.types = CustomizeTypes.themes
+
         
         default:
             break
