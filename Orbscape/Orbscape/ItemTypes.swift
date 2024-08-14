@@ -64,6 +64,12 @@ class Themes: PurchasableItems {
         self.colors = colors
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
+    
+    init (colors: Array<CGColor>, name: String, cost: Int, purchase: Bool) {
+        self.colors = colors
+        super.init(name: name, cost: cost)
+        self.purchased = purchase
+    }
 }
 
 class Skins: PurchasableItems {
@@ -73,13 +79,26 @@ class Skins: PurchasableItems {
         self.skin = skin
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
+    
+    init (skin: UIImage, name: String, cost: Int, purchase: Bool) {
+        self.skin = skin
+        super.init(name: name, cost: cost)
+        self.purchased = purchase
+    }
 }
 
 class SoundEffects: PurchasableItems {
     var sound: URL
+    var image = UIImage(named: "audioIcon")
     
     init (sound: URL, name: String, cost: Int, ind: Int, id: String) {
         self.sound = sound
         super.init(name: name, cost: cost, ind: ind, id: id)
+    }
+    
+    init (sound: URL, name: String, cost: Int, purchase: Bool) {
+        self.sound = sound
+        super.init(name: name, cost: cost)
+        self.purchased = purchase
     }
 }

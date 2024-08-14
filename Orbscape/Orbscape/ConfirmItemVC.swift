@@ -44,6 +44,7 @@ class ConfirmItemVC: UIGameplayVC {
     var itemCost: Int = -1
     var itemIndex: Int = -1
     var itemColors: Array<CGColor>!
+    //var itemsTableViewCell: itemsTableViewCell!
     
     var selectedIdentifier = "selectedIdentifier"
     var types: CustomizeTypes!
@@ -80,6 +81,8 @@ class ConfirmItemVC: UIGameplayVC {
             }
             
         case CustomizeTypes.soundEffects?:
+            let image = imageView(view: iconView, image: itemImage!)
+            iconView.addSubview(image)
             if !soundsList[itemIndex].purchased {
                 costLabel.text = "\(itemCost) ★"
             }

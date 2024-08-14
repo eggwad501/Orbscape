@@ -36,7 +36,8 @@ var skinsList = [
         name: "Blue",
         cost: 100,
         ind: 0,
-        id: "Skin"
+        id: "Skin",
+        purchase: true
     ),
     Skins(
         skin: UIImage(named: "greenSkin")!,
@@ -95,7 +96,8 @@ var soundsList = [
         name: "Pop",
         cost: 100,
         ind: 0,
-        id: "Sound"
+        id: "Sound",
+      purchase: true
     )
 ]
 
@@ -106,7 +108,8 @@ var themesList = [
         name: "Peach",
         cost: 100,
         ind: 0,
-        id: "Theme"
+        id: "Theme",
+        purchase: true
     ),
     Themes(
         colors: [CGColor(red: 0.91, green: 0.49, blue: 0.73, alpha: 1.0),

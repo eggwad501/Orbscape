@@ -11,16 +11,27 @@ import GameplayKit
 
 let displaySize: CGRect = UIScreen.main.bounds
 
-
-class GameViewController: UIViewController {
-    var gradientLayer = CAGradientLayer()
-
-
+class GameViewController: UIGameplayVC {
+    
+    @IBOutlet weak var starCountLabel: UILabel!
+    @IBOutlet weak var timerLabel: UILabel! // TODO: update timer
+    @IBOutlet weak var pauseButton: UIButton!
+    
+    var pauseIdentifier = "pauseIdentifier"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        starCountLabel.text = "\(currentStarsCount) ★"
+        pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
         
-            
         if let view = self.view as! SKView? {
+            let debug = false
+            if(debug){
+                view.showsFPS = true
+                view.showsNodeCount = true
+                view.showsQuadCount = true
+                view.showsPhysics = true
+            }
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
@@ -29,10 +40,11 @@ class GameViewController: UIViewController {
                 // Present the scene
                 view.presentScene(scene)
             }
-                
             view.ignoresSiblingOrder = true
-            
         }
+    }
+    
+    override func viewIsAppearing(_ animated: Bool) {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -45,5 +57,13 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == pauseIdentifier,
+           let destination = segue.destination as? PauseVC {
+            destination.gameDelegate = self
+            overlayBlurredBackgroundView()
+        }
     }
 }
