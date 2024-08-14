@@ -15,6 +15,7 @@ struct Collision {
     static let wallBody: UInt32 = 0x1 << 1
     static let starBody: UInt32 = 0x1 << 2
     static let finishHoleBody: UInt32 = 0x1 << 3
+    static let entranceBody: UInt32 = 0x1 << 4
 }
 
 // requests MazeMaker to generate a maze for the game
@@ -77,15 +78,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         cameraNode.xScale = 0.5
         cameraNode.yScale = 0.5
-        
-        // tile setup
-        // TODO: takes a long time to load for big maps
-        guard let tileSet = SKTileSet(named: "Sample Grid Tile Set") else {
-            fatalError("Tile set not found")
-        }
-        let tileSize = CGSize(width: 64, height: 64)
-        let columns = 10
-        let rows = 10
 
         // gravity manager construction
         manager.startAccelerometerUpdates()
@@ -98,17 +90,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
             }
         }
-        
-        // tile map construction
-        tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
-        for column in 0..<columns {
-            for row in 0..<rows {
-                let tileGroup = tileSet.tileGroups.first(where: { $0.name == "Grass" })
-                tileMap.setTileGroup(tileGroup, forColumn: column, row: row)
-            }
-        }
-        tileMap.position = CGPoint(x: frame.midX, y: frame.midY)
-        //addChild(tileMap)
         
         /*
          String compares are cheaper than expected, keep the string
@@ -130,6 +111,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let squareSize = difficultyLevel * 4 - 1
         let ballStartPos = (squareSize * 64 / 2 - 32, 100)
         generateBall(ballStartPos)
+        
+        // close off the entrance
+        
         
         // makes a maze of some difficulty
         startTime = CFAbsoluteTimeGetCurrent()
@@ -267,6 +251,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ballObject.physicsBody?.linearDamping = 0.0
         
         addChild(ballObject)
+    }
+    
+    // generates the walls that would block off the entrance and exit
+    func generateEntranceExit(){
+        let midX = tileSize * diff
+        let startLine = CGRect(x: <#T##Int#>, y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>)
+        let finishLine = CGRect(x: , y: <#T##Int#>, width: <#T##Int#>, height: <#T##Int#>)
     }
     
     // generates a wall of variable length or height with fixed tile size at this position

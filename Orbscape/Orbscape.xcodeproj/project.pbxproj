@@ -15,7 +15,6 @@
 		1F291BF52C521E9800D2B510 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF42C521E9800D2B510 /* GameScene.swift */; };
 		1F291BF72C521EA000D2B510 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F291BF62C521EA000D2B510 /* GameViewController.swift */; };
 		1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F291BF82C52202F00D2B510 /* Assets.xcassets */; };
-		1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F5193422C5D5EE600D085F0 /* MazeMap.sks */; };
 		1F67D15F2C581EE2009289C6 /* MazeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67D15E2C581EE2009289C6 /* MazeMaker.swift */; };
 		1F7816902C69AFFA000E0D26 /* pickup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F78168F2C69AFFA000E0D26 /* pickup.mp3 */; };
 		1F7816922C69B000000E0D26 /* collide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F7816912C69B000000E0D26 /* collide.mp3 */; };
@@ -57,7 +56,6 @@
 		1F291BF42C521E9800D2B510 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		1F291BF62C521EA000D2B510 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1F291BF82C52202F00D2B510 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1F5193422C5D5EE600D085F0 /* MazeMap.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MazeMap.sks; sourceTree = "<group>"; };
 		1F67D15E2C581EE2009289C6 /* MazeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeMaker.swift; sourceTree = "<group>"; };
 		1F78168F2C69AFFA000E0D26 /* pickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pickup.mp3; sourceTree = "<group>"; };
 		1F7816912C69B000000E0D26 /* collide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = collide.mp3; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 				1F291BF62C521EA000D2B510 /* GameViewController.swift */,
 				1F291BF42C521E9800D2B510 /* GameScene.swift */,
 				1F67D15E2C581EE2009289C6 /* MazeMaker.swift */,
-				1F5193422C5D5EE600D085F0 /* MazeMap.sks */,
 				BFEF66C62C62DA3300CA9B18 /* UIGameNavigationController.swift */,
 				BFC118A82C697F610087D567 /* HappyPopsSound.mp3 */,
 				1F78168F2C69AFFA000E0D26 /* pickup.mp3 */,
@@ -233,7 +230,6 @@
 				BFA34D942C6D40F7004EC348 /* Main.storyboard in Resources */,
 				E73DE2C32C6D4652005CFF39 /* pig.mp3 in Resources */,
 				BFC118A92C697F610087D567 /* HappyPopsSound.mp3 in Resources */,
-				1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
