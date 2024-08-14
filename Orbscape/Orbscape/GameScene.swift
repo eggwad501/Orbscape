@@ -317,12 +317,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else if(otherObject.categoryBitMask == Collision.starBody) {
             //print("Player collected a star")
             
-            let currentTime = CFAbsoluteTimeGetCurrent()
+            otherObject.node?.removeFromParent()
+            // TODO: add star to player's account
             
-            if currentTime - lastCollisionTime < soundCooldown {
-                return
-            }
-            lastCollisionTime = currentTime
+//            let currentTime = CFAbsoluteTimeGetCurrent()
+//            
+//            if currentTime - lastCollisionTime < soundCooldown {
+//                return
+//            }
+//            lastCollisionTime = currentTime
             
             
             if let player = audioPlayer, player.isPlaying {
@@ -340,8 +343,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
 
-            otherObject.node?.removeFromParent()
-            // TODO: add star to player's account
+
         }
         else{
             print("Error")
