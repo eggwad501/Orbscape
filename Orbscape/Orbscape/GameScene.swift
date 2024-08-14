@@ -32,6 +32,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
+    let starChance = 100
+    var difficultyLevel = 5
     
     var gradientObject: SKSpriteNode!
     
@@ -54,31 +56,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func sceneDidLoad() {
-        
-//        // Define the L-shape path with a gap
-//                let lShapePath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 20000, height: 10))
-//                lShapePath.move(to: CGPoint(x: 0, y: 0))          // Start at the top left corner
-//                lShapePath.addLine(to: CGPoint(x: 0, y: 100))     // Draw up
-//        //lShapePath.close()
-//        lShapePath.move(to: CGPoint(x: 0, y: 100))
-//        lShapePath.addLine(to: CGPoint(x: 300, y: 100))
-//                lShapePath.close()                                // Close the path
-//
-//                // Create the SKShapeNode
-//                let lShapeNode = SKShapeNode(path: lShapePath.cgPath)
-//                lShapeNode.strokeColor = .white     // Set the stroke color
-//                lShapeNode.lineWidth = 2            // Set the stroke width
-//
-//                // Optionally add a physics body to the L-shape
-//                lShapeNode.physicsBody = SKPhysicsBody(polygonFrom: lShapePath.cgPath)
-//        lShapeNode.physicsBody?.categoryBitMask = Collision.wallBody
-//        lShapeNode.physicsBody?.contactTestBitMask = Collision.ballBody
-//        lShapeNode.physicsBody?.collisionBitMask = Collision.ballBody
-//                lShapeNode.physicsBody?.isDynamic = false  // Set to false if the L-shape should not move
-//
-//                // Add the L-shape node to the scene
-//                addChild(lShapeNode)
-        
         self.camera = cameraNode
         //pauseButton.image.
         
@@ -140,29 +117,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
          25 = 00.341s, 60 fps, 9.8k nodes
         */
         
-        let difficultyLevel = 2
-        let squareSize = difficultyLevel * 4 - 1
-        
         // creates the ball
-        let ballStartX = squareSize * 64 / 2 - 32
-        let ballStartY = 100
-        
-        //ballObject = SKSpriteNode(imageNamed: "ball")
-        
-        let texture = SKTexture(image: currentSkin.skin)
-        ballObject = SKSpriteNode(texture: texture)
-        
-        ballObject.size = CGSize(width: 32, height: 32)
-        ballObject.position = CGPoint(x: ballStartX, y: ballStartY)
-        ballObject.physicsBody = SKPhysicsBody(circleOfRadius: CGRectGetHeight(ballObject.frame) / 2)
-        ballObject?.physicsBody?.mass = 5
-        ballObject.physicsBody?.allowsRotation = true
-        ballObject.physicsBody?.isDynamic = true
-        ballObject.physicsBody?.categoryBitMask = Collision.ballBody
-        ballObject.physicsBody?.collisionBitMask = Collision.wallBody | Collision.starBody
-        ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody
-        ballObject.physicsBody?.affectedByGravity = true
-        addChild(ballObject)
+        let squareSize = difficultyLevel * 4 - 1
+        let ballStartPos = (squareSize * 64 / 2 - 32, 100)
+        generateBall(ballStartPos)
         
         // makes a maze of some difficulty
         startTime = CFAbsoluteTimeGetCurrent()
@@ -174,7 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // create a gradient
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame.size = frame.size
-        gradientLayer.position = CGPoint(x: ballStartX, y: ballStartY)
+        gradientLayer.position = CGPoint(x: ballStartPos.0, y: ballStartPos.1)
         gradientLayer.colors = currentTheme.colors
 
         // convert the gradient into an image
@@ -269,7 +227,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 else{
-                    generateStar(position, 00)
+                    generateStar(position, starChance)
                 }
                 
                 colIndex += 1
@@ -278,6 +236,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rowIndex += 1
             colIndex = 0
         }
+    }
+    
+    // generates the ball
+    func generateBall(_ ballStartPos: (Int, Int)){
+        let texture = SKTexture(image: currentSkin.skin)
+        
+        ballObject = SKSpriteNode(texture: texture)
+        ballObject.size = CGSize(width: 44, height: 44)
+        ballObject.position = CGPoint(x: ballStartPos.0, y: ballStartPos.1)
+        ballObject.physicsBody = SKPhysicsBody(circleOfRadius: CGRectGetHeight(ballObject.frame) / 2)
+        ballObject?.physicsBody?.mass = 5
+        ballObject.physicsBody?.allowsRotation = true
+        ballObject.physicsBody?.isDynamic = true
+        ballObject.physicsBody?.categoryBitMask = Collision.ballBody
+        ballObject.physicsBody?.collisionBitMask = Collision.wallBody | Collision.starBody
+        ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody
+        ballObject.physicsBody?.affectedByGravity = true
+        
+        ballObject.physicsBody?.restitution = 0.0
+        ballObject.physicsBody?.friction = 0.0
+        ballObject.physicsBody?.linearDamping = 0.0
+        
+        addChild(ballObject)
     }
     
     // generates a wall of variable length or height with fixed tile size at this position
@@ -299,13 +280,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if(Int.random(in: 1...100) <= chance){
             let mazeObject = SKSpriteNode(imageNamed: "star")
             mazeObject.position = position
-            mazeObject.size = CGSize(width: 32, height: 32)
+            mazeObject.size = CGSize(width: tileSize / 2, height: tileSize / 2)
             mazeObject.physicsBody = SKPhysicsBody(rectangleOf: mazeObject.size)
             mazeObject.physicsBody?.categoryBitMask = Collision.starBody
-            mazeObject.physicsBody?.collisionBitMask = Collision.ballBody
+            mazeObject.physicsBody?.collisionBitMask = 0
             mazeObject.physicsBody?.contactTestBitMask = Collision.ballBody
             mazeObject.name = "star"
             mazeObject.physicsBody?.isDynamic = false // object is pinned
+            
+            mazeObject.physicsBody?.restitution = 0.0
+            mazeObject.physicsBody?.friction = 0.0
             addChild(mazeObject)
         }
     }
@@ -360,15 +344,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
+
+        cameraNode.position = ballObject.position
         
-        // TESTING to see if nodes are recreated after moving back camera
-//        if(timeSinceStart > 10){
-//            cameraNode.position.y += 3
-//        }
-//        else{
-//            cameraNode.position.y -= 5
-//        }
-//        
         self.lastUpdateTime = currentTime
     }
 }

@@ -18,6 +18,11 @@ class UIGameplayVC: UIViewController {
         super.viewDidLoad()
     }
     
+    // hides the home button a few seconds after opening the game
+    override var prefersHomeIndicatorAutoHidden: Bool {
+            return true
+        }
+    
     // updates gradient in every vc
     override func viewIsAppearing(_ animated: Bool) {
         gradientLayer.frame = view.bounds

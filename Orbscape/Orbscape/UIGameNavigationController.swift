@@ -19,6 +19,18 @@ class UIGameNavigationController: UINavigationController {
         self.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
         
         self.navigationBar.barTintColor = UIColor.clear
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = .clear
+        appearance.titleTextAttributes = [
+            .foregroundColor: UIColor.white, // Set the title color
+            .font: UIFont(name: "galvji", size: 37)
+        ]
+        
+        // Apply this appearance when the scroll view's content reaches the edge
+        self.navigationBar.scrollEdgeAppearance = appearance
+        self.navigationBar.standardAppearance = appearance
     }
     
     func removeViewController() {
