@@ -10,7 +10,7 @@ import CoreData
 
 class ConfirmItemVC: UIGameplayVC {
     
-    func retrieveItem(identifier: String) -> [NSManagedObject]{
+    func retrieveItem(identifier: String) -> [NSManagedObject] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
         var fetchedResults: [NSManagedObject]? = nil
         
@@ -23,8 +23,7 @@ class ConfirmItemVC: UIGameplayVC {
         return fetchedResults!
     }
     
-    
-    func saveContext () {
+    func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()
@@ -44,7 +43,6 @@ class ConfirmItemVC: UIGameplayVC {
     var itemCost: Int = -1
     var itemIndex: Int = -1
     var itemColors: Array<CGColor>!
-    //var itemsTableViewCell: itemsTableViewCell!
     
     var selectedIdentifier = "selectedIdentifier"
     var types: CustomizeTypes!

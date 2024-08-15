@@ -9,11 +9,14 @@ import UIKit
 
 class PauseVC: UIGameplayVC {
     var gameDelegate: UIGameplayVC!
+    var starCountRun: Int!
+    var timeRun: Float!
     var confirmIdentifier = "confirmIdentifier"
     
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.popoverPresentationController?.backgroundColor = UIColor.clear
     }
     
     // dismiss screen with cancel
@@ -34,7 +37,9 @@ class PauseVC: UIGameplayVC {
            let destination = segue.destination as? QuitConfirmVC {
             destination.gameDelegate = gameDelegate
             destination.pauseDelegate = self
-            overlayBlurredBackgroundView()
+            destination.starCountRun = self.starCountRun
+            destination.timeRun = self.timeRun
+            self.overlayBlurredBackgroundView()
         }
     }
     

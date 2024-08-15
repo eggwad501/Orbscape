@@ -54,16 +54,14 @@ class GameViewController: UIGameplayVC {
             return .all
         }
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == pauseIdentifier,
            let destination = segue.destination as? PauseVC {
             destination.gameDelegate = self
-            overlayBlurredBackgroundView()
+            destination.timeRun = Float(starCountLabel.text!)
+            destination.timeRun = Float(timerLabel.text!)
+            self.overlayBlurredBackgroundView()
         }
     }
 }

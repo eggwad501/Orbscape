@@ -55,7 +55,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mazeTEMP.png" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-RJ-Z5D">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mazeImage" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-RJ-Z5D">
                                 <rect key="frame" x="-55" y="712" width="501" height="253"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -578,16 +578,22 @@ Dr. William C. Bulko</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-Wy-YmI">
-                                <rect key="frame" x="243" y="100" width="113" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-Wy-YmI">
+                                <rect key="frame" x="196" y="100" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Xvy-Vq-PZS"/>
+                                    <constraint firstAttribute="height" constant="33" id="ncX-fa-RZ1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbZ-Ig-8UF">
-                                <rect key="frame" x="243" y="136" width="113" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbZ-Ig-8UF">
+                                <rect key="frame" x="196" y="141" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="HZT-nq-udP"/>
+                                    <constraint firstAttribute="height" constant="33" id="vf5-pL-qCb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -595,6 +601,12 @@ Dr. William C. Bulko</string>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0AZ-hP-T6v"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="0AZ-hP-T6v" firstAttribute="trailing" secondItem="WbZ-Ig-8UF" secondAttribute="trailing" constant="37" id="32P-09-qM2"/>
+                            <constraint firstItem="0AZ-hP-T6v" firstAttribute="trailing" secondItem="hfH-Wy-YmI" secondAttribute="trailing" constant="37" id="Elq-uT-0LX"/>
+                            <constraint firstItem="WbZ-Ig-8UF" firstAttribute="top" secondItem="hfH-Wy-YmI" secondAttribute="bottom" constant="8" symbolic="YES" id="OuF-Dt-cea"/>
+                            <constraint firstItem="0AZ-hP-T6v" firstAttribute="top" secondItem="hfH-Wy-YmI" secondAttribute="top" constant="3" id="axn-MF-CXj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bpf-96-Yhx">
                         <barButtonItem key="leftBarButtonItem" width="95" style="plain" id="gM2-7k-m1O">
@@ -617,7 +629,7 @@ Dr. William C. Bulko</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hma-tA-92T" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="-758"/>
+            <point key="canvasLocation" x="2675.5725190839694" y="-758.45070422535218"/>
         </scene>
         <!--PauseVC-->
         <scene sceneID="xz5-VY-ofW">
@@ -665,20 +677,45 @@ Dr. William C. Bulko</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTL-vN-pyy">
-                                <rect key="frame" x="152.66666666666666" y="190" width="88" height="87"/>
+                                <rect key="frame" x="152.66666666666666" y="240" width="88" height="87"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="playButton" imagePadding="0.0"/>
                                 <connections>
                                     <action selector="playButton:" destination="6ta-3b-5F9" eventType="touchUpInside" id="94p-4j-K1a"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zed-ap-aBT">
+                                <rect key="frame" x="196" y="103" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="TJN-AO-ZZi"/>
+                                    <constraint firstAttribute="width" constant="160" id="rmT-kJ-jWg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPj-aE-35M">
+                                <rect key="frame" x="196" y="144" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="C9l-Yx-wyH"/>
+                                    <constraint firstAttribute="width" constant="160" id="i64-qk-1JK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0P-KY-Bf2"/>
                         <constraints>
+                            <constraint firstItem="L0P-KY-Bf2" firstAttribute="trailing" secondItem="zed-ap-aBT" secondAttribute="trailing" constant="37" id="4NH-Lw-Vkd"/>
+                            <constraint firstItem="zed-ap-aBT" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="103" id="6ra-Z5-Jib"/>
                             <constraint firstItem="zTL-vN-pyy" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="DFr-3O-Fe6"/>
+                            <constraint firstItem="aPj-aE-35M" firstAttribute="top" secondItem="zed-ap-aBT" secondAttribute="bottom" constant="8" symbolic="YES" id="JhU-Uc-oVW"/>
                             <constraint firstItem="AJq-zu-64r" firstAttribute="top" secondItem="Ibw-aJ-SY2" secondAttribute="bottom" constant="33" id="O6b-gT-h2M"/>
+                            <constraint firstItem="aPj-aE-35M" firstAttribute="top" secondItem="zed-ap-aBT" secondAttribute="bottom" constant="8" symbolic="YES" id="PGh-Vg-N2h"/>
                             <constraint firstItem="Ibw-aJ-SY2" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="434" id="TUB-0W-HY6"/>
-                            <constraint firstItem="zTL-vN-pyy" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="190" id="Z90-8B-nkA"/>
+                            <constraint firstItem="zTL-vN-pyy" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="240" id="Z90-8B-nkA"/>
+                            <constraint firstItem="L0P-KY-Bf2" firstAttribute="trailing" secondItem="aPj-aE-35M" secondAttribute="trailing" constant="37" id="l5r-X0-Vu3"/>
                             <constraint firstItem="Ibw-aJ-SY2" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="loY-jp-qag"/>
                             <constraint firstItem="Y9C-kF-d49" firstAttribute="top" secondItem="AJq-zu-64r" secondAttribute="bottom" constant="32" id="q59-SU-upb"/>
                             <constraint firstItem="Y9C-kF-d49" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="vYM-fm-El0"/>
@@ -751,17 +788,42 @@ you have collected in this run. </string>
                                     <action selector="cancelButton:" destination="b1Q-By-7rb" eventType="touchUpInside" id="bUu-or-Phi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqQ-aQ-pcY">
+                                <rect key="frame" x="196" y="103" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Fz2-w4-JFH"/>
+                                    <constraint firstAttribute="width" constant="160" id="ude-E4-YUp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aji-1i-sEm">
+                                <rect key="frame" x="196" y="144" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="66k-P2-kmG"/>
+                                    <constraint firstAttribute="width" constant="160" id="Xaz-Up-1G8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KkQ-Bk-XPJ"/>
                         <constraints>
+                            <constraint firstItem="aji-1i-sEm" firstAttribute="top" secondItem="HqQ-aQ-pcY" secondAttribute="bottom" constant="8" symbolic="YES" id="4iD-nI-Tjs"/>
+                            <constraint firstItem="HqQ-aQ-pcY" firstAttribute="top" secondItem="KkQ-Bk-XPJ" secondAttribute="top" constant="103" id="8fj-YZ-7dV"/>
                             <constraint firstItem="OzZ-L2-PTJ" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="IrV-wM-1jh"/>
                             <constraint firstItem="aB3-dT-kmo" firstAttribute="top" secondItem="0mf-xy-5wD" secondAttribute="bottom" constant="9" id="Jmy-BR-XiL"/>
                             <constraint firstItem="Cr2-Wv-X2R" firstAttribute="top" secondItem="OzZ-L2-PTJ" secondAttribute="bottom" constant="31" id="KZX-Hj-NPh"/>
                             <constraint firstItem="0mf-xy-5wD" firstAttribute="top" secondItem="KkQ-Bk-XPJ" secondAttribute="top" constant="280" id="Vok-0Z-pxK"/>
+                            <constraint firstItem="aji-1i-sEm" firstAttribute="top" secondItem="HqQ-aQ-pcY" secondAttribute="bottom" constant="8" symbolic="YES" id="aY8-RG-Dci"/>
                             <constraint firstItem="aB3-dT-kmo" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="eXt-dd-sPd"/>
                             <constraint firstItem="Cr2-Wv-X2R" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="fpz-G7-QZZ"/>
                             <constraint firstItem="OzZ-L2-PTJ" firstAttribute="top" secondItem="aB3-dT-kmo" secondAttribute="bottom" constant="58" id="qUX-MI-oQd"/>
                             <constraint firstItem="0mf-xy-5wD" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="qZS-6b-Orh"/>
+                            <constraint firstItem="KkQ-Bk-XPJ" firstAttribute="trailing" secondItem="aji-1i-sEm" secondAttribute="trailing" constant="37" id="t8R-Ja-BaV"/>
+                            <constraint firstItem="KkQ-Bk-XPJ" firstAttribute="trailing" secondItem="HqQ-aQ-pcY" secondAttribute="trailing" constant="37" id="u6V-ON-gLH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="P6W-vI-asU"/>
@@ -909,12 +971,12 @@ to Move</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="7n2-vL-3Mk"/>
-        <segue reference="81A-sU-f1F"/>
+        <segue reference="ubv-2u-5Ni"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="backButton.png" width="23.666666030883789" height="41"/>
-        <image name="mazeTEMP.png" width="1707" height="1699"/>
+        <image name="mazeImage" width="1707" height="1699"/>
         <image name="playButton" width="64" height="73"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

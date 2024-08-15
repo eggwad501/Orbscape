@@ -10,6 +10,8 @@ import UIKit
 class QuitConfirmVC: UIGameplayVC {
     var gameDelegate: UIGameplayVC!
     var pauseDelegate: UIGameplayVC!
+    var starCountRun: Int!
+    var timeRun: Float!
 
     // additional setup after loading the view
     override func viewDidLoad() {

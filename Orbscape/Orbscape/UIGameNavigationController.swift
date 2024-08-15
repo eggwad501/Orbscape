@@ -28,6 +28,7 @@ class UIGameNavigationController: UINavigationController {
         // Apply this appearance when the scroll view's content reaches the edge
         self.navigationBar.scrollEdgeAppearance = appearance
         self.navigationBar.standardAppearance = appearance
+        
     }
     
     func removeViewController() {
