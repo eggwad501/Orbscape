@@ -668,6 +668,9 @@ Dr. William C. Bulko</string>
                                 <rect key="frame" x="152.66666666666666" y="190" width="88" height="87"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="playButton" imagePadding="0.0"/>
+                                <connections>
+                                    <action selector="playButton:" destination="6ta-3b-5F9" eventType="touchUpInside" id="94p-4j-K1a"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0P-KY-Bf2"/>
@@ -724,13 +727,13 @@ Dr. William C. Bulko</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB3-dT-kmo">
-                                <rect key="frame" x="93.666666666666686" y="324" width="206" height="61"/>
+                                <rect key="frame" x="55.666666666666657" y="324" width="282" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="WAL-cd-HwC"/>
                                 </constraints>
-                                <string key="text">Restarting the game 
-will cost 50 ★ </string>
-                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="20"/>
+                                <string key="text">You will lose all the stars 
+you have collected in this run. </string>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>

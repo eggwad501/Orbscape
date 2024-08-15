@@ -22,6 +22,12 @@ class PauseVC: UIGameplayVC {
         gameDelegate.removeBlurredBackgroundView()
     }
     
+    // dismiss screen with play icon button
+    @IBAction func playButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        gameDelegate.removeBlurredBackgroundView()
+    }
+    
     // sent over current vc to pause vc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == confirmIdentifier,
