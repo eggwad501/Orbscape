@@ -263,6 +263,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody
         ballObject.physicsBody?.affectedByGravity = true
         
+        ballObject.physicsBody?.friction = 0.5
+        
         ballObject.physicsBody?.restitution = 0.0
         ballObject.physicsBody?.linearDamping = 0.0
         
@@ -328,9 +330,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            lastCollisionTime = currentTime
             
             
-            if let player = audioPlayer, player.isPlaying {
-                return
-            } else {
+//            if let player = audioPlayer, player.isPlaying {
+//                return
+//            } else {
                 do {
                     if audioPlayer == nil {
                         audioPlayer = try AVAudioPlayer(contentsOf: currentSound.sound)
@@ -341,7 +343,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 } catch {
                     print(error.localizedDescription)
                 }
-            }
+//            }
 
 
         }
