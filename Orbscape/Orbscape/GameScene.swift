@@ -47,6 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     let starChance = 25
     var difficultyLevel: Int!
     var isGameFinished = false
+    var gameEnded = false
     var isBelowEntrance = false
     
     var gradientObject: SKSpriteNode!
@@ -88,8 +89,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(cameraNode)
         camera = cameraNode
         
-        cameraNode.xScale = 2
-        cameraNode.yScale = 2
+        cameraNode.xScale = 0.5
+        cameraNode.yScale = 0.5
 
         // gravity manager construction
         manager.startAccelerometerUpdates()
@@ -301,7 +302,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
         let finishLine = CGRect(x: mazeSpace / 2 - tileSize, y: -mazeSpace + tileSize/2 * 3, width: tileSize, height: -tileSize)
         let finishWall = SKShapeNode(rect: finishLine)
-        finishWall.fillColor = .black
+        finishWall.fillColor = .clear
+        finishWall.strokeColor = .clear
         finishWall.physicsBody = SKPhysicsBody(polygonFrom: finishWall.path!)
         finishWall.physicsBody?.categoryBitMask = Collision.finishHoleBody
         finishWall.physicsBody?.collisionBitMask = Collision.ballBody
@@ -437,8 +439,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){
             cameraNode.position = ballObject.position
-        }
-        else{
+        } else if !gameEnded {
+            gameEnded = true
             sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
         }
         

@@ -124,7 +124,7 @@ var soundsList = [
     ),
     SoundEffects(
         sound: Bundle.main.url(forResource: "dog", withExtension: "wav")!,
-        name: "bark",
+        name: "Bark",
         cost: 100,
         ind: 5,
         id: "Sound"

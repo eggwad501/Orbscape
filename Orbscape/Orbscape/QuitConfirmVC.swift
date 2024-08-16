@@ -9,17 +9,25 @@ import UIKit
 
 class QuitConfirmVC: UIGameplayVC {
     
+    @IBOutlet weak var starsLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     var levelDelegate: UIGameplayVC!
     var tapStartDelegate: UIGameplayVC!
     var gameDelegate: UIGameplayVC!
     var pauseDelegate: UIGameplayVC!
     var starCountRun: Int!
-    var timeRun: Float!
+    var timeRun: String!
     var quitLevel: Bool!
 
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        starsLabel.text = String(starCountRun) + "★"
+        timeLabel.text = timeRun
     }
     
     // dismiss to tap to start vc

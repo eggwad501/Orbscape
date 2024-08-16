@@ -44,6 +44,7 @@
 		BFEF66E92C647F0B00CA9B18 /* ballAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEF66E82C647F0B00CA9B18 /* ballAnimationView.swift */; };
 		E7D5EC1D2C6EC94800A19808 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5EC1C2C6EC94800A19808 /* BackgroundMusic.swift */; };
 		E7D5EC1F2C6ECB9600A19808 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC1E2C6ECB9600A19808 /* backgroundMusic.mp3 */; };
+		E7D5EC342C6F171700A19808 /* CreditsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5EC332C6F171700A19808 /* CreditsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		BFEF66E82C647F0B00CA9B18 /* ballAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ballAnimationView.swift; sourceTree = "<group>"; };
 		E7D5EC1C2C6EC94800A19808 /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		E7D5EC1E2C6ECB9600A19808 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
+		E7D5EC332C6F171700A19808 /* CreditsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				BFEF66962C587DD700CA9B18 /* ItemSelectionVC.swift */,
 				BFEF669C2C58926300CA9B18 /* ConfirmItemVC.swift */,
 				BFEF66902C586E1E00CA9B18 /* SettingsVC.swift */,
+				E7D5EC332C6F171700A19808 /* CreditsVC.swift */,
 				BFEF66982C5880A500CA9B18 /* ItemTypes.swift */,
 				BFC118A62C6870540087D567 /* Globals.swift */,
 				E7D5EC1C2C6EC94800A19808 /* BackgroundMusic.swift */,
@@ -259,6 +262,7 @@
 				BFC118B32C6B0BD90087D567 /* QuitConfirmVC.swift in Sources */,
 				BFEF66972C587DD700CA9B18 /* ItemSelectionVC.swift in Sources */,
 				1F291BDA2C521DFC00D2B510 /* AppDelegate.swift in Sources */,
+				E7D5EC342C6F171700A19808 /* CreditsVC.swift in Sources */,
 				BFC118A72C6870540087D567 /* Globals.swift in Sources */,
 				BFEF669B2C5891BB00CA9B18 /* UIGameplayVC.swift in Sources */,
 				BFEF66E92C647F0B00CA9B18 /* ballAnimationView.swift in Sources */,
@@ -416,7 +420,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 672A7A2APR;
+				DEVELOPMENT_TEAM = DB5927QB7C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Orbscape/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -428,7 +432,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TeamSevenn.Orbscape;
+				PRODUCT_BUNDLE_IDENTIFIER = TeamSeven.Orbscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -443,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 672A7A2APR;
+				DEVELOPMENT_TEAM = DB5927QB7C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Orbscape/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -455,7 +459,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TeamSevenn.Orbscape;
+				PRODUCT_BUNDLE_IDENTIFIER = TeamSeven.Orbscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
