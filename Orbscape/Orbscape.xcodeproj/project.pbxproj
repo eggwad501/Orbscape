@@ -19,6 +19,13 @@
 		1F7816902C69AFFA000E0D26 /* pickup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F78168F2C69AFFA000E0D26 /* pickup.mp3 */; };
 		1F7816922C69B000000E0D26 /* collide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F7816912C69B000000E0D26 /* collide.mp3 */; };
 		1F8E92A02C6EE699003016C5 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E929F2C6EE699003016C5 /* Gameplay.storyboard */; };
+		BF97865A2C6EE2E600B1E9E5 /* dog.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786532C6EE2E600B1E9E5 /* dog.wav */; };
+		BF97865B2C6EE2E600B1E9E5 /* beam.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786542C6EE2E600B1E9E5 /* beam.wav */; };
+		BF97865C2C6EE2E600B1E9E5 /* pig.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786552C6EE2E600B1E9E5 /* pig.wav */; };
+		BF97865D2C6EE2E600B1E9E5 /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786562C6EE2E600B1E9E5 /* tap.wav */; };
+		BF97865E2C6EE2E600B1E9E5 /* fairy.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786572C6EE2E600B1E9E5 /* fairy.wav */; };
+		BF97865F2C6EE2E600B1E9E5 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786582C6EE2E600B1E9E5 /* coin.wav */; };
+		BF9786602C6EE2E600B1E9E5 /* cat.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786592C6EE2E600B1E9E5 /* cat.wav */; };
 		BFA34D942C6D40F7004EC348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA34D932C6D40F7004EC348 /* Main.storyboard */; };
 		BFA34DB02C6DCD5E004EC348 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA34DAF2C6DCD5E004EC348 /* CustomColors.swift */; };
 		BFC118A72C6870540087D567 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC118A62C6870540087D567 /* Globals.swift */; };
@@ -40,13 +47,6 @@
 		E73DE2C52C6D4652005CFF39 /* cowbell.wav in Resources */ = {isa = PBXBuildFile; fileRef = E73DE2BE2C6D4652005CFF39 /* cowbell.wav */; };
 		E7D5EC1D2C6EC94800A19808 /* BackgroundMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D5EC1C2C6EC94800A19808 /* BackgroundMusic.swift */; };
 		E7D5EC1F2C6ECB9600A19808 /* backgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC1E2C6ECB9600A19808 /* backgroundMusic.mp3 */; };
-		E7D5EC282C6ED89700A19808 /* pig.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC212C6ED89700A19808 /* pig.wav */; };
-		E7D5EC292C6ED89700A19808 /* beam.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC222C6ED89700A19808 /* beam.wav */; };
-		E7D5EC2A2C6ED89700A19808 /* fairy.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC232C6ED89700A19808 /* fairy.wav */; };
-		E7D5EC2B2C6ED89700A19808 /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC242C6ED89700A19808 /* tap.wav */; };
-		E7D5EC2C2C6ED89700A19808 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC252C6ED89700A19808 /* coin.wav */; };
-		E7D5EC2D2C6ED89700A19808 /* cat.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC262C6ED89700A19808 /* cat.wav */; };
-		E7D5EC2E2C6ED89700A19808 /* dog.wav in Resources */ = {isa = PBXBuildFile; fileRef = E7D5EC272C6ED89700A19808 /* dog.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +64,13 @@
 		1F78168F2C69AFFA000E0D26 /* pickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pickup.mp3; sourceTree = "<group>"; };
 		1F7816912C69B000000E0D26 /* collide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = collide.mp3; sourceTree = "<group>"; };
 		1F8E929F2C6EE699003016C5 /* Gameplay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Gameplay.storyboard; sourceTree = "<group>"; };
+		BF9786532C6EE2E600B1E9E5 /* dog.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dog.wav; path = ../../../../../../../Downloads/Archive/dog.wav; sourceTree = "<group>"; };
+		BF9786542C6EE2E600B1E9E5 /* beam.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = beam.wav; path = ../../../../../../../Downloads/Archive/beam.wav; sourceTree = "<group>"; };
+		BF9786552C6EE2E600B1E9E5 /* pig.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pig.wav; sourceTree = "<group>"; };
+		BF9786562C6EE2E600B1E9E5 /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tap.wav; path = ../../../../../../../Downloads/Archive/tap.wav; sourceTree = "<group>"; };
+		BF9786572C6EE2E600B1E9E5 /* fairy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = fairy.wav; path = ../../../../../../../Downloads/Archive/fairy.wav; sourceTree = "<group>"; };
+		BF9786582C6EE2E600B1E9E5 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
+		BF9786592C6EE2E600B1E9E5 /* cat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cat.wav; path = ../../../../../../../Downloads/Archive/cat.wav; sourceTree = "<group>"; };
 		BFA34D932C6D40F7004EC348 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BFA34DAF2C6DCD5E004EC348 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		BFC118A62C6870540087D567 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -85,13 +92,6 @@
 		E73DE2BE2C6D4652005CFF39 /* cowbell.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cowbell.wav; sourceTree = "<group>"; };
 		E7D5EC1C2C6EC94800A19808 /* BackgroundMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusic.swift; sourceTree = "<group>"; };
 		E7D5EC1E2C6ECB9600A19808 /* backgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundMusic.mp3; sourceTree = "<group>"; };
-		E7D5EC212C6ED89700A19808 /* pig.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pig.wav; sourceTree = "<group>"; };
-		E7D5EC222C6ED89700A19808 /* beam.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = beam.wav; path = ../../../../../../Downloads/School/ios/Sounds/beam.wav; sourceTree = "<group>"; };
-		E7D5EC232C6ED89700A19808 /* fairy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = fairy.wav; path = ../../../../../../Downloads/School/ios/Sounds/fairy.wav; sourceTree = "<group>"; };
-		E7D5EC242C6ED89700A19808 /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = tap.wav; path = ../../../../../../Downloads/School/ios/Sounds/tap.wav; sourceTree = "<group>"; };
-		E7D5EC252C6ED89700A19808 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
-		E7D5EC262C6ED89700A19808 /* cat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = cat.wav; path = ../../../../../../Downloads/School/ios/Sounds/cat.wav; sourceTree = "<group>"; };
-		E7D5EC272C6ED89700A19808 /* dog.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dog.wav; path = ../../../../../../Downloads/School/ios/Sounds/dog.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,16 +163,16 @@
 			children = (
 				BFC118A82C697F610087D567 /* HappyPopsSound.mp3 */,
 				1F78168F2C69AFFA000E0D26 /* pickup.mp3 */,
-				E7D5EC222C6ED89700A19808 /* beam.wav */,
-				E7D5EC262C6ED89700A19808 /* cat.wav */,
-				E7D5EC252C6ED89700A19808 /* coin.wav */,
-				E7D5EC272C6ED89700A19808 /* dog.wav */,
-				E7D5EC232C6ED89700A19808 /* fairy.wav */,
-				E7D5EC212C6ED89700A19808 /* pig.wav */,
-				E7D5EC242C6ED89700A19808 /* tap.wav */,
 				1F7816912C69B000000E0D26 /* collide.mp3 */,
 				E73DE2BE2C6D4652005CFF39 /* cowbell.wav */,
 				E7D5EC1E2C6ECB9600A19808 /* backgroundMusic.mp3 */,
+				BF9786542C6EE2E600B1E9E5 /* beam.wav */,
+				BF9786592C6EE2E600B1E9E5 /* cat.wav */,
+				BF9786582C6EE2E600B1E9E5 /* coin.wav */,
+				BF9786532C6EE2E600B1E9E5 /* dog.wav */,
+				BF9786572C6EE2E600B1E9E5 /* fairy.wav */,
+				BF9786552C6EE2E600B1E9E5 /* pig.wav */,
+				BF9786562C6EE2E600B1E9E5 /* tap.wav */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -235,23 +235,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF97865E2C6EE2E600B1E9E5 /* fairy.wav in Resources */,
 				E7D5EC1F2C6ECB9600A19808 /* backgroundMusic.mp3 in Resources */,
 				1F7816902C69AFFA000E0D26 /* pickup.mp3 in Resources */,
 				BFEF66812C5669D300CA9B18 /* Gameplay.storyboard in Resources */,
-				E7D5EC282C6ED89700A19808 /* pig.wav in Resources */,
 				1F291BF12C521E8D00D2B510 /* GameScene.sks in Resources */,
-				E7D5EC292C6ED89700A19808 /* beam.wav in Resources */,
 				1F291BE92C521DFD00D2B510 /* Base in Resources */,
+				BF97865B2C6EE2E600B1E9E5 /* beam.wav in Resources */,
 				1F7816922C69B000000E0D26 /* collide.mp3 in Resources */,
+				BF97865C2C6EE2E600B1E9E5 /* pig.wav in Resources */,
+				BF97865F2C6EE2E600B1E9E5 /* coin.wav in Resources */,
 				1F291BF92C52202F00D2B510 /* Assets.xcassets in Resources */,
-				E7D5EC2E2C6ED89700A19808 /* dog.wav in Resources */,
-				E7D5EC2B2C6ED89700A19808 /* tap.wav in Resources */,
+				BF97865D2C6EE2E600B1E9E5 /* tap.wav in Resources */,
 				E73DE2C52C6D4652005CFF39 /* cowbell.wav in Resources */,
 				BFA34D942C6D40F7004EC348 /* Main.storyboard in Resources */,
+				BF97865A2C6EE2E600B1E9E5 /* dog.wav in Resources */,
+				BF9786602C6EE2E600B1E9E5 /* cat.wav in Resources */,
 				BFC118A92C697F610087D567 /* HappyPopsSound.mp3 in Resources */,
-				E7D5EC2C2C6ED89700A19808 /* coin.wav in Resources */,
-				E7D5EC2D2C6ED89700A19808 /* cat.wav in Resources */,
-				E7D5EC2A2C6ED89700A19808 /* fairy.wav in Resources */,
 				1F5193432C5D5EE600D085F0 /* MazeMap.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,7 +429,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DB5927QB7C;
+				DEVELOPMENT_TEAM = 672A7A2APR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Orbscape/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -441,7 +441,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TeamSeven.Orbscape;
+				PRODUCT_BUNDLE_IDENTIFIER = TeamSevenn.Orbscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -456,7 +456,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = DB5927QB7C;
+				DEVELOPMENT_TEAM = 672A7A2APR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Orbscape/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -468,7 +468,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TeamSeven.Orbscape;
+				PRODUCT_BUNDLE_IDENTIFIER = TeamSevenn.Orbscape;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
