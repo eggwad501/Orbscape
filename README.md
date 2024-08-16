@@ -9,6 +9,7 @@ Our app is a game where the player controls a ball, utilizing the phone’s gyro
 These collected stars can then be used to unlock various customization options. This includes purchasing cosmetic effects for the ball like skins, trails, and effects. It can also be used to customize the mazes, such as the background gradient and the wall skin. The background music and sound effects can also be purchased and customized using the star currency. 
 
 Dependencies: None
+
 Special Instructions: IOS should be 17.5, Iphone should 4+. Must be played on Iphone and not a simulator. 
 
 | Feature | Description | Contribution |
