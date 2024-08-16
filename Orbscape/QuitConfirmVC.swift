@@ -40,11 +40,16 @@ class QuitConfirmVC: UIGameplayVC {
         gameDelegate.removeBlurredBackgroundView()
         
         if levelDelegate != nil && tapStartDelegate != nil,
+           let gameVCDelegate = gameDelegate as? GameViewController,
            let navController = gameDelegate.navigationController {
             if quitLevel {
+                print("Quit level")
                 navController.popToViewController(levelDelegate, animated: true)
+                gameVCDelegate.stopGame()
             } else {
-            navController.popToViewController(tapStartDelegate, animated: true)
+                print("QCVC: else")
+                navController.popToViewController(tapStartDelegate, animated: true)
+                gameVCDelegate.stopGame()
             }
         }
     }

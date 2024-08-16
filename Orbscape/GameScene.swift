@@ -44,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
-    let starChance = 25
+    let starChance = 100
     var difficultyLevel: Int!
     var isGameFinished = false
     var gameEnded = false
@@ -68,10 +68,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     func elapsedTime(_ startTime: Double, _ endTime: Double, _ msg: String){
         print(msg)
         print(endTime - startTime)
-    }
-    
-    override func sceneDidLoad() {
-        //print("GS: \(difficultyLevel!)")
     }
     
     override func didMove(to view: SKView) {
@@ -168,8 +164,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         mazeArray = mazeMaker.createMaze(rows, cols)
         endTime = CFAbsoluteTimeGetCurrent()
         //elapsedTime(startTime, endTime, "create Maze Time taken")
-        
-        mazeMaker.printMaze(mazeArray)
         
         startTime = CFAbsoluteTimeGetCurrent()
         loadMaze()
@@ -282,7 +276,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     func generateEntranceWall(){
         let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
         let startLine = CGRect(x: mazeSpace / 2 - tileSize, y: 0 + tileSize/2, width: tileSize, height: -tileSize)
-        print("Mazespace: \(mazeSpace)")
         let startWall = SKShapeNode(rect: startLine)
         startWall.fillColor = UIColor(cgColor: currentTheme.colors[0]).edgeColors()
         startWall.lineWidth = 0.0
@@ -421,26 +414,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         timeSinceGC += dt
         timeSinceStart += dt
         if(timeSinceGC > 3){
+            print("Still running")
             // garbage collector tasks go here
             timeSinceGC = 0
-            print("Still running")
-            if(gameEnded){
-                print("No longer running")
-                self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
-                print("What the-")
-            }
         }
         
         // Update entities
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
-        
-        // once ball is below the entrance, block it off
-//        if(!isBelowEntrance && ballObject.position.y < CGFloat(-tileSize / 2) - (ballObject.size.height / 2)){
-//            isBelowEntrance = true
-//            generateEntranceWall()
-//        }
 
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){

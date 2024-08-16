@@ -30,6 +30,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     @IBOutlet weak var pauseButton: UIButton!
     
     var gameScene: SKScene?
+    var newGameScene: GameScene?
 
     var timer: Timer?
     var startTime: Date?
@@ -44,8 +45,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     var homeDelegete: UIGameplayVC!
 
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         starCountLabel.text = "0 ★"
         timerLabel.text = "00:00"
@@ -64,7 +65,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             }
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-                
+                print("Presenting the Game")
                 scene.sceneDelegate = self
                 gameScene = scene
                 
@@ -74,6 +75,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
                 // Present the scene
                 scene.difficultyLevel = difficulty
                 view.presentScene(scene)
+                
             }
             view.ignoresSiblingOrder = true
         }
@@ -157,7 +159,11 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     }
     
     func stopGame() {
-        <#code#>
+        print("Stopped Game")
+        gameScene!.removeAllActions()
+        gameScene!.removeAllChildren()
+        gameScene!.view?.presentScene(nil)
+        gameScene = nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
