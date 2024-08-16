@@ -1,4 +1,6 @@
-Application Name: Orbscape:
+Application Name: Orbscape
+
+
 Group Members: Nhat Tran, Nicholas Ensey, Pranav Srinivasan, Ronghua Wang
 
 
