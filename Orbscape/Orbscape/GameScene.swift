@@ -439,6 +439,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){
             cameraNode.position = ballObject.position
+     
         } else if !gameEnded {
             gameEnded = true
             sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")

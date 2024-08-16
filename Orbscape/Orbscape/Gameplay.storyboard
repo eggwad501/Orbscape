@@ -645,7 +645,7 @@ Dr. William C. Bulko</string>
         <!--PauseVC-->
         <scene sceneID="xz5-VY-ofW">
             <objects>
-                <viewController id="6ta-3b-5F9" customClass="PauseVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="pauseVC" id="6ta-3b-5F9" customClass="PauseVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VgK-AW-Ra2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -870,7 +870,7 @@ you have collected in this run. </string>
         <!--End GameVC-->
         <scene sceneID="yDC-Os-Rj8">
             <objects>
-                <viewController id="Cag-E7-BW8" customClass="EndGameVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="endGameVC" id="Cag-E7-BW8" customClass="EndGameVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y0P-MF-aXi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -20,7 +20,6 @@ class HomeScreenVC: UIGameplayVC{
 
     // additional setup after loading the view
     override func viewDidLoad() {
-        
         balls.append(self.createBalls(color: UIColor.white, horzPos: -20, distance: 250, duration: 2.5))
         balls.append(self.createBalls(color: UIColor.white, horzPos: 90, distance: 120, duration: 1.5))
         balls.append(self.createBalls(color: UIColor.white, horzPos: 230, distance: 100, duration: 2.5))
@@ -60,7 +59,7 @@ class HomeScreenVC: UIGameplayVC{
             delay: 0.0,
             options: [.repeat, .autoreverse, .curveEaseInOut],
             animations: {
-                object.frame.origin.y -= distance
+                object.frame.origin.y = object.frame.origin.y - distance
             }
         )
     }
@@ -75,7 +74,7 @@ class HomeScreenVC: UIGameplayVC{
             options: [.repeat, .autoreverse, .curveEaseInOut],
             animations: {
                 self.mazeImage.transform = self.mazeImage.transform.rotated(by: CGFloat(-1 * Double.pi * 0.02))
-                self.mazeImage.frame.origin.y -= distance
+                self.mazeImage.frame.origin.y = self.mazeImage.frame.origin.y - distance
                 self.mazeImage.transform = self.mazeImage.transform.rotated(by: CGFloat(Double.pi * 0.02))
             }
         )

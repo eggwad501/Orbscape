@@ -76,11 +76,21 @@ class PauseVC: UIGameplayVC {
     
     // setting button
     @IBAction func settingButton(_ sender: Any) {
+        let destinationVC = storyboard!.instantiateViewController(withIdentifier: settingsVC) as! SettingsVC
+        destinationVC.fromPause = true
+        destinationVC.gameDelegate = gameDelegate
+        destinationVC.levelDelegate = levelDelegate
+        destinationVC.tapStartDelegate = tapStartDelegate
+        
+        // We should just pass in the text, not the actual values. It'd be easier
+        destinationVC.starCountRun = starCountRun
+        destinationVC.timeRun = timeRun
+        destinationVC.pauseDelegate = self
+        gameDelegate.navigationController!.pushViewController(destinationVC, animated: true)
         self.dismiss(animated: true, completion: nil)
         gameDelegate.removeBlurredBackgroundView()
-        
-        let destinationViewController = storyboard!.instantiateViewController(withIdentifier: settingsVC) as! SettingsVC
-        gameDelegate.navigationController!.pushViewController(destinationViewController, animated: true)
+
+
     }
     
     // empty; so there would be no gradient applied in this view controller
