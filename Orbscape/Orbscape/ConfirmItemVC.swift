@@ -7,16 +7,19 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class ConfirmItemVC: UIGameplayVC {
     
     var delegate: UIGameplayVC!
+    var audioPlayer: AVAudioPlayer?
     
     var itemImage: UIImage?
     var itemName: String = ""
     var itemCost: Int = -1
     var itemIndex: Int = -1
     var itemColors: Array<CGColor>!
+    var itemAudio: URL!
     
     var selectedIdentifier = "selectedIdentifier"
     var types: CustomizeTypes!
@@ -25,6 +28,7 @@ class ConfirmItemVC: UIGameplayVC {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var starCountLabel: UILabel!
     @IBOutlet weak var iconView: UIView!
+    @IBOutlet var tapOutlet: UITapGestureRecognizer!
     
     // additional setup after loading the view
     override func viewDidLoad() {
@@ -32,8 +36,12 @@ class ConfirmItemVC: UIGameplayVC {
         self.popoverPresentationController?.backgroundColor = UIColor.clear
     }
     
-    // empty; so there would be no gradient applied in this view controller
+    // override; so there would be no gradient applied in this view controller
     override func viewIsAppearing(_ animated: Bool) {
+        tapOutlet.isEnabled = false
+        if types == CustomizeTypes.soundEffects {
+            tapOutlet.isEnabled = true
+        }
     }
     
     // updates the values before the screen is shown
@@ -43,6 +51,7 @@ class ConfirmItemVC: UIGameplayVC {
         nameLabel.text = "\(itemName)"
         costLabel.text = ""
         starCountLabel.text = "\(currentStarsCount) ★"
+
         
         switch types {
         case CustomizeTypes.skins?:
@@ -58,6 +67,7 @@ class ConfirmItemVC: UIGameplayVC {
             if !soundsList[itemIndex].purchased {
                 costLabel.text = "\(itemCost) ★"
             }
+
             break
             
         case CustomizeTypes.themes?:
@@ -70,6 +80,22 @@ class ConfirmItemVC: UIGameplayVC {
         default:
             break
         }
+    }
+    
+    // tap icon for sound audio 
+    @IBAction func tapIconGesture(recognizer: UITapGestureRecognizer) {
+        if let player = audioPlayer, player.isPlaying {
+            return
+        } else {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: itemAudio)
+                audioPlayer?.play()
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+
     }
     
     // update the game with the selected theme

@@ -15,24 +15,33 @@ class PauseVC: UIGameplayVC {
     var timeRun: Float!
     var retryConfirmIdentifier = "retryConfirmIdentifier"
     var levelConfirmIdentifier = "levelConfirmIdentifier"
+    var settingIdentifier = "settingIdentifier"
+    var settingsVC = "settingsVC"
 
     
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
         self.popoverPresentationController?.backgroundColor = UIColor.clear
+        
     }
     
     // dismiss screen with cancel
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         gameDelegate.removeBlurredBackgroundView()
+        if let sceneDelegate = gameDelegate as? GameSceneDelegate {
+            sceneDelegate.resumeGame()
+        }
     }
     
     // dismiss screen with play icon button
     @IBAction func playButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         gameDelegate.removeBlurredBackgroundView()
+        if let sceneDelegate = gameDelegate as? GameSceneDelegate {
+            sceneDelegate.resumeGame()
+        }
     }
     
     // sent over current vc to pause vc
@@ -53,6 +62,15 @@ class PauseVC: UIGameplayVC {
                 destination.quitLevel = false
             }
         }
+    }
+    
+    // setting button
+    @IBAction func settingButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        gameDelegate.removeBlurredBackgroundView()
+        
+        let destinationViewController = storyboard!.instantiateViewController(withIdentifier: settingsVC) as! SettingsVC
+        gameDelegate.navigationController!.pushViewController(destinationViewController, animated: true)
     }
     
     // empty; so there would be no gradient applied in this view controller
