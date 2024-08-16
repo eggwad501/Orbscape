@@ -423,6 +423,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         if(timeSinceGC > 3){
             // garbage collector tasks go here
             timeSinceGC = 0
+            print("Still running")
+            if(gameEnded){
+                print("No longer running")
+                self.view?.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                print("What the-")
+            }
         }
         
         // Update entities

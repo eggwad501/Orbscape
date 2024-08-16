@@ -17,6 +17,7 @@ protocol GameSceneDelegate {
     func pauseGame()
     func resumeGame()
     func stopTimer()
+    func stopGame()
 }
 
 class GameViewController: UIGameplayVC, GameSceneDelegate {
@@ -153,6 +154,10 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         if let scene = gameScene as? BallProperties {
             scene.resumeBall()
         }
+    }
+    
+    func stopGame() {
+        <#code#>
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
