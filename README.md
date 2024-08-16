@@ -8,9 +8,9 @@ These collected stars can then be used to unlock various customization options. 
 Dependencies: None
 Special Instructions: IOS should be 17.5, Iphone should 4+. Must be played on Iphone and not a simulator. 
 
-| Header 1 | Header 2 | Header 3 |
+| Feature | Description | Contribution |
 |----------|----------|----------|
-| Row 1 Col 1 | Row 1 Col 2 | Row 1 Col 3 |
+| Design | Original design of app structure | 25% Pranav, 25% Nhat, 25% Ronghua, 25% Nick |
 | Row 2 Col 1 | Row 2 Col 2 | Row 2 Col 3 |
 | Row 3 Col 1 | Row 3 Col 2 | Row 3 Col 3 |
 
