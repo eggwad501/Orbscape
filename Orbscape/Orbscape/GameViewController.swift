@@ -51,7 +51,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         
         if let view = self.view as! SKView? {
             let debug = false
-            print("GVC: \(difficulty!)")
+
             if(debug){
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -70,7 +70,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
                 // Present the scene
                 scene.difficultyLevel = difficulty
                 view.presentScene(scene)
-                scene.difficultyLevel = difficulty
             }
             view.ignoresSiblingOrder = true
         }
@@ -154,9 +153,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == pauseIdentifier,
-           let destination = segue.destination as? PauseVC {
+        let destination = segue.destination as? PauseVC {
             pauseGame()
-            
             destination.gameDelegate = self
             destination.levelDelegate = levelDelegate
             destination.tapStartDelegate = tapStartDelegate
@@ -166,7 +164,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             destination.timeRun = Float(timerLabel.text!)
             overlayBlurredBackgroundView()
         } else if segue.identifier == endIdentifier,
-                  let destination = segue.destination as? EndGameVC {
+        let destination = segue.destination as? EndGameVC {
             stopTimer()
             destination.gameDelegate = self
             overlayBlurredBackgroundView()

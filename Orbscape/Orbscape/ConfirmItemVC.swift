@@ -7,42 +7,19 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class ConfirmItemVC: UIGameplayVC {
     
-    func retrieveItem(identifier: String) -> [NSManagedObject] {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
-        var fetchedResults: [NSManagedObject]? = nil
-        
-        do {
-            try fetchedResults = context.fetch(request) as? [NSManagedObject]
-        } catch {
-            print("Error occured while retrieving data")
-            abort()
-        }
-        return fetchedResults!
-    }
-    
-    func saveContext() {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
     var delegate: UIGameplayVC!
+    var audioPlayer: AVAudioPlayer?
     
     var itemImage: UIImage?
     var itemName: String = ""
     var itemCost: Int = -1
     var itemIndex: Int = -1
     var itemColors: Array<CGColor>!
+    var itemAudio: URL!
     
     var selectedIdentifier = "selectedIdentifier"
     var types: CustomizeTypes!
@@ -51,6 +28,7 @@ class ConfirmItemVC: UIGameplayVC {
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var starCountLabel: UILabel!
     @IBOutlet weak var iconView: UIView!
+    @IBOutlet var tapOutlet: UITapGestureRecognizer!
     
     // additional setup after loading the view
     override func viewDidLoad() {
@@ -58,8 +36,12 @@ class ConfirmItemVC: UIGameplayVC {
         self.popoverPresentationController?.backgroundColor = UIColor.clear
     }
     
-    // empty; so there would be no gradient applied in this view controller
+    // override; so there would be no gradient applied in this view controller
     override func viewIsAppearing(_ animated: Bool) {
+        tapOutlet.isEnabled = false
+        if types == CustomizeTypes.soundEffects {
+            tapOutlet.isEnabled = true
+        }
     }
     
     // updates the values before the screen is shown
@@ -69,6 +51,7 @@ class ConfirmItemVC: UIGameplayVC {
         nameLabel.text = "\(itemName)"
         costLabel.text = ""
         starCountLabel.text = "\(currentStarsCount) ★"
+
         
         switch types {
         case CustomizeTypes.skins?:
@@ -84,6 +67,7 @@ class ConfirmItemVC: UIGameplayVC {
             if !soundsList[itemIndex].purchased {
                 costLabel.text = "\(itemCost) ★"
             }
+
             break
             
         case CustomizeTypes.themes?:
@@ -98,19 +82,39 @@ class ConfirmItemVC: UIGameplayVC {
         }
     }
     
+    // tap icon for sound audio 
+    @IBAction func tapIconGesture(recognizer: UITapGestureRecognizer) {
+        if let player = audioPlayer, player.isPlaying {
+            return
+        } else {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: itemAudio)
+                audioPlayer?.play()
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+
+    }
+    
     // update the game with the selected theme
     @IBAction func confirmButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         super.showNavigationBar()
+        
+        localStore = PurchasableItems()
         
         let vc = delegate as! ItemSelectChanger
         vc.removeBlurredBackgroundView()
                 
         if itemIndex != -1 {
             switch types {
+                
+            //skins
             case CustomizeTypes.skins?:
                 
-                let savedSkins = retrieveItem(identifier: "Skin")
+                let savedSkins = localStore.retrieveItem(identifier: "Skin")
                 
                 if skinsList[itemIndex].purchased {
                     currentSkin = skinsList[itemIndex]
@@ -120,19 +124,20 @@ class ConfirmItemVC: UIGameplayVC {
                     
                     //save updated skin to core data
                     savedSkins[itemIndex].setValue(true, forKey: "purchased")
-                    saveContext()
                     currentStarsCount -= itemCost
-                    retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
-                    saveContext()
+                    localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                    localStore.saveContext()
                 }
                 
                 for i in 2...8{
                     savedSkins[i - 1].setValue(itemIndex, forKey: "equippedIndex")
                 }
-                saveContext()
+                localStore.saveContext()
+               
                 
+            //sounds
             case CustomizeTypes.soundEffects?:
-                let savedSounds = retrieveItem(identifier: "Sound")
+                let savedSounds = localStore.retrieveItem(identifier: "Sound")
                 if soundsList[itemIndex].purchased {
                     currentSound = soundsList[itemIndex]
                 } else {
@@ -140,19 +145,20 @@ class ConfirmItemVC: UIGameplayVC {
                     soundsList[itemIndex].purchased = true
                     savedSounds[itemIndex].setValue(true, forKey: "purchased")
                     currentStarsCount -= itemCost
-                    retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
-                    saveContext()
+                    localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                    localStore.saveContext()
                 }
                 for i in 2...8{
                     savedSounds[i - 1].setValue(itemIndex, forKey: "equippedIndex")
                 }
-                saveContext()
+                localStore.saveContext()
                 
+            //themes
             case CustomizeTypes.themes?:
                 
                 //retrieve whwther it has been purchased from core data
                 
-                let savedThemes = retrieveItem(identifier: "Theme")
+                let savedThemes = localStore.retrieveItem(identifier: "Theme")
                 
                 // check value of bool 'purchased'
                 if themesList[itemIndex].purchased {
@@ -164,17 +170,16 @@ class ConfirmItemVC: UIGameplayVC {
                     
                     //save the value of puchased to core data
                     savedThemes[itemIndex].setValue(true, forKey: "purchased")
-                    saveContext()
                     currentStarsCount -= itemCost
-                    retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
-                    saveContext()
+                    localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                    localStore.saveContext()
                 }
                 
                 //save last equipped into core data
                 for i in 2...8{
                     savedThemes[i - 1].setValue(itemIndex, forKey: "equippedIndex")
                 }
-                saveContext()
+                localStore.saveContext()
                 vc.updateBackground(index: itemIndex)
                 
             default:

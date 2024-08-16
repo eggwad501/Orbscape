@@ -10,20 +10,9 @@ import UIKit
 import AVFoundation
 import CoreData
 
-// the following will be saved in coredata
+// clear core data
 
-//func retrieveItem(identifier: String) -> [NSManagedObject] {
-//    let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
-//    var fetchedResults: [NSManagedObject]? = nil
-//    
-//    do {
-//        try fetchedResults = context.fetch(request) as? [NSManagedObject]
-//    } catch {
-//        print("Error occured while retrieving data")
-//        abort()
-//    }
-//    return fetchedResults!
-//}
+
 
 var localStore = PurchasableItems()
 

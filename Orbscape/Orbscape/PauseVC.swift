@@ -15,6 +15,8 @@ class PauseVC: UIGameplayVC {
     var timeRun: Float!
     var retryConfirmIdentifier = "retryConfirmIdentifier"
     var levelConfirmIdentifier = "levelConfirmIdentifier"
+    var settingIdentifier = "settingIdentifier"
+    var settingsVC = "settingsVC"
 
     
     // additional setup after loading the view
@@ -60,6 +62,15 @@ class PauseVC: UIGameplayVC {
                 destination.quitLevel = false
             }
         }
+    }
+    
+    // setting button
+    @IBAction func settingButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        gameDelegate.removeBlurredBackgroundView()
+        
+        let destinationViewController = storyboard!.instantiateViewController(withIdentifier: settingsVC) as! SettingsVC
+        gameDelegate.navigationController!.pushViewController(destinationViewController, animated: true)
     }
     
     // empty; so there would be no gradient applied in this view controller

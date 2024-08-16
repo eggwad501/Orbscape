@@ -88,8 +88,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(cameraNode)
         camera = cameraNode
         
-        cameraNode.xScale = 0.5
-        cameraNode.yScale = 0.5
+        cameraNode.xScale = 2
+        cameraNode.yScale = 2
 
         // gravity manager construction
         manager.startAccelerometerUpdates()
@@ -283,9 +283,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         let startLine = CGRect(x: mazeSpace / 2 - tileSize, y: 0 + tileSize/2, width: tileSize, height: -tileSize)
         print("Mazespace: \(mazeSpace)")
         let startWall = SKShapeNode(rect: startLine)
-        startWall.fillColor = .purple
+        startWall.fillColor = UIColor(cgColor: currentTheme.colors[0]).edgeColors()
+        startWall.lineWidth = 0.0
+        startWall.alpha = 0.8
+        startWall.isHidden = true
         startWall.physicsBody = SKPhysicsBody(polygonFrom:  startWall.path!)
-        startWall.physicsBody?.categoryBitMask = Collision.wallBody
+        startWall.physicsBody?.categoryBitMask = Collision.entranceBody
         startWall.physicsBody?.collisionBitMask = Collision.ballBody
         startWall.physicsBody?.contactTestBitMask = Collision.ballBody
         startWall.name = "startWall"
@@ -305,11 +308,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         finishWall.physicsBody?.contactTestBitMask = Collision.ballBody
         finishWall.name = "finishWall"
         finishWall.physicsBody?.isDynamic = false
+        finishWall.fillTexture = SKTexture(imageNamed: "finish")
         addChild(finishWall)
     }
     
     // generates the walls that would block off the entrance and exit
     func generateEntranceExit(){
+        generateEntranceWall()
         generateFinishLine()
     }
     
@@ -349,7 +354,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         }
     }
     
-    // runs when the ball collides with something else
+    // runs when the ball collides or makes contact with something else
     func didBegin(_ contact: SKPhysicsContact) {
         let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
@@ -379,6 +384,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         }
     }
     
+    // runs when the ball stops colliding or making contact with something else
+    func didEnd(_ contact: SKPhysicsContact) {
+        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
+        let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
+        
+        if(otherObject.categoryBitMask == Collision.entranceBody) {
+            otherObject.categoryBitMask = Collision.wallBody
+            otherObject.node?.isHidden = false
+        }
+    }
+    
     func playSound(named soundName: String, volume: Float) {
         let soundAction = SKAction.playSoundFileNamed(soundName, waitForCompletion: false)
         let volumeAction = SKAction.changeVolume(to: volume, duration: 0)
@@ -387,12 +403,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
-        // Add in end game logic
-        var cond = false
-        if (cond) {
-            sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
-        }
         
         // Called before each frame is rendered
         // Initialize _lastUpdateTime if it has not already been
@@ -419,14 +429,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         }
         
         // once ball is below the entrance, block it off
-        if(!isBelowEntrance && ballObject.position.y < CGFloat(0)){
-            isBelowEntrance = true
-            generateEntranceWall()
-        }
+//        if(!isBelowEntrance && ballObject.position.y < CGFloat(-tileSize / 2) - (ballObject.size.height / 2)){
+//            isBelowEntrance = true
+//            generateEntranceWall()
+//        }
 
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){
             cameraNode.position = ballObject.position
+        }
+        else{
+            sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
         }
         
         self.lastUpdateTime = currentTime
