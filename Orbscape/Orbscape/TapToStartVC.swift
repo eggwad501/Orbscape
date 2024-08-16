@@ -9,6 +9,8 @@ import UIKit
 
 class TapToStartVC: UIGameplayVC {
 
+    var difficulty: Int!
+    var delegate: UIGameplayVC?
     @IBOutlet weak var iconImageView: UIView!
     
     // additional setup after loading the view
@@ -17,5 +19,14 @@ class TapToStartVC: UIGameplayVC {
         let image = imageView(view: iconImageView, image: currentSkin.skin)
         iconImageView.backgroundColor = UIColor.clear
         iconImageView.addSubview(image)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let gameVC = segue.destination as? GameViewController
+        if segue.identifier == "startSegue"{
+            print("TTSVC: \(difficulty!)")
+            gameVC!.delegate = self
+            gameVC!.difficulty = difficulty!
+        }
     }
 }
