@@ -8,11 +8,16 @@
 import UIKit
 
 class PauseVC: UIGameplayVC {
+    
+    
+    @IBOutlet weak var starsLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     var levelDelegate: UIGameplayVC!
     var tapStartDelegate: UIGameplayVC!
     var gameDelegate: UIGameplayVC!
     var starCountRun: Int!
-    var timeRun: Float!
+    var timeRun: String!
     var retryConfirmIdentifier = "retryConfirmIdentifier"
     var levelConfirmIdentifier = "levelConfirmIdentifier"
     var settingIdentifier = "settingIdentifier"
@@ -24,6 +29,11 @@ class PauseVC: UIGameplayVC {
         super.viewDidLoad()
         self.popoverPresentationController?.backgroundColor = UIColor.clear
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        starsLabel.text = String(starCountRun) + "★"
+        timeLabel.text = timeRun
     }
     
     // dismiss screen with cancel

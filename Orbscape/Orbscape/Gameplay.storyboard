@@ -535,7 +535,7 @@
         <!--CREDITS-->
         <scene sceneID="aXX-Li-Nc6">
             <objects>
-                <viewController id="Q1d-Ku-Rlz" customClass="SettingsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Q1d-Ku-Rlz" customClass="CreditsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dSc-kk-5ZJ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -750,6 +750,10 @@ Dr. William C. Bulko</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="iJ3-16-KzA"/>
+                    <connections>
+                        <outlet property="starsLabel" destination="zed-ap-aBT" id="LoG-7j-f74"/>
+                        <outlet property="timeLabel" destination="aPj-aE-35M" id="dhy-SH-XW3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WId-SN-Qob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -854,6 +858,10 @@ you have collected in this run. </string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="P6W-vI-asU"/>
+                    <connections>
+                        <outlet property="starsLabel" destination="HqQ-aQ-pcY" id="2T6-TC-wyY"/>
+                        <outlet property="timeLabel" destination="aji-1i-sEm" id="bsJ-z8-Gdi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnN-sS-1yi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -923,6 +931,11 @@ you have collected in this run. </string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="rNT-uT-D6G"/>
+                    <connections>
+                        <outlet property="collectedStarsLabel" destination="WXw-Ot-rDx" id="XBi-tT-oPA"/>
+                        <outlet property="timeLabel" destination="KND-kO-6v3" id="98E-eY-Ftz"/>
+                        <outlet property="totalStarsLabel" destination="DLK-kH-0qA" id="Yuj-67-UYC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5K-2R-Pk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1016,7 +1029,7 @@ to Move</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
