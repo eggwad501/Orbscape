@@ -15,6 +15,7 @@ class EndGameVC: UIGameplayVC {
     @IBOutlet weak var collectedStarsLabel: UILabel!
     
     var gameDelegate: UIGameplayVC!
+    var homeDelegete: UIGameplayVC!
     var balls: Array<UIView> = []
     var starCountRun: Int!
     var timeRun: String!
@@ -38,13 +39,12 @@ class EndGameVC: UIGameplayVC {
         for ball in balls {
             ballAnimation(view: ball)
         }
-        print(navigationController?.viewControllers)
     }
 
     // initialize ball objects ready for animation
     private func createImage(image: UIImage, maxSize: Int) -> UIView {
         let size = Int.random(in: 20..<maxSize)
-        var ball = UIView(frame: CGRect(
+        let ball = UIView(frame: CGRect(
             x: Int.random(in: 1..<Int(self.view.bounds.width)),
             y: Int.random(in: 1..<Int(self.view.bounds.height)/2 - 30),
             width: size,
@@ -60,6 +60,18 @@ class EndGameVC: UIGameplayVC {
         return ball
     }
     
+    
+    @IBAction func homeButton(_ sender: Any) {
+        dismiss(animated: true)
+        gameDelegate.dismiss(animated: true, completion: nil)
+        gameDelegate.removeBlurredBackgroundView()
+        
+        if homeDelegete != nil,
+           let navController = gameDelegate.navigationController {
+            navController.popToViewController(homeDelegete, animated: true)
+        }
+        
+    }
     
 
     

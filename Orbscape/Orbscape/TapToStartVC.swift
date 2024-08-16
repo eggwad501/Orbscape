@@ -14,6 +14,8 @@ class TapToStartVC: UIGameplayVC {
     @IBOutlet weak var iconImageView: UIView!
     var toGameIdentifier = "toGameIdentifier"
     var levelDelegate: UIGameplayVC!
+    var homeDelegete: UIGameplayVC!
+
 
 
     // additional setup after loading the view
@@ -29,6 +31,7 @@ class TapToStartVC: UIGameplayVC {
         if segue.identifier == "startSegue"{
             print("TTSVC: \(difficulty!)")
             gameVC!.levelDelegate = levelDelegate
+            gameVC!.homeDelegete = homeDelegete
             gameVC!.tapStartDelegate = self
             gameVC!.difficulty = difficulty!
         }

@@ -12,6 +12,7 @@ class LevelsVC: UIGameplayVC {
     @IBOutlet weak var iconImageView: UIView!
     
     var startIdentifier = "startIdentifier"
+    var homeDelegete: UIGameplayVC!
     
     // additional setup after loading the view
     override func viewDidLoad() {
@@ -29,6 +30,7 @@ class LevelsVC: UIGameplayVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tapToStartVC = segue.destination as? TapToStartVC
         tapToStartVC!.levelDelegate = self
+        tapToStartVC!.homeDelegete = homeDelegete
 
         if segue.identifier == "easySegue"{
             tapToStartVC!.difficulty = 5

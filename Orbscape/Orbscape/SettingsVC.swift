@@ -20,7 +20,7 @@ class SettingsVC: UIGameplayVC {
     var tapStartDelegate: UIGameplayVC!
     var pauseDelegate: UIGameplayVC!
     var starCountRun: Int!
-    var timeRun: Float!
+    var timeRun: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()

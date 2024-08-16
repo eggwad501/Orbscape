@@ -79,5 +79,11 @@ class HomeScreenVC: UIGameplayVC{
             }
         )
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "levelSegue",
+           let tapVC = segue.destination as? LevelsVC {
+            tapVC.homeDelegete = self
+        }
+    }
 
 }
