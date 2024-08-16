@@ -18,15 +18,12 @@
 		1F67D15F2C581EE2009289C6 /* MazeMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F67D15E2C581EE2009289C6 /* MazeMaker.swift */; };
 		1F7816902C69AFFA000E0D26 /* pickup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F78168F2C69AFFA000E0D26 /* pickup.mp3 */; };
 		1F7816922C69B000000E0D26 /* collide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1F7816912C69B000000E0D26 /* collide.mp3 */; };
-<<<<<<< HEAD
-=======
 		1F8E92A62C6EEC4E003016C5 /* beam.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E92A12C6EEC4E003016C5 /* beam.wav */; };
 		1F8E92A72C6EEC4E003016C5 /* dog.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E92A22C6EEC4E003016C5 /* dog.wav */; };
 		1F8E92A82C6EEC4E003016C5 /* tap.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E92A32C6EEC4E003016C5 /* tap.wav */; };
 		1F8E92A92C6EEC4E003016C5 /* fairy.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E92A42C6EEC4E003016C5 /* fairy.wav */; };
 		1F8E92AA2C6EEC4E003016C5 /* cat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E92A52C6EEC4E003016C5 /* cat.wav */; };
 		1F8E92AB2C6EEF34003016C5 /* Gameplay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E929F2C6EE699003016C5 /* Gameplay.storyboard */; };
->>>>>>> 6a5169a8d347996d4b97f694e182cc80405546fa
 		BF97865C2C6EE2E600B1E9E5 /* pig.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786552C6EE2E600B1E9E5 /* pig.wav */; };
 		BF97865F2C6EE2E600B1E9E5 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = BF9786582C6EE2E600B1E9E5 /* coin.wav */; };
 		BFA34D942C6D40F7004EC348 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFA34D932C6D40F7004EC348 /* Main.storyboard */; };
@@ -66,15 +63,12 @@
 		1F67D15E2C581EE2009289C6 /* MazeMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeMaker.swift; sourceTree = "<group>"; };
 		1F78168F2C69AFFA000E0D26 /* pickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pickup.mp3; sourceTree = "<group>"; };
 		1F7816912C69B000000E0D26 /* collide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = collide.mp3; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		1F8E929F2C6EE699003016C5 /* Gameplay.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Gameplay.storyboard; sourceTree = "<group>"; };
 		1F8E92A12C6EEC4E003016C5 /* beam.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beam.wav; sourceTree = "<group>"; };
 		1F8E92A22C6EEC4E003016C5 /* dog.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dog.wav; sourceTree = "<group>"; };
 		1F8E92A32C6EEC4E003016C5 /* tap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap.wav; sourceTree = "<group>"; };
 		1F8E92A42C6EEC4E003016C5 /* fairy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = fairy.wav; sourceTree = "<group>"; };
 		1F8E92A52C6EEC4E003016C5 /* cat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cat.wav; sourceTree = "<group>"; };
->>>>>>> 6a5169a8d347996d4b97f694e182cc80405546fa
 		BF9786552C6EE2E600B1E9E5 /* pig.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pig.wav; sourceTree = "<group>"; };
 		BF9786582C6EE2E600B1E9E5 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
 		BFA34D932C6D40F7004EC348 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };

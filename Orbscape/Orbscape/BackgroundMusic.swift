@@ -23,7 +23,7 @@ class BackgroundMusic {
                     audioPlayer = try AVAudioPlayer(contentsOf: song)
                 }
                 // Add CORE DATA
-                audioPlayer?.volume = musicVolume
+                audioPlayer?.volume = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "musicVal") as! Float
                 audioPlayer?.numberOfLoops = -1
                 audioPlayer?.prepareToPlay()
                 audioPlayer?.play()

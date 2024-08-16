@@ -24,7 +24,7 @@ class SettingsVC: UIGameplayVC {
 
     @IBAction func changedSoundSlider(_ sender: Any) {
         soundVolume = soundSlider.value
-        localStore.retrieveItem(identifier: "Insets")[1].setValue(soundSlider.value, forKey: "soundVal")
+        localStore.retrieveItem(identifier: "Insets")[0].setValue(soundSlider.value, forKey: "soundVal")
         localStore.saveContext()
     }
     
@@ -32,7 +32,7 @@ class SettingsVC: UIGameplayVC {
     @IBAction func changedMusicSlider(_ sender: Any) {
         musicVolume = musicSlider.value
         BackgroundMusic.shared.updateVolume()
-        localStore.retrieveItem(identifier: "Insets")[1].setValue(musicSlider.value, forKey: "musicVal")
+        localStore.retrieveItem(identifier: "Insets")[0].setValue(musicSlider.value, forKey: "musicVal")
         localStore.saveContext()
     }
 }
