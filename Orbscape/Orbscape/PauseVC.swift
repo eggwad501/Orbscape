@@ -21,18 +21,25 @@ class PauseVC: UIGameplayVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.popoverPresentationController?.backgroundColor = UIColor.clear
+        
     }
     
     // dismiss screen with cancel
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         gameDelegate.removeBlurredBackgroundView()
+        if let sceneDelegate = gameDelegate as? GameSceneDelegate {
+            sceneDelegate.resumeGame()
+        }
     }
     
     // dismiss screen with play icon button
     @IBAction func playButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
         gameDelegate.removeBlurredBackgroundView()
+        if let sceneDelegate = gameDelegate as? GameSceneDelegate {
+            sceneDelegate.resumeGame()
+        }
     }
     
     // sent over current vc to pause vc

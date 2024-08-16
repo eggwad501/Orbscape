@@ -109,49 +109,49 @@ var soundsList = [
         sound: Bundle.main.url(forResource: "beam", withExtension: "wav")!,
         name: "Laser",
         cost: 100,
-        ind: 0,
+        ind: 1,
         id: "Sound"
     ),
     SoundEffects(
         sound: Bundle.main.url(forResource: "fairy", withExtension: "wav")!,
         name: "Fairy",
         cost: 100,
-        ind: 0,
+        ind: 2,
         id: "Sound"
     ),
     SoundEffects(
         sound: Bundle.main.url(forResource: "coin", withExtension: "wav")!,
         name: "Coin",
         cost: 100,
-        ind: 0,
+        ind: 3,
         id: "Sound"
     ),
     SoundEffects(
         sound: Bundle.main.url(forResource: "tap", withExtension: "wav")!,
         name: "Tap",
         cost: 100,
-        ind: 0,
+        ind: 4,
         id: "Sound"
     ),
     SoundEffects(
         sound: Bundle.main.url(forResource: "dog", withExtension: "wav")!,
         name: "bark",
         cost: 100,
-        ind: 0,
+        ind: 5,
         id: "Sound"
     ),
     SoundEffects(
         sound: Bundle.main.url(forResource: "cat", withExtension: "wav")!,
         name: "Meow",
         cost: 100,
-        ind: 0,
+        ind: 6,
         id: "Sound"
     ),
     SoundEffects(
         sound: Bundle.main.url(forResource: "pig", withExtension: "wav")!,
         name: "Oink",
         cost: 100,
-        ind: 0,
+        ind: 7,
         id: "Sound"
     )
 ]

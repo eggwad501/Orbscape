@@ -24,9 +24,17 @@ var tileSet: SKTileSet!
 var tileMap: SKTileMapNode!
 var mazeArray: [[Int]]!
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+protocol BallProperties {
+    func stopBall()
+    func resumeBall()
+}
+
+class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     var sceneDelegate: GameSceneDelegate?
+    
+    // Star count
+    var starCount = 0
     
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
@@ -36,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
-    let starChance = 100
+    let starChance = 25
     var difficultyLevel: Int!
     var isGameFinished = false
     var isBelowEntrance = false
@@ -261,6 +269,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(ballObject)
     }
     
+    func stopBall() {
+        ballObject.physicsBody?.isDynamic = false
+    }
+    
+    func resumeBall() {
+        ballObject.physicsBody?.isDynamic = true
+    }
+    
     // generates the wall to block off the entrance
     func generateEntranceWall(){
         let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
@@ -346,10 +362,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // handle collision between ball and star
         else if(otherObject.categoryBitMask == Collision.starBody) {
-            //print("Player collected a star")
             
             otherObject.node?.removeFromParent()
-            // TODO: add star to player's account
+            
+            starCount += 1
+            sceneDelegate?.updateStarCount(to: starCount)
+            
             let soundFileName = currentSound.sound.lastPathComponent
             playSound(named: soundFileName, volume: soundVolume)
         }
