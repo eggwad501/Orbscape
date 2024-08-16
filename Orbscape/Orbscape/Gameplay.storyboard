@@ -39,10 +39,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="umo-EH-fq9">
-                                <rect key="frame" x="136" y="606" width="121" height="47"/>
+                                <rect key="frame" x="127" y="606" width="139" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="SETTING">
+                                <state key="normal" title="SETTINGS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -55,7 +55,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mazeTEMP.png" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-RJ-Z5D">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mazeImage" translatesAutoresizingMaskIntoConstraints="NO" id="u5u-RJ-Z5D">
                                 <rect key="frame" x="-55" y="712" width="501" height="253"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -136,7 +136,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Jab-2t-IVr" kind="show" identifier="" id="kG3-gO-3yY"/>
+                                    <segue destination="Jab-2t-IVr" kind="show" identifier="startIdentifier" id="kG3-gO-3yY"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAe-kT-3Q2">
@@ -147,7 +147,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Jab-2t-IVr" kind="show" identifier="" id="Vx6-Wr-HSV"/>
+                                    <segue destination="Jab-2t-IVr" kind="show" identifier="startIdentifier" id="Vx6-Wr-HSV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jc-PY-aLp">
@@ -158,7 +158,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Jab-2t-IVr" kind="show" identifier="" id="7n2-vL-3Mk"/>
+                                    <segue destination="Jab-2t-IVr" kind="show" identifier="startIdentifier" id="7n2-vL-3Mk"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnP-Dl-sgB">
@@ -223,10 +223,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="alw-Dz-AP9">
-                                <rect key="frame" x="146.66666666666666" y="612" width="100" height="47"/>
+                                <rect key="frame" x="137.66666666666666" y="612" width="118" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="THEME">
+                                <state key="normal" title="THEMES">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -264,7 +264,7 @@
             </objects>
             <point key="canvasLocation" x="1923" y="-35"/>
         </scene>
-        <!--SETTING-->
+        <!--SETTINGS-->
         <scene sceneID="nx8-uM-9aC">
             <objects>
                 <viewController id="XcQ-Qx-ZWR" customClass="SettingsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
@@ -331,7 +331,7 @@
                             <constraint firstItem="6tp-wt-eQ2" firstAttribute="top" secondItem="lgx-Bo-F0l" secondAttribute="bottom" constant="27" id="vpo-Xg-4xv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="SETTING" style="editor" id="cqT-hq-u0c"/>
+                    <navigationItem key="navigationItem" title="SETTINGS" style="editor" id="cqT-hq-u0c"/>
                     <connections>
                         <outlet property="musicSlider" destination="WCC-07-i4L" id="rLS-qm-Ajt"/>
                         <outlet property="soundSlider" destination="lgx-Bo-F0l" id="5Tg-Vs-6Hd"/>
@@ -578,16 +578,22 @@ Dr. William C. Bulko</string>
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-Wy-YmI">
-                                <rect key="frame" x="243" y="100" width="113" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfH-Wy-YmI">
+                                <rect key="frame" x="196" y="100" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="Xvy-Vq-PZS"/>
+                                    <constraint firstAttribute="height" constant="33" id="ncX-fa-RZ1"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbZ-Ig-8UF">
-                                <rect key="frame" x="243" y="136" width="113" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WbZ-Ig-8UF">
+                                <rect key="frame" x="196" y="141" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="HZT-nq-udP"/>
+                                    <constraint firstAttribute="height" constant="33" id="vf5-pL-qCb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -595,6 +601,12 @@ Dr. William C. Bulko</string>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0AZ-hP-T6v"/>
                         <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="0AZ-hP-T6v" firstAttribute="trailing" secondItem="WbZ-Ig-8UF" secondAttribute="trailing" constant="37" id="32P-09-qM2"/>
+                            <constraint firstItem="0AZ-hP-T6v" firstAttribute="trailing" secondItem="hfH-Wy-YmI" secondAttribute="trailing" constant="37" id="Elq-uT-0LX"/>
+                            <constraint firstItem="WbZ-Ig-8UF" firstAttribute="top" secondItem="hfH-Wy-YmI" secondAttribute="bottom" constant="8" symbolic="YES" id="OuF-Dt-cea"/>
+                            <constraint firstItem="0AZ-hP-T6v" firstAttribute="top" secondItem="hfH-Wy-YmI" secondAttribute="top" constant="3" id="axn-MF-CXj"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bpf-96-Yhx">
                         <barButtonItem key="leftBarButtonItem" width="95" style="plain" id="gM2-7k-m1O">
@@ -613,11 +625,12 @@ Dr. William C. Bulko</string>
                         <outlet property="pauseButton" destination="0xT-zV-QPm" id="mIy-NN-4d0"/>
                         <outlet property="starCountLabel" destination="hfH-Wy-YmI" id="ekT-S2-jWL"/>
                         <outlet property="timerLabel" destination="WbZ-Ig-8UF" id="0xM-36-IEl"/>
+                        <segue destination="Cag-E7-BW8" kind="presentation" identifier="endGameSegue" modalPresentationStyle="overFullScreen" id="fwk-nf-cez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hma-tA-92T" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676" y="-758"/>
+            <point key="canvasLocation" x="2675.5725190839694" y="-758.45070422535218"/>
         </scene>
         <!--PauseVC-->
         <scene sceneID="xz5-VY-ofW">
@@ -635,18 +648,18 @@ Dr. William C. Bulko</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ibw-aJ-SY2">
-                                <rect key="frame" x="132.66666666666666" y="434" width="127.99999999999997" height="47"/>
+                                <rect key="frame" x="151" y="434" width="91" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="RESTART">
+                                <state key="normal" title="RETRY">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="confirmIdentifier" modalPresentationStyle="overFullScreen" id="23K-dN-4p2"/>
+                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="retryConfirmIdentifier" modalPresentationStyle="overFullScreen" id="23K-dN-4p2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJq-zu-64r">
-                                <rect key="frame" x="127" y="514" width="139" height="47"/>
+                                <rect key="frame" x="127" y="578" width="139" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="SETTINGS">
@@ -654,7 +667,7 @@ Dr. William C. Bulko</string>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9C-kF-d49">
-                                <rect key="frame" x="139" y="593" width="115" height="47"/>
+                                <rect key="frame" x="139" y="650" width="115" height="47"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CANCEL">
@@ -665,19 +678,60 @@ Dr. William C. Bulko</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTL-vN-pyy">
-                                <rect key="frame" x="152.66666666666666" y="190" width="88" height="87"/>
+                                <rect key="frame" x="152.66666666666666" y="250" width="88" height="87"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="playButton" imagePadding="0.0"/>
+                                <connections>
+                                    <action selector="playButton:" destination="6ta-3b-5F9" eventType="touchUpInside" id="94p-4j-K1a"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zed-ap-aBT">
+                                <rect key="frame" x="196" y="103" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="TJN-AO-ZZi"/>
+                                    <constraint firstAttribute="width" constant="160" id="rmT-kJ-jWg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPj-aE-35M">
+                                <rect key="frame" x="196" y="144" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="C9l-Yx-wyH"/>
+                                    <constraint firstAttribute="width" constant="160" id="i64-qk-1JK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTe-NB-8YH">
+                                <rect key="frame" x="144" y="506" width="105" height="47"/>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="LEVELS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="levelConfirmIdentifier" modalPresentationStyle="fullScreen" id="C82-V6-lRM"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L0P-KY-Bf2"/>
                         <constraints>
+                            <constraint firstItem="L0P-KY-Bf2" firstAttribute="trailing" secondItem="zed-ap-aBT" secondAttribute="trailing" constant="37" id="4NH-Lw-Vkd"/>
+                            <constraint firstItem="zed-ap-aBT" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="103" id="6ra-Z5-Jib"/>
                             <constraint firstItem="zTL-vN-pyy" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="DFr-3O-Fe6"/>
-                            <constraint firstItem="AJq-zu-64r" firstAttribute="top" secondItem="Ibw-aJ-SY2" secondAttribute="bottom" constant="33" id="O6b-gT-h2M"/>
+                            <constraint firstItem="LTe-NB-8YH" firstAttribute="top" secondItem="Ibw-aJ-SY2" secondAttribute="bottom" constant="25" id="GLd-Ak-S8Y"/>
+                            <constraint firstItem="aPj-aE-35M" firstAttribute="top" secondItem="zed-ap-aBT" secondAttribute="bottom" constant="8" symbolic="YES" id="JhU-Uc-oVW"/>
+                            <constraint firstItem="LTe-NB-8YH" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="LR3-wc-F9F"/>
+                            <constraint firstItem="aPj-aE-35M" firstAttribute="top" secondItem="zed-ap-aBT" secondAttribute="bottom" constant="8" symbolic="YES" id="PGh-Vg-N2h"/>
                             <constraint firstItem="Ibw-aJ-SY2" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="434" id="TUB-0W-HY6"/>
-                            <constraint firstItem="zTL-vN-pyy" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="190" id="Z90-8B-nkA"/>
+                            <constraint firstItem="zTL-vN-pyy" firstAttribute="top" secondItem="L0P-KY-Bf2" secondAttribute="top" constant="250" id="Z90-8B-nkA"/>
+                            <constraint firstItem="L0P-KY-Bf2" firstAttribute="trailing" secondItem="aPj-aE-35M" secondAttribute="trailing" constant="37" id="l5r-X0-Vu3"/>
                             <constraint firstItem="Ibw-aJ-SY2" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="loY-jp-qag"/>
-                            <constraint firstItem="Y9C-kF-d49" firstAttribute="top" secondItem="AJq-zu-64r" secondAttribute="bottom" constant="32" id="q59-SU-upb"/>
+                            <constraint firstItem="Y9C-kF-d49" firstAttribute="top" secondItem="AJq-zu-64r" secondAttribute="bottom" constant="25" id="q59-SU-upb"/>
+                            <constraint firstItem="AJq-zu-64r" firstAttribute="top" secondItem="LTe-NB-8YH" secondAttribute="bottom" constant="25" id="ucX-L9-Pdz"/>
                             <constraint firstItem="Y9C-kF-d49" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="vYM-fm-El0"/>
                             <constraint firstItem="AJq-zu-64r" firstAttribute="centerX" secondItem="VgK-AW-Ra2" secondAttribute="centerX" id="y2C-4R-e87"/>
                         </constraints>
@@ -724,13 +778,13 @@ Dr. William C. Bulko</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aB3-dT-kmo">
-                                <rect key="frame" x="93.666666666666686" y="324" width="206" height="61"/>
+                                <rect key="frame" x="55.666666666666657" y="324" width="282" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="WAL-cd-HwC"/>
                                 </constraints>
-                                <string key="text">Restarting the game 
-will cost 50 ★ </string>
-                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="20"/>
+                                <string key="text">You will lose all the stars 
+you have collected in this run. </string>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -748,17 +802,42 @@ will cost 50 ★ </string>
                                     <action selector="cancelButton:" destination="b1Q-By-7rb" eventType="touchUpInside" id="bUu-or-Phi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label ★" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqQ-aQ-pcY">
+                                <rect key="frame" x="196" y="103" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Fz2-w4-JFH"/>
+                                    <constraint firstAttribute="width" constant="160" id="ude-E4-YUp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="timer" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aji-1i-sEm">
+                                <rect key="frame" x="196" y="144" width="160" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="66k-P2-kmG"/>
+                                    <constraint firstAttribute="width" constant="160" id="Xaz-Up-1G8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KkQ-Bk-XPJ"/>
                         <constraints>
+                            <constraint firstItem="aji-1i-sEm" firstAttribute="top" secondItem="HqQ-aQ-pcY" secondAttribute="bottom" constant="8" symbolic="YES" id="4iD-nI-Tjs"/>
+                            <constraint firstItem="HqQ-aQ-pcY" firstAttribute="top" secondItem="KkQ-Bk-XPJ" secondAttribute="top" constant="103" id="8fj-YZ-7dV"/>
                             <constraint firstItem="OzZ-L2-PTJ" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="IrV-wM-1jh"/>
                             <constraint firstItem="aB3-dT-kmo" firstAttribute="top" secondItem="0mf-xy-5wD" secondAttribute="bottom" constant="9" id="Jmy-BR-XiL"/>
                             <constraint firstItem="Cr2-Wv-X2R" firstAttribute="top" secondItem="OzZ-L2-PTJ" secondAttribute="bottom" constant="31" id="KZX-Hj-NPh"/>
                             <constraint firstItem="0mf-xy-5wD" firstAttribute="top" secondItem="KkQ-Bk-XPJ" secondAttribute="top" constant="280" id="Vok-0Z-pxK"/>
+                            <constraint firstItem="aji-1i-sEm" firstAttribute="top" secondItem="HqQ-aQ-pcY" secondAttribute="bottom" constant="8" symbolic="YES" id="aY8-RG-Dci"/>
                             <constraint firstItem="aB3-dT-kmo" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="eXt-dd-sPd"/>
                             <constraint firstItem="Cr2-Wv-X2R" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="fpz-G7-QZZ"/>
                             <constraint firstItem="OzZ-L2-PTJ" firstAttribute="top" secondItem="aB3-dT-kmo" secondAttribute="bottom" constant="58" id="qUX-MI-oQd"/>
                             <constraint firstItem="0mf-xy-5wD" firstAttribute="centerX" secondItem="L81-W2-kjG" secondAttribute="centerX" id="qZS-6b-Orh"/>
+                            <constraint firstItem="KkQ-Bk-XPJ" firstAttribute="trailing" secondItem="aji-1i-sEm" secondAttribute="trailing" constant="37" id="t8R-Ja-BaV"/>
+                            <constraint firstItem="KkQ-Bk-XPJ" firstAttribute="trailing" secondItem="HqQ-aQ-pcY" secondAttribute="trailing" constant="37" id="u6V-ON-gLH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="P6W-vI-asU"/>
@@ -767,10 +846,10 @@ will cost 50 ★ </string>
             </objects>
             <point key="canvasLocation" x="4294" y="-1463"/>
         </scene>
-        <!--PauseVC-->
+        <!--End GameVC-->
         <scene sceneID="yDC-Os-Rj8">
             <objects>
-                <viewController id="Cag-E7-BW8" customClass="PauseVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Cag-E7-BW8" customClass="EndGameVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y0P-MF-aXi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -783,7 +862,7 @@ will cost 50 ★ </string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIJ-be-mku">
-                                <rect key="frame" x="146" y="705" width="101" height="53"/>
+                                <rect key="frame" x="146" y="646" width="101" height="53"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="34"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="HOME">
@@ -791,25 +870,25 @@ will cost 50 ★ </string>
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KND-kO-6v3">
-                                <rect key="frame" x="128.66666666666666" y="424" width="135.99999999999997" height="74"/>
+                                <rect key="frame" x="128.66666666666666" y="365" width="135.99999999999997" height="74"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="62"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMPLETED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1E-1i-oTe">
-                                <rect key="frame" x="85.666666666666686" y="496" width="222" height="44"/>
+                                <rect key="frame" x="85.666666666666686" y="437" width="222" height="44"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="37"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 ★" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLK-kH-0qA">
-                                <rect key="frame" x="145.66666666666666" y="579" width="102" height="48"/>
+                                <rect key="frame" x="145.66666666666666" y="520" width="102" height="48"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WXw-Ot-rDx">
-                                <rect key="frame" x="175" y="630" width="43" height="35"/>
+                                <rect key="frame" x="175" y="571" width="43" height="35"/>
                                 <fontDescription key="fontDescription" name="Galvji" family="Galvji" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -897,7 +976,7 @@ to Move</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uvp-Xh-rS7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="N3s-kg-ffi">
                     <connections>
-                        <segue destination="7I7-oO-Nv5" kind="show" identifier="" animates="NO" id="CwK-vm-BBz"/>
+                        <segue destination="7I7-oO-Nv5" kind="show" identifier="toGameIdentifier" animates="NO" id="CwK-vm-BBz"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -906,12 +985,13 @@ to Move</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="7n2-vL-3Mk"/>
-        <segue reference="81A-sU-f1F"/>
+        <segue reference="23K-dN-4p2"/>
+        <segue reference="ubv-2u-5Ni"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="backButton.png" width="23.666666030883789" height="41"/>
-        <image name="mazeTEMP.png" width="1707" height="1699"/>
+        <image name="mazeImage" width="1707" height="1699"/>
         <image name="playButton" width="64" height="73"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
