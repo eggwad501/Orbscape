@@ -15,6 +15,7 @@ struct Collision {
     static let wallBody: UInt32 = 0x1 << 1
     static let starBody: UInt32 = 0x1 << 2
     static let finishHoleBody: UInt32 = 0x1 << 3
+    static let entranceBody: UInt32 = 0x1 << 4
 }
 
 // requests MazeMaker to generate a maze for the game
@@ -35,8 +36,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
-    let starChance = 25
-    var difficultyLevel = 5
+    let starChance = 100
+    var difficultyLevel: Int!
+    var isGameFinished = false
+    var isBelowEntrance = false
     
     var gradientObject: SKSpriteNode!
     
@@ -59,8 +62,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func sceneDidLoad() {
+        //print("GS: \(difficultyLevel!)")
+    }
+    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
         self.camera = cameraNode
-        //pauseButton.image.
+        self.speed = 0.2
         
         self.lastUpdateTime = 0
         
@@ -74,15 +82,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         cameraNode.xScale = 0.5
         cameraNode.yScale = 0.5
-        
-        // tile setup
-        // TODO: takes a long time to load for big maps
-        guard let tileSet = SKTileSet(named: "Sample Grid Tile Set") else {
-            fatalError("Tile set not found")
-        }
-        let tileSize = CGSize(width: 64, height: 64)
-        let columns = 10
-        let rows = 10
 
         // gravity manager construction
         manager.startAccelerometerUpdates()
@@ -95,17 +94,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
             }
         }
-        
-        // tile map construction
-        tileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: tileSize)
-        for column in 0..<columns {
-            for row in 0..<rows {
-                let tileGroup = tileSet.tileGroups.first(where: { $0.name == "Grass" })
-                tileMap.setTileGroup(tileGroup, forColumn: column, row: row)
-            }
-        }
-        tileMap.position = CGPoint(x: frame.midX, y: frame.midY)
-        //addChild(tileMap)
         
         /*
          String compares are cheaper than expected, keep the string
@@ -127,6 +115,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let squareSize = difficultyLevel * 4 - 1
         let ballStartPos = (squareSize * 64 / 2 - 32, 100)
         generateBall(ballStartPos)
+        
+        // close off the entrance
+        
         
         // makes a maze of some difficulty
         startTime = CFAbsoluteTimeGetCurrent()
@@ -214,7 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         mazeArray[rowIndex][subCol] = -1
                         subCol += 1
                     }
-                    print(position)
+                    
                     let horizontalWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(horizontalLength * tileSize), height: -CGFloat(tileSize))
                     generateWall(position, horizontalWall, .red)
                     
@@ -242,6 +233,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             rowIndex += 1
             colIndex = 0
         }
+        
+        generateEntranceExit()
     }
     
     // generates the ball
@@ -257,7 +250,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ballObject.physicsBody?.isDynamic = true
         ballObject.physicsBody?.categoryBitMask = Collision.ballBody
         ballObject.physicsBody?.collisionBitMask = Collision.wallBody
-        ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody
+        ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody | Collision.entranceBody | Collision.finishHoleBody
         ballObject.physicsBody?.affectedByGravity = true
         
         ballObject.physicsBody?.friction = 0.5
@@ -266,6 +259,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ballObject.physicsBody?.linearDamping = 0.0
         
         addChild(ballObject)
+    }
+    
+    // generates the wall to block off the entrance
+    func generateEntranceWall(){
+        let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
+        let startLine = CGRect(x: mazeSpace / 2 - tileSize, y: 0 + tileSize/2, width: tileSize, height: -tileSize)
+        print("Mazespace: \(mazeSpace)")
+        let startWall = SKShapeNode(rect: startLine)
+        startWall.fillColor = .purple
+        startWall.physicsBody = SKPhysicsBody(polygonFrom:  startWall.path!)
+        startWall.physicsBody?.categoryBitMask = Collision.wallBody
+        startWall.physicsBody?.collisionBitMask = Collision.ballBody
+        startWall.physicsBody?.contactTestBitMask = Collision.ballBody
+        startWall.name = "startWall"
+        startWall.physicsBody?.isDynamic = false
+        addChild(startWall)
+    }
+    
+    // generates the finish line
+    func generateFinishLine(){
+        let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
+        let finishLine = CGRect(x: mazeSpace / 2 - tileSize, y: -mazeSpace + tileSize/2 * 3, width: tileSize, height: -tileSize)
+        let finishWall = SKShapeNode(rect: finishLine)
+        finishWall.fillColor = .black
+        finishWall.physicsBody = SKPhysicsBody(polygonFrom: finishWall.path!)
+        finishWall.physicsBody?.categoryBitMask = Collision.finishHoleBody
+        finishWall.physicsBody?.collisionBitMask = Collision.ballBody
+        finishWall.physicsBody?.contactTestBitMask = Collision.ballBody
+        finishWall.name = "finishWall"
+        finishWall.physicsBody?.isDynamic = false
+        addChild(finishWall)
+    }
+    
+    // generates the walls that would block off the entrance and exit
+    func generateEntranceExit(){
+        generateFinishLine()
     }
     
     // generates a wall of variable length or height with fixed tile size at this position
@@ -321,9 +350,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
-            
             let soundFileName = currentSound.sound.lastPathComponent
             playSound(named: soundFileName, volume: soundVolume)
+        }
+        else if(otherObject.categoryBitMask == Collision.finishHoleBody){
+            isGameFinished = true
         }
         else{
             print("Error")
@@ -351,8 +382,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.lastUpdateTime = currentTime
             cameraNode.position = ballObject.position
         }
-        cameraNode.position = ballObject.position
-        
         
         gradientObject.position = cameraNode.position
         //print(ballObject.position)
@@ -361,7 +390,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let dt = currentTime - self.lastUpdateTime
         timeSinceGC += dt
         timeSinceStart += dt
-        if(timeSinceGC > 1){
+        if(timeSinceGC > 3){
             // garbage collector tasks go here
             timeSinceGC = 0
         }
@@ -370,8 +399,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for entity in self.entities {
             entity.update(deltaTime: dt)
         }
+        
+        // once ball is below the entrance, block it off
+        if(!isBelowEntrance && ballObject.position.y < CGFloat(0)){
+            isBelowEntrance = true
+            generateEntranceWall()
+        }
 
-        cameraNode.position = ballObject.position
+        // camera stops following ball after passing through the finish line
+        if(!isGameFinished){
+            cameraNode.position = ballObject.position
+        }
         
         self.lastUpdateTime = currentTime
     }
