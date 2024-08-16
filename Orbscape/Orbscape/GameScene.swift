@@ -35,7 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
-    let starChance = 100
+    let starChance = 25
     var difficultyLevel = 5
     
     var gradientObject: SKSpriteNode!
@@ -322,19 +322,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
             
-                do {
-                    if audioPlayer == nil {
-                        audioPlayer = try AVAudioPlayer(contentsOf: currentSound.sound)
-                        audioPlayer?.volume = soundVolume
-                    }
+            do {
+                if audioPlayer == nil {
+                    audioPlayer = try AVAudioPlayer(contentsOf: currentSound.sound)
                     audioPlayer?.volume = soundVolume
-                    audioPlayer?.play()
-                } catch {
-                    print(error.localizedDescription)
                 }
-//            }
-
-
+                audioPlayer?.volume = soundVolume
+                audioPlayer?.play()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
         else{
             print("Error")

@@ -118,8 +118,8 @@ var soundsList = [
         id: "Sound"
     ),
     SoundEffects(
-        sound: Bundle.main.url(forResource: "cowbell", withExtension: "wav")!,
-        name: "Cowbell",
+        sound: Bundle.main.url(forResource: "coin", withExtension: "wav")!,
+        name: "Coin",
         cost: 100,
         ind: 0,
         id: "Sound"
@@ -146,7 +146,7 @@ var soundsList = [
         id: "Sound"
     ),
     SoundEffects(
-        sound: Bundle.main.url(forResource: "pig", withExtension: "mp3")!,
+        sound: Bundle.main.url(forResource: "pig", withExtension: "wav")!,
         name: "Oink",
         cost: 100,
         ind: 0,
