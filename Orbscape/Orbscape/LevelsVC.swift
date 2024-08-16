@@ -28,16 +28,15 @@ class LevelsVC: UIGameplayVC {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tapToStartVC = segue.destination as? TapToStartVC
+        tapToStartVC!.levelDelegate = self
+
         if segue.identifier == "easySegue"{
-            tapToStartVC!.delegate = self
             tapToStartVC!.difficulty = 5
         }
         else if segue.identifier == "mediumSegue"{
-            tapToStartVC!.delegate = self
             tapToStartVC!.difficulty = 10
         }
         else if segue.identifier == "hardSegue"{
-            tapToStartVC!.delegate = self
             tapToStartVC!.difficulty = 20
         }
     }

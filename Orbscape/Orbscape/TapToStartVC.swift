@@ -28,7 +28,8 @@ class TapToStartVC: UIGameplayVC {
         let gameVC = segue.destination as? GameViewController
         if segue.identifier == "startSegue"{
             print("TTSVC: \(difficulty!)")
-            gameVC!.delegate = self
+            gameVC!.levelDelegate = levelDelegate
+            gameVC!.tapStartDelegate = self
             gameVC!.difficulty = difficulty!
         }
     }

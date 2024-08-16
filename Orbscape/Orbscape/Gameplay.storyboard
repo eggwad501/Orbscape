@@ -267,7 +267,7 @@
         <!--SETTINGS-->
         <scene sceneID="nx8-uM-9aC">
             <objects>
-                <viewController id="XcQ-Qx-ZWR" customClass="SettingsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsVC" id="XcQ-Qx-ZWR" customClass="SettingsVC" customModule="Orbscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jeB-Xc-Jfo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,7 +312,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Q1d-Ku-Rlz" kind="show" id="Mau-GK-xw9"/>
+                                    <segue destination="Q1d-Ku-Rlz" kind="show" id="Yvp-GQ-dAU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -397,7 +397,7 @@
                                             <outlet property="itemImage" destination="Uu0-q5-rjn" id="604-5j-Tzw"/>
                                             <outlet property="itemName" destination="xy6-tF-M50" id="n1B-S5-I6f"/>
                                             <outlet property="itemStatus" destination="oFX-nu-lPj" id="rq2-CQ-807"/>
-                                            <segue destination="FqY-Y7-nAR" kind="presentation" identifier="selectedIdentifier" modalPresentationStyle="overFullScreen" id="eXt-rY-jdu"/>
+                                            <segue destination="FqY-Y7-nAR" kind="presentation" identifier="selectedIdentifier" modalPresentationStyle="fullScreen" id="v9Y-KW-05s"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -488,10 +488,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4jR-T2-K8T">
                                 <rect key="frame" x="129" y="191" width="135" height="135"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="dMP-MK-jAt"/>
                                     <constraint firstAttribute="height" constant="135" id="giL-jU-AOl"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="b3Z-Ho-NiR" appends="YES" id="bcp-4T-FqY"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="esG-Pj-mtW"/>
@@ -516,9 +520,15 @@
                         <outlet property="iconView" destination="4jR-T2-K8T" id="pGy-xQ-JdH"/>
                         <outlet property="nameLabel" destination="oAT-70-2RY" id="46o-RT-8Gq"/>
                         <outlet property="starCountLabel" destination="Rcd-Xt-od2" id="SQ0-fy-8i5"/>
+                        <outlet property="tapOutlet" destination="b3Z-Ho-NiR" id="JWc-V1-Me0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EbU-Tc-dJx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="b3Z-Ho-NiR">
+                    <connections>
+                        <action selector="tapIconGestureWithRecognizer:" destination="FqY-Y7-nAR" id="f5G-9Z-l8W"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3453" y="-35"/>
         </scene>
@@ -655,7 +665,7 @@ Dr. William C. Bulko</string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="retryConfirmIdentifier" modalPresentationStyle="overFullScreen" id="23K-dN-4p2"/>
+                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="retryConfirmIdentifier" modalPresentationStyle="fullScreen" id="tBn-EI-X28"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJq-zu-64r">
@@ -665,6 +675,9 @@ Dr. William C. Bulko</string>
                                 <state key="normal" title="SETTINGS">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="settingButton:" destination="6ta-3b-5F9" eventType="touchUpInside" id="bH4-tc-tiH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9C-kF-d49">
                                 <rect key="frame" x="139" y="650" width="115" height="47"/>
@@ -713,7 +726,7 @@ Dr. William C. Bulko</string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="levelConfirmIdentifier" modalPresentationStyle="fullScreen" id="C82-V6-lRM"/>
+                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="levelConfirmIdentifier" modalPresentationStyle="fullScreen" id="jiM-uO-TDZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -984,8 +997,8 @@ to Move</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7n2-vL-3Mk"/>
-        <segue reference="23K-dN-4p2"/>
+        <segue reference="kG3-gO-3yY"/>
+        <segue reference="tBn-EI-X28"/>
         <segue reference="ubv-2u-5Ni"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -997,13 +1010,13 @@ to Move</string>
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="scrollViewTexturedBackgroundColor">
-            <color red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

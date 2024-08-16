@@ -168,6 +168,8 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
                 destination.itemCost = soundsList[selectedIndex].cost
                 destination.itemName = soundsList[selectedIndex].name
                 destination.itemImage = soundsList[selectedIndex].image
+                destination.itemAudio = soundsList[selectedIndex].sound
+
                 
             case CustomizeTypes.themes?:
                 destination.itemCost = themesList[selectedIndex].cost
@@ -177,7 +179,7 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
                 break
             }
                 
-            //destination.modalPresentationStyle = .overFullScreen
+            destination.modalPresentationStyle = .overFullScreen
             self.overlayBlurredBackgroundView()
         }
     }
