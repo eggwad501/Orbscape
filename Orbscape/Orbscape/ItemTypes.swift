@@ -41,6 +41,32 @@ class PurchasableItems {
         }
     }
     
+    func clearAllEntities(from context: NSManagedObjectContext) {
+        // List of all entity names
+        
+        guard let entityNames = context.persistentStoreCoordinator?.managedObjectModel.entitiesByName.keys else {
+                print("Unable to fetch entity names.")
+                return
+            }            
+            
+        // Iterate over each entity
+        for entityName in entityNames {
+            // Create a fetch request for each entity
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            
+            // Create a batch delete request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+            do {
+                try context.execute(batchDeleteRequest)
+                try context.save()
+            } catch {
+                print("Error clearing entity \(entityName): \(error)")
+            }
+        }
+    }
+    
     //for using above functions
     init(){
         name = ""

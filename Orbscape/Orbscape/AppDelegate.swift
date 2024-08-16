@@ -14,10 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
         localStore = PurchasableItems()
         
         let request: NSFetchRequest<Theme> = Theme.fetchRequest()
         do {
+            
+            //include this line to clear core data
+            //localStore.clearAllEntities(from: context)
+            
+            //creating core data
             let count = try context.count(for: request)
             if count == 0 {
                 // No data found, initialize default data
@@ -36,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let count = try context.count(for: requestTwo)
             if count == 0 {
+                print("reinitializing")
                 // No data found, initialize default data
                 for _ in 1...8 {
                     let newObject = Skin(context: context)
@@ -69,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let count = try context.count(for: requestFour)
             if count == 0 {
                 let newObject = Player(context: context)
-                newObject.stars = 0
+                newObject.stars = 1000
                 newObject.runTime = 0
                 localStore.saveContext()
             }
@@ -92,6 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
         }
+        
+        
         
         // Override point for customization after application launch.
         // PLay background music
