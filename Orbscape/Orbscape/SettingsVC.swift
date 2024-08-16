@@ -12,13 +12,22 @@ class SettingsVC: UIGameplayVC {
     @IBOutlet weak var soundSlider: UISlider!
     @IBOutlet weak var musicSlider: UISlider!
     var localStore: PurchasableItems!
+    
     var fromPause: Bool = false
+    var pauseVC = "pauseVC"
+    var gameDelegate: UIGameplayVC!
+    var levelDelegate: UIGameplayVC!
+    var tapStartDelegate: UIGameplayVC!
+    var pauseDelegate: UIGameplayVC!
+    var starCountRun: Int!
+    var timeRun: Float!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         soundSlider.value = soundVolume
         musicSlider.value = musicVolume
         localStore = PurchasableItems()
+        showNavigationBar()
     }
 
     @IBAction func changedSoundSlider(_ sender: Any) {
@@ -37,7 +46,20 @@ class SettingsVC: UIGameplayVC {
     
     override func viewWillDisappear(_ animated: Bool) {
         if fromPause {
-            navigationController
+            let destinationVC = storyboard!.instantiateViewController(withIdentifier: pauseVC) as! PauseVC
+            destinationVC.modalPresentationStyle = .overFullScreen
+            
+            destinationVC.gameDelegate = gameDelegate
+            destinationVC.levelDelegate = levelDelegate
+            destinationVC.tapStartDelegate = tapStartDelegate
+            destinationVC.starCountRun = starCountRun
+            destinationVC.timeRun = timeRun
+            
+            navigationController!.present(destinationVC, animated: true, completion: { })
+            destinationVC.view.backgroundColor = .clear
+            gameDelegate.overlayBlurredBackgroundView()
+
         }
     }
+    
 }

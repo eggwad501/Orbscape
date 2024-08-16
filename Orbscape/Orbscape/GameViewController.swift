@@ -167,7 +167,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         let destination = segue.destination as? EndGameVC {
             stopTimer()
             destination.gameDelegate = self
-            overlayBlurredBackgroundView()
+            overlayBlurredBackgroundView()                             
+            //dismiss(animated: true, completion: nil)
         }
     }
 }

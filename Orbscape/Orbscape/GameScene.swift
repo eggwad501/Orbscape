@@ -439,7 +439,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
             cameraNode.position = ballObject.position
         }
         else{
+            
             sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
+            
         }
         
         self.lastUpdateTime = currentTime
