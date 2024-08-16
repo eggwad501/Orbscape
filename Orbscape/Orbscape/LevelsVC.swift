@@ -11,6 +11,8 @@ class LevelsVC: UIGameplayVC {
     
     @IBOutlet weak var iconImageView: UIView!
     
+    var startIdentifier = "startIdentifier"
+    
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()

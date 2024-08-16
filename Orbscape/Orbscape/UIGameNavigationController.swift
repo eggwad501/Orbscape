@@ -14,23 +14,21 @@ class UIGameNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.additionalSafeAreaInsets.top = 60
-        let backButtonImage = UIImage(named: "backButton")
-        self.navigationBar.backIndicatorImage = backButtonImage
-        self.navigationBar.backIndicatorTransitionMaskImage = backButtonImage
-        
-        self.navigationBar.barTintColor = UIColor.clear
-        
+                
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = .clear
         appearance.titleTextAttributes = [
             .foregroundColor: UIColor.white, // Set the title color
-            .font: UIFont(name: "galvji", size: 37)
+            .font: UIFont(name: "galvji", size: 37)!
         ]
+        let backButtonImage = UIImage(named: "backButton")
+        appearance.setBackIndicatorImage(backButtonImage, transitionMaskImage: backButtonImage)
         
         // Apply this appearance when the scroll view's content reaches the edge
         self.navigationBar.scrollEdgeAppearance = appearance
         self.navigationBar.standardAppearance = appearance
+        
     }
     
     func removeViewController() {

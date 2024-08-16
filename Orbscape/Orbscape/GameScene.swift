@@ -26,6 +26,8 @@ var mazeArray: [[Int]]!
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var sceneDelegate: GameSceneDelegate?
+    
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -40,11 +42,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isBelowEntrance = false
     
     var gradientObject: SKSpriteNode!
-    
-    // Audio
-    var audioPlayer: AVAudioPlayer?
-    var lastCollisionTime: TimeInterval = 0
-    let soundCooldown: TimeInterval = 0.1
     
     var cameraNode = SKCameraNode()
     
@@ -188,7 +185,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // loads the maze into the game scene
-    func loadMaze(){
+    func loadMaze() {
         var subRow = 0
         var subCol = 0
         var rowIndex = 0
@@ -256,6 +253,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody | Collision.entranceBody | Collision.finishHoleBody
         ballObject.physicsBody?.affectedByGravity = true
         
+        ballObject.physicsBody?.friction = 0.5
+        
         ballObject.physicsBody?.restitution = 0.0
         ballObject.physicsBody?.linearDamping = 0.0
         
@@ -301,7 +300,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // generates a wall of variable length or height with fixed tile size at this position
     func generateWall(_ position: CGPoint, _ wall: CGRect, _ color: UIColor){
         let mazeWall = SKShapeNode(rect: wall)
-        mazeWall.fillColor = .white
+        mazeWall.fillColor = UIColor(cgColor: currentTheme.colors[0]).edgeColors()
+        mazeWall.lineWidth = 0.0
+        mazeWall.alpha = 0.8
+        
         mazeWall.physicsBody = SKPhysicsBody(polygonFrom: mazeWall.path!)
         mazeWall.physicsBody?.categoryBitMask = Collision.wallBody
         mazeWall.physicsBody?.collisionBitMask = Collision.ballBody
@@ -348,29 +350,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
-            
-//            let currentTime = CFAbsoluteTimeGetCurrent()
-//            
-//            if currentTime - lastCollisionTime < soundCooldown {
-//                return
-//            }
-//            lastCollisionTime = currentTime
-            
-            
-            if let player = audioPlayer, player.isPlaying {
-                return
-            } else {
-                do {
-                    if audioPlayer == nil {
-                        audioPlayer = try AVAudioPlayer(contentsOf: currentSound.sound)
-                        audioPlayer?.volume = soundVolume
-                    }
-                    audioPlayer?.volume = soundVolume
-                    audioPlayer?.play()
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
+            let soundFileName = currentSound.sound.lastPathComponent
+            playSound(named: soundFileName, volume: soundVolume)
         }
         else if(otherObject.categoryBitMask == Collision.finishHoleBody){
             isGameFinished = true
@@ -378,9 +359,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         else{
             print("Error")
         }
-    }    
+    }
+    
+    func playSound(named soundName: String, volume: Float) {
+        let soundAction = SKAction.playSoundFileNamed(soundName, waitForCompletion: false)
+        let volumeAction = SKAction.changeVolume(to: volume, duration: 0)
+        let sequence = SKAction.sequence([volumeAction, soundAction])
+        run(sequence)
+    }
     
     override func update(_ currentTime: TimeInterval) {
+        
+        // Add in end game logic
+        var cond = false
+        if (cond) {
+            sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
+        }
         
         // Called before each frame is rendered
         // Initialize _lastUpdateTime if it has not already been

@@ -12,7 +12,10 @@ class TapToStartVC: UIGameplayVC {
     var difficulty: Int!
     var delegate: UIGameplayVC?
     @IBOutlet weak var iconImageView: UIView!
-    
+    var toGameIdentifier = "toGameIdentifier"
+    var levelDelegate: UIGameplayVC!
+
+
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()

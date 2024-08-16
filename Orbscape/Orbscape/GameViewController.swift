@@ -11,7 +11,11 @@ import GameplayKit
 
 let displaySize: CGRect = UIScreen.main.bounds
 
-class GameViewController: UIGameplayVC {
+protocol GameSceneDelegate {
+    func triggerSegue(withIdentifier identifier: String)
+}
+
+class GameViewController: UIGameplayVC, GameSceneDelegate {
     
     var delegate: UIGameplayVC?
     var difficulty: Int!
@@ -21,7 +25,9 @@ class GameViewController: UIGameplayVC {
     @IBOutlet weak var pauseButton: UIButton!
     
     var pauseIdentifier = "pauseIdentifier"
-    
+    var endIdentifier = "endGameSegue"
+    var tapStartDelegate: UIGameplayVC!
+    var levelDelegate: UIGameplayVC!    
     override func viewDidLoad() {
         super.viewDidLoad()
         starCountLabel.text = "\(currentStarsCount) ★"
@@ -37,7 +43,8 @@ class GameViewController: UIGameplayVC {
                 view.showsPhysics = true
             }
             // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") as? GameScene{
+            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
+                scene.sceneDelegate = self
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                     
@@ -60,14 +67,22 @@ class GameViewController: UIGameplayVC {
             return .all
         }
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
+    
+    func triggerSegue(withIdentifier identifier: String) {
+        performSegue(withIdentifier: identifier, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == pauseIdentifier,
            let destination = segue.destination as? PauseVC {
+            destination.gameDelegate = self
+            destination.levelDelegate = levelDelegate
+            destination.tapStartDelegate = tapStartDelegate
+            destination.timeRun = Float(starCountLabel.text!)
+            destination.timeRun = Float(timerLabel.text!)
+            overlayBlurredBackgroundView()
+        } else if segue.identifier == endIdentifier,
+                  let destination = segue.destination as? EndGameVC {
             destination.gameDelegate = self
             overlayBlurredBackgroundView()
         }
