@@ -83,8 +83,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(cameraNode)
         camera = cameraNode
         
-        cameraNode.xScale = 2
-        cameraNode.yScale = 2
+        cameraNode.xScale = 0.5
+        cameraNode.yScale = 0.5
 
         // gravity manager construction
         manager.startAccelerometerUpdates()
