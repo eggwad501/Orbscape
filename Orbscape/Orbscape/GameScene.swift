@@ -25,6 +25,8 @@ var mazeArray: [[Int]]!
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var sceneDelegate: GameSceneDelegate?
+    
     var entities = [GKEntity]()
     var graphs = [String : GKGraph]()
     
@@ -40,8 +42,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Audio
     var audioPlayer: AVAudioPlayer?
-    var lastCollisionTime: TimeInterval = 0
-    let soundCooldown: TimeInterval = 0.1
     
     var cameraNode = SKCameraNode()
     
@@ -322,17 +322,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
             
-//            let currentTime = CFAbsoluteTimeGetCurrent()
-//            
-//            if currentTime - lastCollisionTime < soundCooldown {
-//                return
-//            }
-//            lastCollisionTime = currentTime
-            
-            
-//            if let player = audioPlayer, player.isPlaying {
-//                return
-//            } else {
                 do {
                     if audioPlayer == nil {
                         audioPlayer = try AVAudioPlayer(contentsOf: currentSound.sound)
@@ -353,6 +342,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }    
     
     override func update(_ currentTime: TimeInterval) {
+        
+        // Add in end game logic
+        var cond = false
+        if (cond) {
+            sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
+        }
         
         // Called before each frame is rendered
         // Initialize _lastUpdateTime if it has not already been

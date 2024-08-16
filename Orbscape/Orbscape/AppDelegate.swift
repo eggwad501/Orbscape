@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // PLay background music
+        BackgroundMusic.shared.playMusic()
+        
         return true
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        BackgroundMusic.shared.stopMusic()
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        BackgroundMusic.shared.playMusic()
     }
 
     // MARK: UISceneSession Lifecycle

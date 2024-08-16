@@ -8,6 +8,8 @@
 import UIKit
 
 class EndGameVC: UIGameplayVC {
+    
+    var gameDelegate: UIGameplayVC!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -27,5 +27,6 @@ class SettingsVC: UIGameplayVC {
     
     @IBAction func changedMusicSlider(_ sender: Any) {
         musicVolume = musicSlider.value
+        BackgroundMusic.shared.updateVolume()
     }
 }
