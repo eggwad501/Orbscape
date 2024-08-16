@@ -32,6 +32,8 @@ class EndGameVC: UIGameplayVC {
         collectedStarsLabel.text = "+ " + String(starCountRun) + "★"
         // We all need to update their total stars
         currentStarsCount = currentStarsCount + starCountRun
+        localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+        
     }
     
     // plays animation
