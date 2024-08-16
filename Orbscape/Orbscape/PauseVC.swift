@@ -8,10 +8,14 @@
 import UIKit
 
 class PauseVC: UIGameplayVC {
+    var levelDelegate: UIGameplayVC!
+    var tapStartDelegate: UIGameplayVC!
     var gameDelegate: UIGameplayVC!
     var starCountRun: Int!
     var timeRun: Float!
-    var confirmIdentifier = "confirmIdentifier"
+    var retryConfirmIdentifier = "retryConfirmIdentifier"
+    var levelConfirmIdentifier = "levelConfirmIdentifier"
+
     
     // additional setup after loading the view
     override func viewDidLoad() {
@@ -33,13 +37,21 @@ class PauseVC: UIGameplayVC {
     
     // sent over current vc to pause vc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == confirmIdentifier,
+        if segue.identifier == retryConfirmIdentifier || segue.identifier == levelConfirmIdentifier,
            let destination = segue.destination as? QuitConfirmVC {
+            destination.levelDelegate = levelDelegate
             destination.gameDelegate = gameDelegate
+            destination.tapStartDelegate = tapStartDelegate
             destination.pauseDelegate = self
             destination.starCountRun = self.starCountRun
             destination.timeRun = self.timeRun
             self.overlayBlurredBackgroundView()
+            
+            if segue.identifier == levelConfirmIdentifier {
+                destination.quitLevel = true
+            } else {
+                destination.quitLevel = false
+            }
         }
     }
     

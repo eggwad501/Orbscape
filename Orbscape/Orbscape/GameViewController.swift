@@ -18,6 +18,10 @@ class GameViewController: UIGameplayVC {
     @IBOutlet weak var pauseButton: UIButton!
     
     var pauseIdentifier = "pauseIdentifier"
+    var tapStartDelegate: UIGameplayVC!
+    var levelDelegate: UIGameplayVC!
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,8 @@ class GameViewController: UIGameplayVC {
         if segue.identifier == pauseIdentifier,
            let destination = segue.destination as? PauseVC {
             destination.gameDelegate = self
+            destination.levelDelegate = levelDelegate
+            destination.tapStartDelegate = tapStartDelegate
             destination.timeRun = Float(starCountLabel.text!)
             destination.timeRun = Float(timerLabel.text!)
             self.overlayBlurredBackgroundView()
