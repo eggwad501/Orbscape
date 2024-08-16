@@ -20,7 +20,7 @@ extension UIColor {
         if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
             return UIColor(
                 red: min(red * 0.9, 1.0),
-                green: min(green * 0.9, 1.0),
+                green: min(green * 0.8, 1.0),
                 blue: min(blue * 0.9, 1.0),
                 alpha: alpha)
          } else {

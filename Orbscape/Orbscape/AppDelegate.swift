@@ -14,6 +14,85 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        localStore = PurchasableItems()
+        
+        let request: NSFetchRequest<Theme> = Theme.fetchRequest()
+        do {
+            let count = try context.count(for: request)
+            if count == 0 {
+                // No data found, initialize default data
+                for _ in 1...8 {
+                    let newObject = Theme(context: context)
+                    newObject.purchased = false
+                    newObject.equippedIndex = 0
+                }
+                localStore.saveContext()
+            }
+        } catch {
+            print("Failed to fetch count: \(error.localizedDescription)")
+        }
+        
+        let requestTwo: NSFetchRequest<Skin> = Skin.fetchRequest()
+        do {
+            let count = try context.count(for: requestTwo)
+            if count == 0 {
+                // No data found, initialize default data
+                for _ in 1...8 {
+                    let newObject = Skin(context: context)
+                    newObject.purchased = false
+                    newObject.equippedIndex = 0
+                }
+                localStore.saveContext()
+            }
+        } catch {
+            print("Failed to fetch count: \(error.localizedDescription)")
+        }
+        
+        let requestThree: NSFetchRequest<Sound> = Sound.fetchRequest()
+        do {
+            let count = try context.count(for: requestThree)
+            if count == 0 {
+                // No data found, initialize default data
+                for _ in 1...8 {
+                    let newObject = Sound(context: context)
+                    newObject.purchased = false
+                    newObject.equippedIndex = 0
+                }
+                localStore.saveContext()
+            }
+        } catch {
+            print("Failed to fetch count: \(error.localizedDescription)")
+        }
+        
+        let requestFour: NSFetchRequest<Player> = Player.fetchRequest()
+        do {
+            let count = try context.count(for: requestFour)
+            if count == 0 {
+                let newObject = Player(context: context)
+                newObject.stars = 0
+                newObject.runTime = 0
+                localStore.saveContext()
+            }
+        } catch {
+            print("Failed to fetch count: \(error.localizedDescription)")
+        }
+        
+        let requestFive: NSFetchRequest<Insets> = Insets.fetchRequest()
+        do {
+            let count = try context.count(for: requestFive)
+            if count == 0 {
+                // No data found, initialize default data
+                for _ in 1...8 {
+                    let newObject = Insets(context: context)
+                    newObject.musicVal = 0.5
+                    newObject.soundVal = 0.5
+                }
+                localStore.saveContext()
+            }
+        } catch {
+            print("Failed to fetch count: \(error.localizedDescription)")
+        }
+        
         // Override point for customization after application launch.
         // PLay background music
         BackgroundMusic.shared.playMusic()

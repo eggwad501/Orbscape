@@ -33,8 +33,8 @@ var currentSound: SoundEffects = soundsList[localStore.retrieveItem(identifier: 
 var currentStarsCount = localStore.retrieveItem(identifier: "Player")[0].value(forKey: "stars") as! Int
 
 // Needs CORE DATA
-var soundVolume: Float = localStore.retrieveItem(identifier: "Insets")[1].value(forKey: "soundVal") as! Float
-var musicVolume: Float = localStore.retrieveItem(identifier: "Insets")[1].value(forKey: "musicVal") as! Float
+var soundVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "soundVal") as! Float
+var musicVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "musicVal") as! Float
 
 var skinsList = [
     Skins(
