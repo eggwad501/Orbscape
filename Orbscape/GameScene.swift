@@ -89,16 +89,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         cameraNode.yScale = 0.5
 
         // gravity manager construction
-        manager.startAccelerometerUpdates()
-        manager.accelerometerUpdateInterval = 0.15
-        manager.startAccelerometerUpdates(to: OperationQueue.main) {
-            (data, error) in
-            if let error = error {
-                print("Accelerometer error: \(error.localizedDescription)")
-            } else if let acceleration = data?.acceleration {
-                self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
-            }
-        }
+//        manager.startAccelerometerUpdates()
+//        manager.accelerometerUpdateInterval = 0.15
+//        manager.startAccelerometerUpdates(to: OperationQueue.main) {
+//            (data, error) in
+//            if let error = error {
+//                print("Accelerometer error: \(error.localizedDescription)")
+//            } else if let acceleration = data?.acceleration {
+//                self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
+//            }
+//        }
         
         /*
          String compares are cheaper than expected, keep the string
@@ -120,16 +120,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         let squareSize = difficultyLevel * 4 - 1
         let ballStartPos = (squareSize * 64 / 2 - 32, 100)
         generateBall(ballStartPos)
-        
-        // close off the entrance
-        
-        
+           
         // makes a maze of some difficulty
         startTime = CFAbsoluteTimeGetCurrent()
         makeSquareMaze(difficultyLevel)
         endTime = CFAbsoluteTimeGetCurrent()
         elapsedTime(startTime, endTime, "Toal Maze Time taken")
-        
         
         // create a gradient
         let gradientLayer = CAGradientLayer()
@@ -152,8 +148,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(gradientObject)
     }
     
-    // makes a maze
-    // its size depends on the entered difficult
+    // gravity manager is used for gyro controls
+    func createGravityManager(){
+        manager.startAccelerometerUpdates()
+        manager.accelerometerUpdateInterval = 0.15
+        manager.startAccelerometerUpdates(to: OperationQueue.main) {
+            (data, error) in
+            if let error = error {
+                print("Accelerometer error: \(error.localizedDescription)")
+            } else if let acceleration = data?.acceleration {
+                self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
+            }
+        }
+    }
+    
+    // makes a maze, its size depends on the entered difficult
     func makeSquareMaze(_ difficulty: Int){
         let mazeMaker = MazeMaker()
         // magic number to avoid double-walls
@@ -387,6 +396,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         if(otherObject.categoryBitMask == Collision.entranceBody) {
             otherObject.categoryBitMask = Collision.wallBody
             otherObject.node?.isHidden = false
+            createGravityManager()
         }
     }
     
