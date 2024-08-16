@@ -15,7 +15,7 @@ Special Instructions: IOS should be 17.5, Iphone should 4+. Must be played on Ip
 | Feature | Description | Contribution |
 |----------|----------|----------|
 | Design | Original design of app structure | 25% Pranav, 25% Nhat, 25% Ronghua, 25% Nick |
-| Presentation | Presentation about app and demo | 25% Pranav, 25% Nhat, 25% Ronghua, 25% Nick |
+| Presentation/Documentation | Presentation about app and demo | 25% Pranav, 25% Nhat, 25% Ronghua, 25% Nick |
 | Core Data | End to end core data. Saves all item(and statuses), settings, and optional functionality for resetting core data | 100% Pranav |
 | Maze Generation & Collision | Maze generation algorithms, handled collision of ball with stars and walls | 100% Nhat |
 | Sounds/music, timer/resources, gyro controls | Integrated sounds/music in app. Enabled countdown during run. Build gyro controls for moving ball  | 100% Nick |
