@@ -8,6 +8,7 @@
 import UIKit
 
 class QuitConfirmVC: UIGameplayVC {
+    
     var levelDelegate: UIGameplayVC!
     var tapStartDelegate: UIGameplayVC!
     var gameDelegate: UIGameplayVC!
@@ -23,6 +24,9 @@ class QuitConfirmVC: UIGameplayVC {
     
     // dismiss to tap to start vc
     @IBAction func quitButton(_ sender: Any) {
+        
+        // WE need to stop the timer somewhere in here
+        
         gameDelegate.dismiss(animated: true, completion: nil)
         pauseDelegate.removeBlurredBackgroundView()
         gameDelegate.removeBlurredBackgroundView()
