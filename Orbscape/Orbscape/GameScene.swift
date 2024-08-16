@@ -40,9 +40,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var gradientObject: SKSpriteNode!
     
-    // Audio
-    var audioPlayer: AVAudioPlayer?
-    
     var cameraNode = SKCameraNode()
     
     // performance testers
@@ -322,21 +319,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             otherObject.node?.removeFromParent()
             // TODO: add star to player's account
             
-            do {
-                if audioPlayer == nil {
-                    audioPlayer = try AVAudioPlayer(contentsOf: currentSound.sound)
-                    audioPlayer?.volume = soundVolume
-                }
-                audioPlayer?.volume = soundVolume
-                audioPlayer?.play()
-            } catch {
-                print(error.localizedDescription)
-            }
+            let soundFileName = currentSound.sound.lastPathComponent
+            playSound(named: soundFileName, volume: soundVolume)
         }
         else{
             print("Error")
         }
-    }    
+    }
+    
+    func playSound(named soundName: String, volume: Float) {
+        let soundAction = SKAction.playSoundFileNamed(soundName, waitForCompletion: false)
+        let volumeAction = SKAction.changeVolume(to: volume, duration: 0)
+        let sequence = SKAction.sequence([volumeAction, soundAction])
+        run(sequence)
+    }
     
     override func update(_ currentTime: TimeInterval) {
         
