@@ -14,90 +14,12 @@ let context = appDelegate.persistentContainer.viewContext
 
 class HomeScreenVC: UIGameplayVC{
     
-    func saveContext () {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
-    
-    
     @IBOutlet weak var mazeImage: UIImageView!
     var balls: Array<ballAnimationView>! = []
+    var localStore: PurchasableItems!
 
     // additional setup after loading the view
     override func viewDidLoad() {
-        
-        let request: NSFetchRequest<Theme> = Theme.fetchRequest()
-        do {
-            let count = try context.count(for: request)
-            if count == 0 {
-                // No data found, initialize default data
-                for _ in 1...8 {
-                    let newObject = Theme(context: context)
-                    newObject.purchased = false
-                    newObject.equippedIndex = 0
-                }
-                saveContext()
-            }
-        } catch {
-            print("Failed to fetch count: \(error.localizedDescription)")
-        }
-        
-        let requestTwo: NSFetchRequest<Skin> = Skin.fetchRequest()
-        do {
-            let count = try context.count(for: requestTwo)
-            if count == 0 {
-                // No data found, initialize default data
-                for _ in 1...8 {
-                    let newObject = Skin(context: context)
-                    newObject.purchased = false
-                    newObject.equippedIndex = 0
-                }
-                saveContext()
-            }
-        } catch {
-            print("Failed to fetch count: \(error.localizedDescription)")
-        }
-        
-        let requestThree: NSFetchRequest<Sound> = Sound.fetchRequest()
-        do {
-            let count = try context.count(for: requestThree)
-            if count == 0 {
-                // No data found, initialize default data
-                for _ in 1...8 {
-                    let newObject = Sound(context: context)
-                    newObject.purchased = false
-                    newObject.equippedIndex = 0
-                }
-                saveContext()
-            }
-        } catch {
-            print("Failed to fetch count: \(error.localizedDescription)")
-        }
-        
-        let requestFour: NSFetchRequest<Player> = Player.fetchRequest()
-        do {
-            let count = try context.count(for: requestFour)
-            if count == 0 {
-                // No data found, initialize default data
-                for _ in 1...8 {
-                    let newObject = Player(context: context)
-                    newObject.stars = 1000
-                    newObject.runTime = 0
-                }
-                saveContext()
-            }
-        } catch {
-            print("Failed to fetch count: \(error.localizedDescription)")
-        }
         
         balls.append(self.createBalls(color: UIColor.white, horzPos: -20, distance: 250, duration: 2.5))
         balls.append(self.createBalls(color: UIColor.white, horzPos: 90, distance: 120, duration: 1.5))

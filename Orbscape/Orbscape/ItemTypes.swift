@@ -28,6 +28,26 @@ class PurchasableItems {
         return fetchedResults!
     }
     
+    func saveContext () {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    //for using above functions
+    init(){
+        name = ""
+        cost = 0
+    }
+    
+    //for actual initializiation
     init (name: String, cost: Int, ind: Int, id: String) {
         self.name = name
         self.cost = cost
