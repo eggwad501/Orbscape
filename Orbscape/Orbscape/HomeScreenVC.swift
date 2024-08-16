@@ -14,26 +14,14 @@ let context = appDelegate.persistentContainer.viewContext
 
 class HomeScreenVC: UIGameplayVC{
     
-    func saveContext () {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
-    
-    
     @IBOutlet weak var mazeImage: UIImageView!
     var balls: Array<ballAnimationView>! = []
+    var localStore: PurchasableItems!
 
     // additional setup after loading the view
     override func viewDidLoad() {
+        
+        localStore = PurchasableItems()
         
         let request: NSFetchRequest<Theme> = Theme.fetchRequest()
         do {
@@ -45,7 +33,7 @@ class HomeScreenVC: UIGameplayVC{
                     newObject.purchased = false
                     newObject.equippedIndex = 0
                 }
-                saveContext()
+                localStore.saveContext()
             }
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
@@ -61,7 +49,7 @@ class HomeScreenVC: UIGameplayVC{
                     newObject.purchased = false
                     newObject.equippedIndex = 0
                 }
-                saveContext()
+                localStore.saveContext()
             }
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
@@ -77,7 +65,7 @@ class HomeScreenVC: UIGameplayVC{
                     newObject.purchased = false
                     newObject.equippedIndex = 0
                 }
-                saveContext()
+                localStore.saveContext()
             }
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
@@ -87,13 +75,26 @@ class HomeScreenVC: UIGameplayVC{
         do {
             let count = try context.count(for: requestFour)
             if count == 0 {
+                let newObject = Player(context: context)
+                newObject.stars = 0
+                newObject.runTime = 0
+                localStore.saveContext()
+            }
+        } catch {
+            print("Failed to fetch count: \(error.localizedDescription)")
+        }
+        
+        let requestFive: NSFetchRequest<Insets> = Insets.fetchRequest()
+        do {
+            let count = try context.count(for: requestFive)
+            if count == 0 {
                 // No data found, initialize default data
                 for _ in 1...8 {
-                    let newObject = Player(context: context)
-                    newObject.stars = 1000
-                    newObject.runTime = 0
+                    let newObject = Insets(context: context)
+                    newObject.musicVal = 0.5
+                    newObject.soundVal = 0.5
                 }
-                saveContext()
+                localStore.saveContext()
             }
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
