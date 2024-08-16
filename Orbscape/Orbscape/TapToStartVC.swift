@@ -9,6 +9,8 @@ import UIKit
 
 class TapToStartVC: UIGameplayVC {
 
+    var difficulty: Int!
+    var delegate: UIGameplayVC?
     @IBOutlet weak var iconImageView: UIView!
     var toGameIdentifier = "toGameIdentifier"
     var levelDelegate: UIGameplayVC!
@@ -23,12 +25,11 @@ class TapToStartVC: UIGameplayVC {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == toGameIdentifier,
-           let destination = segue.destination as? GameViewController {
-            destination.tapStartDelegate = self
-            destination.levelDelegate = levelDelegate
+        let gameVC = segue.destination as? GameViewController
+        if segue.identifier == "startSegue"{
+            print("TTSVC: \(difficulty!)")
+            gameVC!.delegate = self
+            gameVC!.difficulty = difficulty!
         }
-
-
     }
 }

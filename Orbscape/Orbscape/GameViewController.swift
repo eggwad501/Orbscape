@@ -17,6 +17,9 @@ protocol GameSceneDelegate {
 
 class GameViewController: UIGameplayVC, GameSceneDelegate {
     
+    var delegate: UIGameplayVC?
+    var difficulty: Int!
+    
     @IBOutlet weak var starCountLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel! // TODO: update timer
     @IBOutlet weak var pauseButton: UIButton!
@@ -31,7 +34,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
         
         if let view = self.view as! SKView? {
-            let debug = false
+            let debug = true
+            print("GVC: \(difficulty!)")
             if(debug){
                 view.showsFPS = true
                 view.showsNodeCount = true
@@ -45,7 +49,9 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
                 scene.scaleMode = .aspectFill
                     
                 // Present the scene
+                scene.difficultyLevel = difficulty
                 view.presentScene(scene)
+                scene.difficultyLevel = difficulty
             }
             view.ignoresSiblingOrder = true
         }
