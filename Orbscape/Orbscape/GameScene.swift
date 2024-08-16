@@ -80,8 +80,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(cameraNode)
         camera = cameraNode
         
-        cameraNode.xScale = 0.5
-        cameraNode.yScale = 0.5
+        cameraNode.xScale = 2
+        cameraNode.yScale = 2
 
         // gravity manager construction
         manager.startAccelerometerUpdates()
@@ -267,8 +267,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let startLine = CGRect(x: mazeSpace / 2 - tileSize, y: 0 + tileSize/2, width: tileSize, height: -tileSize)
         print("Mazespace: \(mazeSpace)")
         let startWall = SKShapeNode(rect: startLine)
+        startWall.fillColor = UIColor(cgColor: currentTheme.colors[0]).edgeColors()
+        startWall.lineWidth = 0.0
+        startWall.alpha = 0.8
         startWall.isHidden = true
-        startWall.fillColor = .purple
         startWall.physicsBody = SKPhysicsBody(polygonFrom:  startWall.path!)
         startWall.physicsBody?.categoryBitMask = Collision.entranceBody
         startWall.physicsBody?.collisionBitMask = Collision.ballBody
