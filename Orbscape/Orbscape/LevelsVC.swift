@@ -11,6 +11,8 @@ class LevelsVC: UIGameplayVC {
     
     @IBOutlet weak var iconImageView: UIView!
     
+    var startIdentifier = "startIdentifier"
+    
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,5 +24,13 @@ class LevelsVC: UIGameplayVC {
     // play ball animation
     override func viewWillAppear(_ animated: Bool) {
         ballAnimation(view: self.iconImageView)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == startIdentifier,
+           let destination = segue.destination as? TapToStartVC {
+            destination.levelDelegate = self
+
+        }
     }
 }
