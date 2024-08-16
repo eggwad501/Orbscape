@@ -10,13 +10,12 @@ import UIKit
 class SettingsVC: UIGameplayVC {
 
     @IBOutlet weak var soundSlider: UISlider!
-    
     @IBOutlet weak var musicSlider: UISlider!
     var localStore: PurchasableItems!
+    var fromPause: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         soundSlider.value = soundVolume
         musicSlider.value = musicVolume
         localStore = PurchasableItems()
@@ -34,5 +33,11 @@ class SettingsVC: UIGameplayVC {
         BackgroundMusic.shared.updateVolume()
         localStore.retrieveItem(identifier: "Insets")[0].setValue(musicSlider.value, forKey: "musicVal")
         localStore.saveContext()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if fromPause {
+            navigationController
+        }
     }
 }

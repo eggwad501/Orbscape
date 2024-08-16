@@ -66,10 +66,11 @@ class PauseVC: UIGameplayVC {
     
     // setting button
     @IBAction func settingButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         gameDelegate.removeBlurredBackgroundView()
         
         let destinationViewController = storyboard!.instantiateViewController(withIdentifier: settingsVC) as! SettingsVC
+        
         gameDelegate.navigationController!.pushViewController(destinationViewController, animated: true)
     }
     
