@@ -1,5 +1,6 @@
+Application Name: Orbscape:
 Group Members: Nhat Tran, Nicholas Ensey, Pranav Srinivasan, Ronghua Wang
-Application Name: Orbscape
+
 
 General Description:
 Our app is a game where the player controls a ball, utilizing the phone’s gyro controls, to complete mazes. More specifically, as the player tilts and rotates their phone, rotating the maze, the ball moves along the maze as gravity pulls it down. There will be different maze levels that the player can pick from, each varying in difficulty. The goal of the game is to complete the maze as fast as possible while collecting stars, our game’s currency, along the way. The player will have completed the level upon reaching the exit, wherein the player will be rewarded with additional star currencies based on their completion time. 
