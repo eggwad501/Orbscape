@@ -407,17 +407,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // once ball is below the entrance, block it off
-        if(!isBelowEntrance && ballObject.position.y < CGFloat(tileSize / 2)){
-            print("Hello!!!")
+        if(!isBelowEntrance && ballObject.position.y < CGFloat(0)){
             isBelowEntrance = true
-            
             generateEntranceWall()
         }
 
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){
             cameraNode.position = ballObject.position
-            print(ballObject.position)
         }
         
         self.lastUpdateTime = currentTime
