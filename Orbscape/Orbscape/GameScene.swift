@@ -47,6 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     let starChance = 25
     var difficultyLevel: Int!
     var isGameFinished = false
+    var gameEnded = false
     var isBelowEntrance = false
     
     var gradientObject: SKSpriteNode!
@@ -438,8 +439,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){
             cameraNode.position = ballObject.position
-        }
-        else{
+        } else if !gameEnded {
+            gameEnded = true
             sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
         }
         
