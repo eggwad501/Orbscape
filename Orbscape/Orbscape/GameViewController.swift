@@ -25,7 +25,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     var difficulty: Int!
     
     @IBOutlet weak var starCountLabel: UILabel!
-    @IBOutlet weak var timerLabel: UILabel! // TODO: update timer
+    @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     
     var gameScene: SKScene?
@@ -34,6 +34,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     var startTime: Date?
     private var elapsedTime: TimeInterval = 0
     private var isPaused: Bool = false
+    var starCount: Int!
     
     var pauseIdentifier = "pauseIdentifier"
     var endIdentifier = "endGameSegue"
@@ -92,6 +93,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     
     func updateStarCount(to count: Int) {
         starCountLabel.text = "\(count) ★"
+        starCount = count
     }
     
     func setupTimer() {
@@ -158,15 +160,15 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             destination.gameDelegate = self
             destination.levelDelegate = levelDelegate
             destination.tapStartDelegate = tapStartDelegate
-            
-            // We should just pass in the text, not the actual values. It'd be easier
-            destination.starCountRun = Int(starCountLabel.text!)
-            destination.timeRun = Float(timerLabel.text!)
+            destination.starCountRun = starCount
+            destination.timeRun = timerLabel.text
             overlayBlurredBackgroundView()
         } else if segue.identifier == endIdentifier,
         let destination = segue.destination as? EndGameVC {
             stopTimer()
             destination.gameDelegate = self
+            destination.starCountRun = starCount
+            destination.timeRun = timerLabel.text
             overlayBlurredBackgroundView()
         }
     }
