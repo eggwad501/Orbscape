@@ -75,7 +75,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
                 // Present the scene
                 scene.difficultyLevel = difficulty
                 view.presentScene(scene)
-                
             }
             view.ignoresSiblingOrder = true
         }

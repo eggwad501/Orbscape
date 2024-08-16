@@ -74,6 +74,10 @@ class MazeMaker: MazeGenerator{
         }
     }
     
+    func generateEnemies(){
+        
+    }
+    
     // returns the amount of free space found in the maze
     func calcFreeSpace(_ maze: [[Int]]) -> Int {
         var r = 0

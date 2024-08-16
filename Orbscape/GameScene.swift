@@ -16,6 +16,8 @@ struct Collision {
     static let starBody: UInt32 = 0x1 << 2
     static let finishHoleBody: UInt32 = 0x1 << 3
     static let entranceBody: UInt32 = 0x1 << 4
+    static let enemyBody: UInt32 = 0x1 << 5
+    static let none: UInt32 = 0x1 << 6
 }
 
 // requests MazeMaker to generate a maze for the game
@@ -272,6 +274,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         ballObject.physicsBody?.isDynamic = true
     }
     
+    // enemies will be hidden and static until the player enters the maze
+    func generateEnemy(){
+        
+    }
+    
     // generates the wall to block off the entrance
     func generateEntranceWall(){
         let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
@@ -352,7 +359,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     // runs when the ball collides or makes contact with something else
     func didBegin(_ contact: SKPhysicsContact) {
         let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
-        let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
+        let otherObject = (contact.bodyB.categoryBitMask != Collision.ballBody || contact.bodyB.categoryBitMask != Collision.enemyBody) ? contact.bodyB : contact.bodyA
+        let enemyObjectA = contact.bodyA.categoryBitMask == Collision.enemyBody ? contact.bodyA : contact.bodyB
+        let enemyObjectB = contact.bodyB.categoryBitMask == Collision.enemyBody ? contact.bodyB : contact.bodyA
         
         // Handle collision between ball and wall
         // TODO: add sfx when colliding with wall or star
