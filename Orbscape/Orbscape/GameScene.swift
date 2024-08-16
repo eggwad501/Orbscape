@@ -194,7 +194,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // loads the maze into the game scene
-    func loadMaze(){
+    func loadMaze() {
         var subRow = 0
         var subCol = 0
         var rowIndex = 0
@@ -271,7 +271,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // generates a wall of variable length or height with fixed tile size at this position
     func generateWall(_ position: CGPoint, _ wall: CGRect, _ color: UIColor){
         let mazeWall = SKShapeNode(rect: wall)
-        mazeWall.fillColor = .white
+        mazeWall.fillColor = UIColor(cgColor: currentTheme.colors[0]).edgeColors()
+        mazeWall.lineWidth = 0.0
+        mazeWall.alpha = 0.8
+        
         mazeWall.physicsBody = SKPhysicsBody(polygonFrom: mazeWall.path!)
         mazeWall.physicsBody?.categoryBitMask = Collision.wallBody
         mazeWall.physicsBody?.collisionBitMask = Collision.ballBody

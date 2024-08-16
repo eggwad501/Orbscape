@@ -12,27 +12,29 @@ import CoreData
 
 // the following will be saved in coredata
 
-func retrieveItem(identifier: String) -> [NSManagedObject] {
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
-    var fetchedResults: [NSManagedObject]? = nil
-    
-    do {
-        try fetchedResults = context.fetch(request) as? [NSManagedObject]
-    } catch {
-        print("Error occured while retrieving data")
-        abort()
-    }
-    return fetchedResults!
-}
+//func retrieveItem(identifier: String) -> [NSManagedObject] {
+//    let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
+//    var fetchedResults: [NSManagedObject]? = nil
+//    
+//    do {
+//        try fetchedResults = context.fetch(request) as? [NSManagedObject]
+//    } catch {
+//        print("Error occured while retrieving data")
+//        abort()
+//    }
+//    return fetchedResults!
+//}
 
-var currentTheme: Themes = themesList[retrieveItem(identifier: "Theme")[1].value(forKey: "equippedIndex") as! Int]
-var currentSkin: Skins = skinsList[retrieveItem(identifier: "Skin")[1].value(forKey: "equippedIndex") as! Int]
-var currentSound: SoundEffects = soundsList[retrieveItem(identifier: "Sound")[1].value(forKey: "equippedIndex") as! Int]
-var currentStarsCount = retrieveItem(identifier: "Player")[0].value(forKey: "stars") as! Int
+var localStore = PurchasableItems()
+
+var currentTheme: Themes = themesList[localStore.retrieveItem(identifier: "Theme")[1].value(forKey: "equippedIndex") as! Int]
+var currentSkin: Skins = skinsList[localStore.retrieveItem(identifier: "Skin")[1].value(forKey: "equippedIndex") as! Int]
+var currentSound: SoundEffects = soundsList[localStore.retrieveItem(identifier: "Sound")[1].value(forKey: "equippedIndex") as! Int]
+var currentStarsCount = localStore.retrieveItem(identifier: "Player")[0].value(forKey: "stars") as! Int
 
 // Needs CORE DATA
-var soundVolume: Float = 0.5
-var musicVolume: Float = 0.5
+var soundVolume: Float = localStore.retrieveItem(identifier: "Insets")[1].value(forKey: "soundVal") as! Float
+var musicVolume: Float = localStore.retrieveItem(identifier: "Insets")[1].value(forKey: "musicVal") as! Float
 
 var skinsList = [
     Skins(

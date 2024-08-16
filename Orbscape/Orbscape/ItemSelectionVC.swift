@@ -180,9 +180,6 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
             //destination.modalPresentationStyle = .overFullScreen
             self.overlayBlurredBackgroundView()
         }
-        if segue.identifier == selectedIdentifier {
-            
-        }
     }
     
     // immediate update of the background to the selected colors

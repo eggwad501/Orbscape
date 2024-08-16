@@ -23,7 +23,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     
     var pauseIdentifier = "pauseIdentifier"
     var endIdentifier = "endGameSegue"
-    
+    var tapStartDelegate: UIGameplayVC!
+    var levelDelegate: UIGameplayVC!    
     override func viewDidLoad() {
         super.viewDidLoad()
         starCountLabel.text = "\(currentStarsCount) ★"
@@ -60,10 +61,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             return .all
         }
     }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
     func triggerSegue(withIdentifier identifier: String) {
         performSegue(withIdentifier: identifier, sender: self)
@@ -73,6 +70,10 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         if segue.identifier == pauseIdentifier,
            let destination = segue.destination as? PauseVC {
             destination.gameDelegate = self
+            destination.levelDelegate = levelDelegate
+            destination.tapStartDelegate = tapStartDelegate
+            destination.timeRun = Float(starCountLabel.text!)
+            destination.timeRun = Float(timerLabel.text!)
             overlayBlurredBackgroundView()
         } else if segue.identifier == endIdentifier,
                   let destination = segue.destination as? EndGameVC {
