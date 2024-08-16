@@ -27,7 +27,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     var pauseIdentifier = "pauseIdentifier"
     var endIdentifier = "endGameSegue"
     var tapStartDelegate: UIGameplayVC!
-    var levelDelegate: UIGameplayVC!    
+    var levelDelegate: UIGameplayVC!   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         starCountLabel.text = "\(currentStarsCount) ★"
