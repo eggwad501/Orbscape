@@ -22,13 +22,16 @@ class PauseVC: UIGameplayVC {
     var levelConfirmIdentifier = "levelConfirmIdentifier"
     var settingIdentifier = "settingIdentifier"
     var settingsVC = "settingsVC"
-
     
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
         self.popoverPresentationController?.backgroundColor = UIColor.clear
         
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("PauseVC died")
     }
     
     override func viewWillAppear(_ animated: Bool) {
