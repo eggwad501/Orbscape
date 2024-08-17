@@ -28,14 +28,14 @@ Special Instructions:
 |----------|----------|----------|
 | Design | Original design of app structure | 25% Pranav, 25% Nhat, 25% Ronghua, 25% Nick |
 | Presentation/Documentation | Presentation about app and demo | 25% Pranav, 25% Nhat, 25% Ronghua, 25% Nick |
-| Core Data | End to end core data. Saves all item (and statuses), settings, and optional functionality for resetting core data | 100% Pranav |
-| Maze Generator | Maze generation for walls and stars, entrance and exit holes | 100% Nhat |
+| Core Data | End to end core data. Saves selected and purchasable items and its statuses, settings, star counts, and optional functionality for resetting core data | 100% Pranav |
+| Maze Generator | Maze generation for walls and stars, entrance and exit holes, and its optimization | 100% Nhat |
 | Collision | Handling collision between ball, walls, and stars | 100% Nhat | 
 | Sounds & Music | Integrated sound effects on collision with stars using SKAction. Integrated background music across all views using AVFAudio. | 100% Nick |
 | Timer | Created countdown timer that updates the Gameplay UI and EndGameVC and also functions with pausing and resuming | 100% Nick |
 | Gyro Controls | Utilized core motion to allow the player to control the gravity of the world based on accelerometer data | 100% Nick |
 | UI/UX & VC integration | End to end UI/UX design including integrated all view controllers with correct animation | 100% Ronghua |
 | Custom Items Table Selection | Developed dynamic table views and selection, reused for various customization options | 100% Ronghua |
-
+| Purchasing Conditions | Check if purchasing can be made; update stars after purchasing, update UI image | 50% Pranav, 50% Ronghua |
 
 
