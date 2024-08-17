@@ -48,10 +48,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     var levelDelegate: UIGameplayVC!   
     var homeDelegete: UIGameplayVC!
 
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
         pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
         
         if let view = self.view as! SKView? {

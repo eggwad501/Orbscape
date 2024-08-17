@@ -18,7 +18,7 @@ class EndGameVC: UIGameplayVC {
     var gameDelegate: UIGameplayVC!
     var homeDelegete: UIGameplayVC!
     var balls: Array<UIView> = []
-    var starCountRun: Int!
+    var starCountRun: Int! = 0
     var timeRun: String!
     var finishedMaze = false
 
@@ -90,7 +90,7 @@ class EndGameVC: UIGameplayVC {
         
         if homeDelegete != nil,
            let navController = gameDelegate.navigationController {
-            navController.popToViewController(homeDelegete, animated: true)
+            navController.popToViewController(homeDelegete, animated: false)
         }
         
     }

@@ -34,6 +34,10 @@ class SettingsVC: UIGameplayVC, settingChanger {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let gameVC = gameDelegate as? GameViewController{
+            gameVC.pauseTimer()
+            gameVC.pauseGame()
+        }
         soundSlider.value = soundVolume
         musicSlider.value = musicVolume
         localStore = PurchasableItems()
