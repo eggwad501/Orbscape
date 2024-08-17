@@ -17,12 +17,16 @@ Game Mechanics:
 - Collected stars can then be used to unlock various customization options.
 - This includes purchasing cosmetic effects for the ball like skins and sound effects, and for the maze, such as the background gradient. 
 
-Dependencies: None
+Dependencies: 
+- iOS above 17.5+
+- Swift 5
+- Xcode 15.4
 
 Special Instructions: 
-- iOS above 17.5+
-- iPhone models above 4+ (an iPhone with Gyroscope sensor) 
+- iPhone models above 4+ (an iPhone with Gyroscope sensor)
 - Must be played on a phyical iPhone and not a simulator
+- Open Orbscape.xcodeproj from the main folder 
+  
 
 | Feature | Description | Contribution |
 |----------|----------|----------|
