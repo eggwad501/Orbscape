@@ -163,22 +163,31 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
                 destination.itemCost = skinsList[selectedIndex].cost
                 destination.itemName = skinsList[selectedIndex].name
                 destination.itemImage = skinsList[selectedIndex].skin
+                if(destination.itemCost > currentStarsCount && !skinsList[selectedIndex].purchased){
+                    destination.buttonText = "NOT ENOUGH STARS"
+                }
                 
             case CustomizeTypes.soundEffects?:
                 destination.itemCost = soundsList[selectedIndex].cost
                 destination.itemName = soundsList[selectedIndex].name
                 destination.itemImage = soundsList[selectedIndex].image
                 destination.itemAudio = soundsList[selectedIndex].sound
-
+                if(destination.itemCost > currentStarsCount && !soundsList[selectedIndex].purchased){
+                    destination.buttonText = "NOT ENOUGH STARS"
+                }
+                
                 
             case CustomizeTypes.themes?:
                 destination.itemCost = themesList[selectedIndex].cost
                 destination.itemName = themesList[selectedIndex].name
                 destination.itemColors = themesList[selectedIndex].colors
+                if(destination.itemCost > currentStarsCount && !themesList[selectedIndex].purchased){
+                    destination.buttonText = "NOT ENOUGH STARS"
+                }
             default:
                 break
             }
-                
+             
             destination.modalPresentationStyle = .overFullScreen
             self.overlayBlurredBackgroundView()
         }

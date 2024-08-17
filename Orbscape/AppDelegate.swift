@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             
             //include this line to clear core data
-//            localStore.clearAllEntities(from: context)
+            //localStore.clearAllEntities(from: context)
             
             //creating core data
             let count = try context.count(for: request)
