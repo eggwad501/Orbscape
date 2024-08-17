@@ -2,8 +2,9 @@
 //  EndGameVC.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 8/12/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 

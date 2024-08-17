@@ -2,8 +2,9 @@
 //  GameScene.swift
 //  ballTest
 //
-//  Created by Nhat Tran on 7/15/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import SpriteKit
 import GameplayKit

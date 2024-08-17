@@ -2,8 +2,9 @@
 //  MazeMaker.swift
 //  Orbscape
 //
-//  Created by Nhat Tran on 7/29/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import Foundation
 

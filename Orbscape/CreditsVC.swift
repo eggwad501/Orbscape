@@ -2,8 +2,9 @@
 //  CreditsVC.swift
 //  Orbscape
 //
-//  Created by Nick Ensey on 8/16/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 
