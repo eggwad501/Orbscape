@@ -33,7 +33,6 @@ class EndGameVC: UIGameplayVC {
         }
         timeLabel.text = timeRun
         totalStarsLabel.text = String(currentStarsCount) + "★"
-        collectedStarsLabel.text = "+ " + String(starCountRun) + "★"
         if starCountRun == nil{
             collectedStarsLabel.text = "+ 0★"
             starCountRun = 0
