@@ -936,6 +936,7 @@ you have collected in this run. </string>
                     <navigationItem key="navigationItem" style="editor" id="rNT-uT-D6G"/>
                     <connections>
                         <outlet property="collectedStarsLabel" destination="WXw-Ot-rDx" id="XBi-tT-oPA"/>
+                        <outlet property="statusLabel" destination="Y1E-1i-oTe" id="GXC-Zc-0Qa"/>
                         <outlet property="timeLabel" destination="KND-kO-6v3" id="98E-eY-Ftz"/>
                         <outlet property="totalStarsLabel" destination="DLK-kH-0qA" id="Yuj-67-UYC"/>
                     </connections>
