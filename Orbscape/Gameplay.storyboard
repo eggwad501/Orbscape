@@ -312,7 +312,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Q1d-Ku-Rlz" kind="show" id="Yvp-GQ-dAU"/>
+                                    <segue destination="Q1d-Ku-Rlz" kind="show" identifier="creditsIdentifier" id="Yvp-GQ-dAU"/>
                                 </connections>
                             </button>
                         </subviews>
