@@ -44,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
-    let starChance = 100
+    let starChance = 25
     var difficultyLevel: Int!
     var isGameFinished = false
     var gameEnded = false
@@ -232,10 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
                     generateWall(position, downWall, UIColor.green)
                     
                 }
-                else if(mazeArray[rowIndex][colIndex] == -1){
-                    
-                }
-                else{
+                else if(mazeArray[rowIndex][colIndex] == 0){
                     generateStar(position, starChance)
                 }
                 

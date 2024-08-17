@@ -32,6 +32,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     var gameScene: SKScene?
     var newGameScene: GameScene?
 
+    var totalTime: TimeInterval?
+    var remainingTime: TimeInterval?
     var timer: Timer?
     var startTime: Date?
     private var elapsedTime: TimeInterval = 0
@@ -47,10 +49,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        starCountLabel.text = "0 ★"
-        timerLabel.text = "00:00"
-        setupTimer()
         
         pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
         
@@ -79,6 +77,23 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             }
             view.ignoresSiblingOrder = true
         }
+        
+        if difficulty == 5 {
+            totalTime = 20
+            remainingTime = 20
+        } else if difficulty == 10 {
+            totalTime = 40
+            remainingTime = 40
+        } else {
+            totalTime = 60
+            remainingTime = 60
+        }
+        
+        starCountLabel.text = "0 ★"
+        let minutes = Int(totalTime!) / 60
+        let seconds = Int(totalTime!) % 60
+        timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
+        setupTimer()
     }
     
     override func viewIsAppearing(_ animated: Bool) {
@@ -104,20 +119,29 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     func setupTimer() {
         startTime = Date()
         
-        timer = Timer.scheduledTimer(timeInterval: 1.0, 
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(updateTimer),
                                      userInfo: nil,
                                      repeats: true)
     }
-    
+
     @objc private func updateTimer() {
         if let startTime = self.startTime {
             let currentTime = Date()
             let timeElapsed = currentTime.timeIntervalSince(startTime) + elapsedTime
-            let minutes = Int(timeElapsed) / 60
-            let seconds = Int(timeElapsed) % 60
-            timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
+            remainingTime = totalTime! - timeElapsed
+            
+            if remainingTime! <= 0 {
+                remainingTime = 0
+                timer?.invalidate()
+                timerLabel.text = "00:00"
+                performSegue(withIdentifier: endIdentifier, sender: self)
+            } else {
+                let minutes = Int(remainingTime!) / 60
+                let seconds = Int(remainingTime!) % 60
+                timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
+            }
         }
     }
 
@@ -129,7 +153,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             timer = nil
         }
     }
-    
+
     func resumeTimer() {
         if isPaused {
             isPaused = false
@@ -137,20 +161,21 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             setupTimer()
         }
     }
-    
+
     func stopTimer() {
         timer?.invalidate()
         timer = nil
         elapsedTime = 0
+        remainingTime = totalTime
     }
-    
+
     func pauseGame() {
         pauseTimer()
         if let scene = gameScene as? BallProperties {
             scene.stopBall()
         }
     }
-    
+
     func resumeGame() {
         resumeTimer()
         if let scene = gameScene as? BallProperties {
@@ -159,6 +184,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     }
     
     func stopGame() {
+        stopTimer()
         print("Stopped Game")
         gameScene!.removeAllActions()
         print("GS Children \(gameScene?.children)")
