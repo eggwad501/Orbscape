@@ -12,8 +12,13 @@ Game Mechanics:
 - The goal of the game is to complete the maze as fast as possible before the timer ends. 
 - Player can collect stars, our game’s currency, along the way. 
 - If the player completes the game, they will keep the collected stars, otherwise, they will lose them. 
-- The player will have completed the level upon reaching the exit. 
+- The player will have completed the level upon reaching the exit.
 
+Levels: 
+- Players are more likely to keep the stars on easier runs, but can only collect a limited amount of stars.
+- Players are less likely to keep the stars on harder runs, but can earn so much more stars in one run.
+
+Customization: 
 - Collected stars can then be used to unlock various customization options.
 - This includes purchasing cosmetic effects for the ball like skins and sound effects, and for the maze, such as the background gradient. 
 
