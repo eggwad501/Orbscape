@@ -149,28 +149,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
                     let horizontalWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(horizontalLength * tileSize), height: -CGFloat(tileSize))
                     generateWall(horizontalWall)
                     
-                    
                     mazeArray[rowIndex][colIndex] = 1
-                    while(subRow <= mazeSize && mazeArray[subRow][colIndex] == 1){ // go downwards
+                    // extends wall downwards if applicable
+                    while(subRow <= mazeSize && mazeArray[subRow][colIndex] == 1){
                         verticalLength += 1
                         mazeArray[subRow][colIndex] = -1
                         subRow += 1
                     }
                     let downWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(tileSize), height: CGFloat(-verticalLength * tileSize))
                     generateWall(downWall)
-                    
                 }
                 else if(mazeArray[rowIndex][colIndex] == 0){
                     generateStar(position, starChance)
                 }
-                
                 colIndex += 1
             }
-            
             rowIndex += 1
             colIndex = 0
         }
-        
         generateEntranceExit()
     }
     
@@ -185,23 +181,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         ballObject?.physicsBody?.mass = 5
         ballObject.physicsBody?.allowsRotation = true
         ballObject.physicsBody?.isDynamic = true
+        ballObject.physicsBody?.affectedByGravity = true
+        
         ballObject.physicsBody?.categoryBitMask = Collision.ballBody
         ballObject.physicsBody?.collisionBitMask = Collision.wallBody
         ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody | Collision.entranceBody | Collision.finishHoleBody
-        ballObject.physicsBody?.affectedByGravity = true
         
         ballObject.physicsBody?.friction = 0.5
-        
         ballObject.physicsBody?.restitution = 0.0
         ballObject.physicsBody?.linearDamping = 0.0
         
         addChild(ballObject)
     }
     
+    // stops the ball from moving
     func stopBall() {
         ballObject.physicsBody?.isDynamic = false
     }
     
+    // resumes ball movement
     func resumeBall() {
         ballObject.physicsBody?.isDynamic = true
     }
