@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let count = try context.count(for: requestFour)
             if count == 0 {
                 let newObject = Player(context: context)
-                newObject.stars = 1000
+                newObject.stars = 200
                 newObject.runTime = 0
                 localStore.saveContext()
             }
