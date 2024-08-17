@@ -30,7 +30,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     @IBOutlet weak var pauseButton: UIButton!
     
     var gameScene: SKScene?
-    var newGameScene: GameScene?
 
     var totalTime: TimeInterval?
     var remainingTime: TimeInterval?
@@ -53,14 +52,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
         
         if let view = self.view as! SKView? {
-            let debug = false
 
-            if(debug){
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.showsQuadCount = true
-                view.showsPhysics = true
-            }
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 print("Presenting the Game")
@@ -94,9 +86,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         let seconds = Int(totalTime!) % 60
         timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
         setupTimer()
-    }
-    
-    override func viewIsAppearing(_ animated: Bool) {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -186,7 +175,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     
     func stopGame() {
         stopTimer()
-        print("Stopped Game")
         gameScene!.removeAllActions()
         gameScene!.removeAllChildren()
         gameScene!.view?.presentScene(nil)
