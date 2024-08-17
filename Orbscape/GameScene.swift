@@ -44,7 +44,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
-    let starChance = 25
+    let starChance = 100
     var difficultyLevel: Int!
     var isGameFinished = false
     var gameEnded = false
