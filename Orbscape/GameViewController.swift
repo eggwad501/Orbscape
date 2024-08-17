@@ -40,6 +40,8 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     private var isPaused: Bool = false
     var starCount: Int!
     
+    var completedMaze: Bool = true
+    
     var pauseIdentifier = "pauseIdentifier"
     var endIdentifier = "endGameSegue"
     var tapStartDelegate: UIGameplayVC!
@@ -134,6 +136,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
                 remainingTime = 0
                 timer?.invalidate()
                 timerLabel.text = "00:00"
+                completedMaze = false
                 performSegue(withIdentifier: endIdentifier, sender: self)
             } else {
                 let minutes = Int(remainingTime!) / 60
@@ -192,7 +195,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == pauseIdentifier,
-        let destination = segue.destination as? PauseVC {
+           let destination = segue.destination as? PauseVC {
             pauseGame()
             destination.gameDelegate = self
             destination.levelDelegate = levelDelegate
@@ -201,8 +204,12 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             destination.timeRun = timerLabel.text
             overlayBlurredBackgroundView()
         } else if segue.identifier == endIdentifier,
-        let destination = segue.destination as? EndGameVC {
+                  let destination = segue.destination as? EndGameVC {
             stopTimer()
+            if let scene = gameScene as? BallProperties {
+                scene.stopBall()
+            }
+            destination.finishedMaze = completedMaze
             destination.gameDelegate = self
             destination.starCountRun = starCount
             destination.timeRun = timerLabel.text
