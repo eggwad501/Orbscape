@@ -185,11 +185,9 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         stopTimer()
         print("Stopped Game")
         gameScene!.removeAllActions()
-        print("GS Children \(gameScene?.children)")
         gameScene!.removeAllChildren()
         gameScene!.view?.presentScene(nil)
         gameScene = nil
-        print("Stopped Game")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

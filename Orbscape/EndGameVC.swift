@@ -23,6 +23,10 @@ class EndGameVC: UIGameplayVC {
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let gameVC = gameDelegate as? GameViewController{
+            gameVC.stopGame()
+        }
+        
         for _ in 1...3 {
             balls.append(self.createImage(image: currentSkin.skin, maxSize: 100))
             balls.append(self.createImage(image: UIImage(named: "star")!, maxSize: 30))
@@ -30,8 +34,13 @@ class EndGameVC: UIGameplayVC {
         timeLabel.text = timeRun
         totalStarsLabel.text = String(currentStarsCount) + "★"
         collectedStarsLabel.text = "+ " + String(starCountRun) + "★"
-        // We all need to update their total stars
-        currentStarsCount = currentStarsCount + starCountRun
+        if starCountRun == nil{
+            collectedStarsLabel.text = "+ 0★"
+            starCountRun = 0
+        }
+        else{
+            collectedStarsLabel.text = "+ " + String(starCountRun) + "★"
+        }
         localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
     }
     
