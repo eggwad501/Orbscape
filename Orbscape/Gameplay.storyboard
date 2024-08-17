@@ -516,6 +516,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="THEME" style="editor" id="Ygw-aj-vXM"/>
                     <connections>
+                        <outlet property="confirmButtonText" destination="iTd-jv-5Tq" id="di3-bo-fDJ"/>
                         <outlet property="costLabel" destination="iWk-Lf-6oJ" id="9xG-vS-y5h"/>
                         <outlet property="iconView" destination="4jR-T2-K8T" id="pGy-xQ-JdH"/>
                         <outlet property="nameLabel" destination="oAT-70-2RY" id="46o-RT-8Gq"/>
