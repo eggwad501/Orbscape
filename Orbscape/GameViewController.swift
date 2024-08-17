@@ -56,7 +56,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-                print("Presenting the Game")
                 scene.sceneDelegate = self
                 gameScene = scene
                 

@@ -23,7 +23,7 @@ class QuitConfirmVC: UIGameplayVC {
     
     // updates the UI
     override func viewWillAppear(_ animated: Bool) {
-        starsLabel.text = String(starCountRun) + "★"
+        starsLabel.text = String(starCountRun) + " ★"
         timeLabel.text = timeRun
     }
     

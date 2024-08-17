@@ -30,9 +30,9 @@ class PauseVC: UIGameplayVC {
     // updates the UI
     override func viewWillAppear(_ animated: Bool) {
         if starCountRun != nil {
-            starsLabel.text = String(starCountRun) + "★"
+            starsLabel.text = String(starCountRun) + " ★"
         } else {
-            starsLabel.text = "0" + "★"
+            starsLabel.text = "0 ★"
             starCountRun = 0
         }
         timeLabel.text = timeRun
