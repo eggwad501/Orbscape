@@ -2,8 +2,9 @@
 //  LevelsVC.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 7/29/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 
@@ -27,6 +28,7 @@ class LevelsVC: UIGameplayVC {
         ballAnimation(view: self.iconImageView)
     }
     
+    // sends over necessary data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tapToStartVC = segue.destination as? TapToStartVC
         tapToStartVC!.levelDelegate = self

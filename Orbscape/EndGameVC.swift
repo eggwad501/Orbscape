@@ -2,14 +2,13 @@
 //  EndGameVC.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 8/12/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 
 class EndGameVC: UIGameplayVC {
-    
-    
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var totalStarsLabel: UILabel!
     @IBOutlet weak var collectedStarsLabel: UILabel!
@@ -57,8 +56,9 @@ class EndGameVC: UIGameplayVC {
 
     // initialize ball objects ready for animation
     private func createImage(image: UIImage, maxSize: Int, segNum: Int) -> UIView {
+        // balls varies in sizes and positions
         let size = Int.random(in: 30..<maxSize)
-        let ySegment = (Int(self.view.bounds.height)/2) / 3
+        let ySegment = ((Int(self.view.bounds.height) / 2) - 50) / 3
         var yStart = (ySegment * (segNum - 1)) + 30
         var yEnd = (ySegment * (segNum)) - 30
         if yStart > yEnd {
@@ -82,7 +82,7 @@ class EndGameVC: UIGameplayVC {
         return ball
     }
     
-    
+    // sends user back to the home view controller
     @IBAction func homeButton(_ sender: Any) {
         dismiss(animated: true)
         gameDelegate.dismiss(animated: true, completion: nil)
@@ -92,10 +92,5 @@ class EndGameVC: UIGameplayVC {
            let navController = gameDelegate.navigationController {
             navController.popToViewController(homeDelegete, animated: false)
         }
-        
     }
-    
-
-    
-
 }

@@ -2,8 +2,9 @@
 //  TapToStartVC.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 8/12/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 
@@ -16,8 +17,6 @@ class TapToStartVC: UIGameplayVC {
     var levelDelegate: UIGameplayVC!
     var homeDelegete: UIGameplayVC!
 
-
-
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +25,7 @@ class TapToStartVC: UIGameplayVC {
         iconImageView.addSubview(image)
     }
     
+    // prepares segue to send over necessary data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let gameVC = segue.destination as? GameViewController
         if segue.identifier == "startSegue"{

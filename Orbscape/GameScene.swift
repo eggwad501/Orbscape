@@ -2,14 +2,16 @@
 //  GameScene.swift
 //  ballTest
 //
-//  Created by Nhat Tran on 7/15/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import SpriteKit
 import GameplayKit
 import CoreMotion
 import AVFoundation
 
+// collision bitmasking
 struct Collision {
     static let ballBody: UInt32 = 0x1 << 0
     static let wallBody: UInt32 = 0x1 << 1
@@ -24,6 +26,7 @@ var tileSet: SKTileSet!
 var tileMap: SKTileMapNode!
 var mazeArray: [[Int]]!
 
+// functions passed to other view controllers
 protocol BallProperties {
     func stopBall()
     func resumeBall()
@@ -32,14 +35,8 @@ protocol BallProperties {
 class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     var sceneDelegate: GameSceneDelegate?
-    
-    // Star count
     var starCount = 0
-    
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
-    
-    private var lastUpdateTime : TimeInterval = 0
+    private var lastUpdateTime: TimeInterval = 0
     
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
@@ -54,80 +51,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     var cameraNode = SKCameraNode()
     
-    // performance testers
-    var startTime = CFAbsoluteTime()
-    var endTime = CFAbsoluteTime()
-    
-    // garbage collector
-    var timeSinceGC: TimeInterval = 0
-    var timeSinceStart: TimeInterval = 0
-    var wallList: [SKSpriteNode] = []
-    var visibleWallList: [SKSpriteNode] = []
-    var hiddenWallList: [SKSpriteNode] = []
-    
-    func elapsedTime(_ startTime: Double, _ endTime: Double, _ msg: String){
-        print(msg)
-        print(endTime - startTime)
-    }
-    
+    // loads the camera, ball, maze, stars into the game
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         self.camera = cameraNode
         self.speed = 0.2
-        
         self.lastUpdateTime = 0
         
         // set up collisions
         self.physicsWorld.contactDelegate = self
         
-        // makeshift camera, can delete
+        // create the camera
         cameraNode.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(cameraNode)
         camera = cameraNode
-        
         cameraNode.xScale = 0.5
         cameraNode.yScale = 0.5
-
-        // gravity manager construction
-//        manager.startAccelerometerUpdates()
-//        manager.accelerometerUpdateInterval = 0.15
-//        manager.startAccelerometerUpdates(to: OperationQueue.main) {
-//            (data, error) in
-//            if let error = error {
-//                print("Accelerometer error: \(error.localizedDescription)")
-//            } else if let acceleration = data?.acceleration {
-//                self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
-//            }
-//        }
-        
-        /*
-         String compares are cheaper than expected, keep the string
-         Array math is fast, sprite loading is slow
-         The camera sees 11x22 sprites at all times
-         Keep 22x44 loaded at all times
-         Difficulty(not rows/cols) and Time taken to load maze
-         75 = 31.443s
-         65 = 15.062s
-         60 = 09.911s, 11 fps
-         55 = 06.029s
-         50 = 03.412s, 24fps
-         40 = 01.750s, 36fps
-         35 = 01.032s, 54fps
-         25 = 00.341s, 60 fps, 9.8k nodes
-        */
         
         // creates the ball
         let squareSize = difficultyLevel * 4 - 1
         let ballStartPos = (squareSize * 64 / 2 - 32, 100)
         generateBall(ballStartPos)
-           
-        // makes a maze of some difficulty
-        startTime = CFAbsoluteTimeGetCurrent()
         makeSquareMaze(difficultyLevel)
-        endTime = CFAbsoluteTimeGetCurrent()
-        elapsedTime(startTime, endTime, "Toal Maze Time taken")
-        
-        // create a gradient
+        createGradient(ballStartPos)
+    }
+    
+    // creates the gradient
+    func createGradient(_ ballStartPos: (Int, Int)) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame.size = frame.size
         gradientLayer.position = CGPoint(x: ballStartPos.0, y: ballStartPos.1)
@@ -139,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // add the gradient as a game obj
+        // add the gradient as a game object
         let gradientTexture = SKTexture(image: gradientImage!)
         gradientObject = SKSpriteNode(texture: gradientTexture)
         gradientObject.size = CGSize(width: frame.width, height: frame.height)
@@ -148,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(gradientObject)
     }
     
-    // gravity manager is used for gyro controls
+    // creates a gravity manager; is used for gyro controls
     func createGravityManager(){
         manager.startAccelerometerUpdates()
         manager.accelerometerUpdateInterval = 0.15
@@ -168,32 +118,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         // magic number to avoid double-walls
         let rows = difficulty * 4 - 1
         let cols = difficulty * 4 - 1
-        
-        startTime = CFAbsoluteTimeGetCurrent()
         mazeArray = mazeMaker.createMaze(rows, cols)
-        endTime = CFAbsoluteTimeGetCurrent()
-        //elapsedTime(startTime, endTime, "create Maze Time taken")
-        
-        startTime = CFAbsoluteTimeGetCurrent()
         loadMaze()
-        endTime = CFAbsoluteTimeGetCurrent()
-        //elapsedTime(startTime, endTime, "load Maze time taken")
-    }
-    
-    // check if the node is visible to the camera
-    func isNodeVisible(_ node: SKNode) -> Bool {
-        let cameraView = CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height)
-            
-        // Convert the node's position to the scene's coordinate system
-        let nodePosition = node.position
-        
-        // Convert the node's position from the scene's coordinate system to the view's coordinate system
-        let nodePositionInView = cameraView.contains(nodePosition)
-        
-        // Check if the node's position is within the bounds of the view
-        //return view!.bounds.contains(nodePositionInView)
-        //return nodePositionInView
-        return cameraNode.contains(node)
     }
     
     // loads the maze into the game scene
@@ -203,46 +129,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         var rowIndex = 0
         var colIndex = 0
         let mazeSize = mazeArray.count - 1
-        while(rowIndex <= mazeSize){
-            while(colIndex <= mazeSize){
+        
+        // uses the mazeArray to generate the in game maze
+        while(rowIndex <= mazeSize) {
+            while(colIndex <= mazeSize) {
                 let position = CGPoint(x: tileSize * colIndex, y: -tileSize * rowIndex)
-                if(mazeArray[rowIndex][colIndex] == 1){
+                if(mazeArray[rowIndex][colIndex] == 1) {
                     var horizontalLength = 0
                     var verticalLength = 0
                     subCol = colIndex
                     subRow = rowIndex
                     
-                    while(subCol <= mazeSize && mazeArray[rowIndex][subCol] == 1){ // go to the right
+                    // extends the wall to the right if applicable
+                    while(subCol <= mazeSize && mazeArray[rowIndex][subCol] == 1) {
                         horizontalLength += 1
                         mazeArray[rowIndex][subCol] = -1
                         subCol += 1
                     }
                     
                     let horizontalWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(horizontalLength * tileSize), height: -CGFloat(tileSize))
-                    generateWall(position, horizontalWall, .red)
+                    generateWall(horizontalWall)
                     
-                    
-                    mazeArray[rowIndex][colIndex] = 1 // have vert wall start at the same pos as hori wall
-                    while(subRow <= mazeSize && mazeArray[subRow][colIndex] == 1){ // go downwards
+                    mazeArray[rowIndex][colIndex] = 1
+                    // extends wall downwards if applicable
+                    while(subRow <= mazeSize && mazeArray[subRow][colIndex] == 1){
                         verticalLength += 1
                         mazeArray[subRow][colIndex] = -1
                         subRow += 1
                     }
-                    var downWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(tileSize), height: CGFloat(-verticalLength * tileSize))
-                    generateWall(position, downWall, UIColor.green)
-                    
+                    let downWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(tileSize), height: CGFloat(-verticalLength * tileSize))
+                    generateWall(downWall)
                 }
                 else if(mazeArray[rowIndex][colIndex] == 0){
                     generateStar(position, starChance)
                 }
-                
                 colIndex += 1
             }
-            
             rowIndex += 1
             colIndex = 0
         }
-        
         generateEntranceExit()
     }
     
@@ -257,23 +182,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         ballObject?.physicsBody?.mass = 5
         ballObject.physicsBody?.allowsRotation = true
         ballObject.physicsBody?.isDynamic = true
+        ballObject.physicsBody?.affectedByGravity = true
+        
         ballObject.physicsBody?.categoryBitMask = Collision.ballBody
         ballObject.physicsBody?.collisionBitMask = Collision.wallBody
         ballObject.physicsBody?.contactTestBitMask = Collision.wallBody | Collision.starBody | Collision.entranceBody | Collision.finishHoleBody
-        ballObject.physicsBody?.affectedByGravity = true
         
         ballObject.physicsBody?.friction = 0.5
-        
         ballObject.physicsBody?.restitution = 0.0
         ballObject.physicsBody?.linearDamping = 0.0
         
         addChild(ballObject)
     }
     
+    // stops the ball from moving
     func stopBall() {
         ballObject.physicsBody?.isDynamic = false
     }
     
+    // resumes ball movement
     func resumeBall() {
         ballObject.physicsBody?.isDynamic = true
     }
@@ -313,14 +240,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(finishWall)
     }
     
-    // generates the walls that would block off the entrance and exit
+    // generates the walls that would block off the entrance and generates finish line
     func generateEntranceExit(){
         generateEntranceWall()
         generateFinishLine()
     }
     
     // generates a wall of variable length or height with fixed tile size at this position
-    func generateWall(_ position: CGPoint, _ wall: CGRect, _ color: UIColor){
+    func generateWall(_ wall: CGRect){
         let mazeWall = SKShapeNode(rect: wall)
         mazeWall.fillColor = UIColor(cgColor: currentTheme.colors[0]).edgeColors()
         mazeWall.lineWidth = 0.0
@@ -357,20 +284,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     // runs when the ball collides or makes contact with something else
     func didBegin(_ contact: SKPhysicsContact) {
-        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
         
-        // Handle collision between ball and wall
-        // TODO: add sfx when colliding with wall or star
-        if(otherObject.categoryBitMask == Collision.wallBody) {
-            //print("Player collided with a wall")
-        }
-        
         // handle collision between ball and star
-        else if(otherObject.categoryBitMask == Collision.starBody) {
-            
+        if(otherObject.categoryBitMask == Collision.starBody) {
             otherObject.node?.removeFromParent()
-            
             starCount += 1
             sceneDelegate?.updateStarCount(to: starCount)
             
@@ -380,14 +298,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         else if(otherObject.categoryBitMask == Collision.finishHoleBody){
             isGameFinished = true
         }
-        else{
-            print("Error")
-        }
     }
     
     // runs when the ball stops colliding or making contact with something else
     func didEnd(_ contact: SKPhysicsContact) {
-        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
         
         if(otherObject.categoryBitMask == Collision.entranceBody) {
@@ -397,6 +311,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         }
     }
     
+    // plays a sound on collision
     func playSound(named soundName: String, volume: Float) {
         let soundAction = SKAction.playSoundFileNamed(soundName, waitForCompletion: false)
         let volumeAction = SKAction.changeVolume(to: volume, duration: 0)
@@ -404,37 +319,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         run(sequence)
     }
     
+    // updates the game on every frame
     override func update(_ currentTime: TimeInterval) {
-        
-        // Called before each frame is rendered
-        // Initialize _lastUpdateTime if it has not already been
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
             cameraNode.position = ballObject.position
         }
         
         gradientObject.position = cameraNode.position
-        //print(ballObject.position)
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
-        timeSinceGC += dt
-        timeSinceStart += dt
-        if(timeSinceGC > 3){
-            print("Still running")
-            // garbage collector tasks go here
-            timeSinceGC = 0
-        }
-        
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dt)
-        }
 
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){
             cameraNode.position = ballObject.position
-     
         } else if !gameEnded {
             gameEnded = true
             sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")

@@ -2,15 +2,15 @@
 //  SettingsVC.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 7/29/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 
 protocol settingChanger {
     func changeCredit(boolean: Bool)
 }
-
 
 class SettingsVC: UIGameplayVC, settingChanger {
 
@@ -32,6 +32,7 @@ class SettingsVC: UIGameplayVC, settingChanger {
     var starCountRun: Int!
     var timeRun: String!
     
+    // update sliders
     override func viewDidLoad() {
         super.viewDidLoad()
         if let gameVC = gameDelegate as? GameViewController{
@@ -64,7 +65,6 @@ class SettingsVC: UIGameplayVC, settingChanger {
         if fromPause && !toCredits {
             let destinationVC = storyboard!.instantiateViewController(withIdentifier: pauseVC) as! PauseVC
             destinationVC.modalPresentationStyle = .overFullScreen
-            
             destinationVC.gameDelegate = gameDelegate
             destinationVC.levelDelegate = levelDelegate
             destinationVC.tapStartDelegate = tapStartDelegate
@@ -72,7 +72,6 @@ class SettingsVC: UIGameplayVC, settingChanger {
             destinationVC.timeRun = timeRun
             
             createdPauseVC = destinationVC
-            
             navigationController!.present(destinationVC, animated: true, completion: { })
             destinationVC.view.backgroundColor = .clear
             gameDelegate.overlayBlurredBackgroundView()
@@ -92,5 +91,4 @@ class SettingsVC: UIGameplayVC, settingChanger {
     func changeCredit(boolean: Bool) {
         toCredits = boolean
     }
-    
 }

@@ -2,8 +2,9 @@
 //  GameViewController.swift
 //  ballTest
 //
-//  Created by Nhat Tran on 7/15/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 import SpriteKit
@@ -11,6 +12,7 @@ import GameplayKit
 
 let displaySize: CGRect = UIScreen.main.bounds
 
+// functions used outside of GameViewController
 protocol GameSceneDelegate {
     func triggerSegue(withIdentifier identifier: String)
     func updateStarCount(to count: Int)
@@ -30,7 +32,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
     @IBOutlet weak var pauseButton: UIButton!
     
     var gameScene: SKScene?
-    var newGameScene: GameScene?
 
     var totalTime: TimeInterval?
     var remainingTime: TimeInterval?
@@ -53,14 +54,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
         
         if let view = self.view as! SKView? {
-            let debug = false
-
-            if(debug){
-                view.showsFPS = true
-                view.showsNodeCount = true
-                view.showsQuadCount = true
-                view.showsPhysics = true
-            }
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
                 print("Presenting the Game")
@@ -73,11 +66,11 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
                 // Present the scene
                 scene.difficultyLevel = difficulty
                 view.presentScene(scene)
-                
             }
             view.ignoresSiblingOrder = true
         }
         
+        // sets the timer countdown based on difficulty
         if difficulty == 5 {
             totalTime = 20
             remainingTime = 20
@@ -89,6 +82,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
             remainingTime = 60
         }
         
+        // update game UI's star count and time remaining
         starCountLabel.text = "0 ★"
         let minutes = Int(totalTime!) / 60
         let seconds = Int(totalTime!) % 60
@@ -96,9 +90,11 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         setupTimer()
     }
     
+    // empty; so there would be no gradient applied in this view controller
     override func viewIsAppearing(_ animated: Bool) {
     }
 
+    // establishes possible orientations
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown
@@ -107,18 +103,20 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         }
     }
     
+    // generic function to perform a segue
     func triggerSegue(withIdentifier identifier: String) {
         performSegue(withIdentifier: identifier, sender: self)
     }
     
+    // update the star count UI text
     func updateStarCount(to count: Int) {
         starCountLabel.text = "\(count) ★"
         starCount = count
     }
     
+    // sets up the countdown timer
     func setupTimer() {
         startTime = Date()
-        
         timer = Timer.scheduledTimer(timeInterval: 1.0,
                                      target: self,
                                      selector: #selector(updateTimer),
@@ -126,6 +124,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
                                      repeats: true)
     }
 
+    // updates the remaining time on the timer UI
     @objc private func updateTimer() {
         if let startTime = self.startTime {
             let currentTime = Date()
@@ -146,6 +145,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         }
     }
 
+    // pauses the timer
     func pauseTimer() {
         if !isPaused {
             isPaused = true
@@ -155,6 +155,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         }
     }
 
+    // resumes the timer
     func resumeTimer() {
         if isPaused {
             isPaused = false
@@ -163,6 +164,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         }
     }
 
+    // deletes the timer when game is done
     func stopTimer() {
         timer?.invalidate()
         timer = nil
@@ -170,6 +172,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         remainingTime = totalTime
     }
 
+    // pauses the game
     func pauseGame() {
         pauseTimer()
         if let scene = gameScene as? BallProperties {
@@ -177,6 +180,7 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         }
     }
 
+    // resumes the game
     func resumeGame() {
         resumeTimer()
         if let scene = gameScene as? BallProperties {
@@ -184,15 +188,16 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         }
     }
     
+    // kills the gamescene
     func stopGame() {
         stopTimer()
-        print("Stopped Game")
         gameScene!.removeAllActions()
         gameScene!.removeAllChildren()
         gameScene!.view?.presentScene(nil)
         gameScene = nil
     }
     
+    // sends necessary data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == pauseIdentifier,
            let destination = segue.destination as? PauseVC {

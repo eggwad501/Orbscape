@@ -2,19 +2,22 @@
 //  Themes.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 7/29/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import Foundation
 import UIKit
 import AVFoundation
 import CoreData
 
+// parent class for all the purchasable items
 class PurchasableItems {
     var name: String
     var cost: Int
     var purchased: Bool = false
     
+    // retrieves the item from core data
     func retrieveItem(identifier: String) -> [NSManagedObject] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: identifier)
         var fetchedResults: [NSManagedObject]? = nil
@@ -28,22 +31,21 @@ class PurchasableItems {
         return fetchedResults!
     }
     
-    func saveContext () {
+    // saves to core data
+    func saveContext() {
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
     
+    // TODO: delete?
     func clearAllEntities(from context: NSManagedObjectContext) {
         // List of all entity names
-        
         guard let entityNames = context.persistentStoreCoordinator?.managedObjectModel.entitiesByName.keys else {
                 print("Unable to fetch entity names.")
                 return
@@ -84,15 +86,8 @@ class PurchasableItems {
         }
     }
     
-    func purchaseItem(stars: Int) -> Int {
-        if stars > self.cost {
-            self.purchased = true
-            return stars - self.cost
-        }
-        return -1
-    }
-    
-    func equals(compareTo:PurchasableItems) -> Bool {
+    // checks if an item if they're the same item
+    func equals(compareTo: PurchasableItems) -> Bool {
         return
             self.name == compareTo.name &&
             self.cost == compareTo.cost &&
@@ -100,14 +95,17 @@ class PurchasableItems {
     }
 }
 
+// theme object
 class Themes: PurchasableItems {
     var colors: Array<CGColor>
     
+    // initialize theme object
     init (colors: Array<CGColor>, name: String, cost: Int, ind: Int, id: String) {
         self.colors = colors
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
     
+    // initialize purchased theme object
     init (colors: Array<CGColor>, name: String, cost: Int, ind: Int, id: String, purchase: Bool) {
         self.colors = colors
         super.init(name: name, cost: cost, ind: ind, id: id)
@@ -115,14 +113,17 @@ class Themes: PurchasableItems {
     }
 }
 
+// skin object
 class Skins: PurchasableItems {
     var skin: UIImage
     
+    // initialize skin object
     init (skin: UIImage, name: String, cost: Int, ind: Int, id: String) {
         self.skin = skin
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
     
+    // initialize purchased skin object
     init (skin: UIImage, name: String, cost: Int, ind: Int, id: String, purchase: Bool) {
         self.skin = skin
         super.init(name: name, cost: cost, ind: ind, id: id)
@@ -130,15 +131,18 @@ class Skins: PurchasableItems {
     }
 }
 
+// sound object
 class SoundEffects: PurchasableItems {
     var sound: URL
     var image = UIImage(named: "audioIcon")
     
+    // initialize sound object
     init (sound: URL, name: String, cost: Int, ind: Int, id: String) {
         self.sound = sound
         super.init(name: name, cost: cost, ind: ind, id: id)
     }
     
+    // initialize purchased sound object
     init (sound: URL, name: String, cost: Int, ind: Int, id: String, purchase: Bool) {
         self.sound = sound
         super.init(name: name, cost: cost, ind: ind, id: id)

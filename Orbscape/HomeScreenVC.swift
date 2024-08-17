@@ -2,8 +2,9 @@
 //  HomeScreenVC.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 7/29/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 import SwiftUI
@@ -79,6 +80,8 @@ class HomeScreenVC: UIGameplayVC{
             }
         )
     }
+    
+    // sends necessary data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "levelSegue",
            let tapVC = segue.destination as? LevelsVC {

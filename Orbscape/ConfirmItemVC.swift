@@ -2,8 +2,9 @@
 //  ConfirmItemVC.swift
 //  Orbscape
 //
-//  Created by Ronghua Wang on 7/29/24.
-//
+// Project: Orbscape
+// EID: nmt736, rw28469, ss79767, nae596
+// Course: CS371L
 
 import UIKit
 import CoreData
@@ -55,7 +56,7 @@ class ConfirmItemVC: UIGameplayVC {
         starCountLabel.text = "\(currentStarsCount) ★"
         confirmButtonText.setTitle(buttonText, for: .normal)
 
-        
+        // displays respective item information
         switch types {
         case CustomizeTypes.skins?:
             let image = imageView(view: iconView, image: itemImage!)
@@ -63,6 +64,7 @@ class ConfirmItemVC: UIGameplayVC {
             if !skinsList[itemIndex].purchased {
                 costLabel.text = "\(itemCost) ★"
             }
+            break
             
         case CustomizeTypes.soundEffects?:
             let image = imageView(view: iconView, image: itemImage!)
@@ -70,7 +72,6 @@ class ConfirmItemVC: UIGameplayVC {
             if !soundsList[itemIndex].purchased {
                 costLabel.text = "\(itemCost) ★"
             }
-
             break
             
         case CustomizeTypes.themes?:
@@ -79,6 +80,7 @@ class ConfirmItemVC: UIGameplayVC {
             if !themesList[itemIndex].purchased {
                 costLabel.text = "\(itemCost) ★"
             }
+            break
             
         default:
             break
@@ -98,7 +100,6 @@ class ConfirmItemVC: UIGameplayVC {
                 print(error.localizedDescription)
             }
         }
-
     }
     
     // update the game with the selected theme
@@ -167,8 +168,7 @@ class ConfirmItemVC: UIGameplayVC {
             //themes
             case CustomizeTypes.themes?:
                 
-                //retrieve whwther it has been purchased from core data
-                
+                //retrieve whether it has been purchased from core data
                 let savedThemes = localStore.retrieveItem(identifier: "Theme")
                 
                 // check value of bool 'purchased'
@@ -196,8 +196,6 @@ class ConfirmItemVC: UIGameplayVC {
                     }
                 }
                 
-                //save last equipped into core data
-                
             default:
                 break
             }
@@ -211,5 +209,4 @@ class ConfirmItemVC: UIGameplayVC {
         let themeVC = delegate as! ItemSelectChanger
         themeVC.removeBlurredBackgroundView()
     }
-
 }
