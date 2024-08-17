@@ -24,6 +24,8 @@ class ConfirmItemVC: UIGameplayVC {
     var selectedIdentifier = "selectedIdentifier"
     var types: CustomizeTypes!
     
+    var buttonText = "CONFIRM"
+    @IBOutlet weak var confirmButtonText: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     @IBOutlet weak var starCountLabel: UILabel!
@@ -51,6 +53,7 @@ class ConfirmItemVC: UIGameplayVC {
         nameLabel.text = "\(itemName)"
         costLabel.text = ""
         starCountLabel.text = "\(currentStarsCount) ★"
+        confirmButtonText.setTitle(buttonText, for: .normal)
 
         
         switch types {
@@ -118,40 +121,48 @@ class ConfirmItemVC: UIGameplayVC {
                 
                 if skinsList[itemIndex].purchased {
                     currentSkin = skinsList[itemIndex]
-                } else {
-                    currentSkin = skinsList[itemIndex]
-                    skinsList[itemIndex].purchased = true
-                    
-                    //save updated skin to core data
-                    savedSkins[itemIndex].setValue(true, forKey: "purchased")
-                    currentStarsCount -= itemCost
-                    localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                    for i in 2...8{
+                        savedSkins[i - 1].setValue(itemIndex, forKey: "equippedIndex")
+                    }
                     localStore.saveContext()
+                } else {
+                    if(currentStarsCount >= itemCost){
+                        currentSkin = skinsList[itemIndex]
+                        skinsList[itemIndex].purchased = true
+                        
+                        //save updated skin to core data
+                        savedSkins[itemIndex].setValue(true, forKey: "purchased")
+                        currentStarsCount -= itemCost
+                        localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                        for i in 2...8{
+                            savedSkins[i - 1].setValue(itemIndex, forKey: "equippedIndex")
+                        }
+                        localStore.saveContext()
+                    }
                 }
-                
-                for i in 2...8{
-                    savedSkins[i - 1].setValue(itemIndex, forKey: "equippedIndex")
-                }
-                localStore.saveContext()
-               
                 
             //sounds
             case CustomizeTypes.soundEffects?:
                 let savedSounds = localStore.retrieveItem(identifier: "Sound")
                 if soundsList[itemIndex].purchased {
                     currentSound = soundsList[itemIndex]
-                } else {
-                    currentSound = soundsList[itemIndex]
-                    soundsList[itemIndex].purchased = true
-                    savedSounds[itemIndex].setValue(true, forKey: "purchased")
-                    currentStarsCount -= itemCost
-                    localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                    for i in 2...8{
+                        savedSounds[i - 1].setValue(itemIndex, forKey: "equippedIndex")
+                    }
                     localStore.saveContext()
+                } else {
+                    if(currentStarsCount >= itemCost){
+                        currentSound = soundsList[itemIndex]
+                        soundsList[itemIndex].purchased = true
+                        savedSounds[itemIndex].setValue(true, forKey: "purchased")
+                        currentStarsCount -= itemCost
+                        localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                        for i in 2...8{
+                            savedSounds[i - 1].setValue(itemIndex, forKey: "equippedIndex")
+                        }
+                        localStore.saveContext()
+                    }
                 }
-                for i in 2...8{
-                    savedSounds[i - 1].setValue(itemIndex, forKey: "equippedIndex")
-                }
-                localStore.saveContext()
                 
             //themes
             case CustomizeTypes.themes?:
@@ -163,24 +174,29 @@ class ConfirmItemVC: UIGameplayVC {
                 // check value of bool 'purchased'
                 if themesList[itemIndex].purchased {
                     currentTheme = themesList[itemIndex]
-                } else {
-                    
-                    currentTheme = themesList[itemIndex]
-                    themesList[itemIndex].purchased = true
-                    
-                    //save the value of puchased to core data
-                    savedThemes[itemIndex].setValue(true, forKey: "purchased")
-                    currentStarsCount -= itemCost
-                    localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                    for i in 2...8{
+                        savedThemes[i - 1].setValue(itemIndex, forKey: "equippedIndex")
+                    }
                     localStore.saveContext()
+                    vc.updateBackground(index: itemIndex)
+                } else {
+                    if(currentStarsCount >= itemCost){
+                        currentTheme = themesList[itemIndex]
+                        themesList[itemIndex].purchased = true
+                        
+                        //save the value of puchased to core data
+                        savedThemes[itemIndex].setValue(true, forKey: "purchased")
+                        currentStarsCount -= itemCost
+                        localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+                        for i in 2...8{
+                            savedThemes[i - 1].setValue(itemIndex, forKey: "equippedIndex")
+                        }
+                        localStore.saveContext()
+                        vc.updateBackground(index: itemIndex)
+                    }
                 }
                 
                 //save last equipped into core data
-                for i in 2...8{
-                    savedThemes[i - 1].setValue(itemIndex, forKey: "equippedIndex")
-                }
-                localStore.saveContext()
-                vc.updateBackground(index: itemIndex)
                 
             default:
                 break
