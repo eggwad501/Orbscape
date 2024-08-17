@@ -9,21 +9,59 @@ import UIKit
 
 class SettingsVC: UIGameplayVC {
 
+    @IBOutlet weak var soundSlider: UISlider!
+    @IBOutlet weak var musicSlider: UISlider!
+    var localStore: PurchasableItems!
+    
+    var fromPause: Bool = false
+    var pauseVC = "pauseVC"
+    var gameDelegate: UIGameplayVC!
+    var levelDelegate: UIGameplayVC!
+    var tapStartDelegate: UIGameplayVC!
+    var pauseDelegate: UIGameplayVC!
+    var starCountRun: Int!
+    var timeRun: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundSlider.value = soundVolume
+        musicSlider.value = musicVolume
+        localStore = PurchasableItems()
+        showNavigationBar()
+    }
 
-        // Do any additional setup after loading the view.
+    // change the sound effects volume
+    @IBAction func changedSoundSlider(_ sender: Any) {
+        soundVolume = soundSlider.value
+        localStore.retrieveItem(identifier: "Insets")[0].setValue(soundSlider.value, forKey: "soundVal")
+        localStore.saveContext()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // change the music volume
+    @IBAction func changedMusicSlider(_ sender: Any) {
+        musicVolume = musicSlider.value
+        BackgroundMusic.shared.updateVolume()
+        localStore.retrieveItem(identifier: "Insets")[0].setValue(musicSlider.value, forKey: "musicVal")
+        localStore.saveContext()
     }
-    */
+    
+    // go back to pause if segue from pause button
+    override func viewWillDisappear(_ animated: Bool) {
+        if fromPause {
+            let destinationVC = storyboard!.instantiateViewController(withIdentifier: pauseVC) as! PauseVC
+            destinationVC.modalPresentationStyle = .overFullScreen
+            
+            destinationVC.gameDelegate = gameDelegate
+            destinationVC.levelDelegate = levelDelegate
+            destinationVC.tapStartDelegate = tapStartDelegate
+            destinationVC.starCountRun = starCountRun
+            destinationVC.timeRun = timeRun
+            
+            navigationController!.present(destinationVC, animated: true, completion: { })
+            destinationVC.view.backgroundColor = .clear
+            gameDelegate.overlayBlurredBackgroundView()
 
+        }
+    }
+    
 }

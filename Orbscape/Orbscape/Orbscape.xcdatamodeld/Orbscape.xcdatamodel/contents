@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23B81" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Insets" representedClassName="Insets" syncable="YES" codeGenerationType="class">
+        <attribute name="musicVal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="soundVal" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
         <attribute name="runTime" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="stars" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -11,18 +15,18 @@
         <relationship name="selectedTheme" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Theme"/>
     </entity>
     <entity name="Skin" representedClassName="Skin" syncable="YES" codeGenerationType="class">
-        <attribute name="skinCost" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="skinName" optional="YES" attributeType="String"/>
+        <attribute name="equippedIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="purchased" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="availableSkins" inverseEntity="Player"/>
     </entity>
     <entity name="Sound" representedClassName="Sound" syncable="YES" codeGenerationType="class">
-        <attribute name="soundCost" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="soundName" optional="YES" attributeType="String"/>
+        <attribute name="equippedIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="purchased" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="availableSounds" inverseEntity="Player"/>
     </entity>
     <entity name="Theme" representedClassName="Theme" syncable="YES" codeGenerationType="class">
-        <attribute name="themeCost" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="themeName" optional="YES" attributeType="String"/>
+        <attribute name="equippedIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="purchased" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="availableThemes" inverseEntity="Player"/>
     </entity>
 </model>
