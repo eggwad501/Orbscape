@@ -94,55 +94,6 @@ class GameViewController: UIGameplayVC, GameSceneDelegate {
         setupTimer()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        pauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
-//        
-//        if let view = self.view as! SKView? {
-//            let debug = false
-//
-//            if(debug){
-//                view.showsFPS = true
-//                view.showsNodeCount = true
-//                view.showsQuadCount = true
-//                view.showsPhysics = true
-//            }
-//            // Load the SKScene from 'GameScene.sks'
-//            if let scene = SKScene(fileNamed: "GameScene") as? GameScene {
-//                print("Presenting the Game")
-//                scene.sceneDelegate = self
-//                gameScene = scene
-//                
-//                // Set the scale mode to scale to fit the window
-//                scene.scaleMode = .aspectFill
-//                    
-//                // Present the scene
-//                scene.difficultyLevel = difficulty
-//                view.presentScene(scene)
-//                
-//            }
-//            view.ignoresSiblingOrder = true
-//        }
-//        
-//        if difficulty == 5 {
-//            totalTime = 20
-//            remainingTime = 20
-//        } else if difficulty == 10 {
-//            totalTime = 40
-//            remainingTime = 40
-//        } else {
-//            totalTime = 60
-//            remainingTime = 60
-//        }
-//        
-//        starCountLabel.text = "0 ★"
-//        let minutes = Int(totalTime!) / 60
-//        let seconds = Int(totalTime!) % 60
-//        timerLabel.text = String(format: "%02d:%02d", minutes, seconds)
-//        setupTimer()
-    }
-    
     override func viewIsAppearing(_ animated: Bool) {
     }
 
