@@ -318,9 +318,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         run(sequence)
     }
     
+    // updates the game on every frame
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-        // Initialize _lastUpdateTime if it has not already been
         if (self.lastUpdateTime == 0) {
             self.lastUpdateTime = currentTime
             cameraNode.position = ballObject.position
@@ -334,7 +333,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){
             cameraNode.position = ballObject.position
-     
         } else if !gameEnded {
             gameEnded = true
             sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
