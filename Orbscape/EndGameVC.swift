@@ -13,12 +13,14 @@ class EndGameVC: UIGameplayVC {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var totalStarsLabel: UILabel!
     @IBOutlet weak var collectedStarsLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     var gameDelegate: UIGameplayVC!
     var homeDelegete: UIGameplayVC!
     var balls: Array<UIView> = []
     var starCountRun: Int!
     var timeRun: String!
+    var finishedMaze = false
 
     // additional setup after loading the view
     override func viewDidLoad() {
@@ -27,12 +29,20 @@ class EndGameVC: UIGameplayVC {
             balls.append(self.createImage(image: currentSkin.skin, maxSize: 100))
             balls.append(self.createImage(image: UIImage(named: "star")!, maxSize: 30))
         }
+        
         timeLabel.text = timeRun
-        totalStarsLabel.text = String(currentStarsCount) + "★"
-        collectedStarsLabel.text = "+ " + String(starCountRun) + "★"
-        // We all need to update their total stars
-        currentStarsCount = currentStarsCount + starCountRun
-        localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+        if !finishedMaze {
+            statusLabel.text = "TRY AGAIN"
+            totalStarsLabel.text = String(currentStarsCount) + "★"
+            collectedStarsLabel.text = "+ 0★"
+        } else {
+            statusLabel.text = "COMPLETED"
+            totalStarsLabel.text = String(currentStarsCount) + "★"
+            collectedStarsLabel.text = "+ " + String(starCountRun) + "★"
+            
+            currentStarsCount = currentStarsCount + starCountRun
+            localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
+        }
     }
     
     // plays animation
