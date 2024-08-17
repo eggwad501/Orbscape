@@ -28,7 +28,11 @@ class PurchasableItems {
         return fetchedResults!
     }
     
+<<<<<<< HEAD:Orbscape/Orbscape/ItemTypes.swift
     func saveContext() {
+=======
+    func saveContext () {
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/ItemTypes.swift
         if context.hasChanges {
             do {
                 try context.save()
@@ -43,6 +47,10 @@ class PurchasableItems {
     
     func clearAllEntities(from context: NSManagedObjectContext) {
         // List of all entity names
+<<<<<<< HEAD:Orbscape/Orbscape/ItemTypes.swift
+=======
+        
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/ItemTypes.swift
         guard let entityNames = context.persistentStoreCoordinator?.managedObjectModel.entitiesByName.keys else {
                 print("Unable to fetch entity names.")
                 return
@@ -51,9 +59,18 @@ class PurchasableItems {
         // Iterate over each entity
         for entityName in entityNames {
             // Create a fetch request for each entity
+<<<<<<< HEAD:Orbscape/Orbscape/ItemTypes.swift
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
             // Create a batch delete request
             let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+=======
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            
+            // Create a batch delete request
+            let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+            
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/ItemTypes.swift
             do {
                 try context.execute(batchDeleteRequest)
                 try context.save()
@@ -64,7 +81,11 @@ class PurchasableItems {
     }
     
     //for using above functions
+<<<<<<< HEAD:Orbscape/Orbscape/ItemTypes.swift
     init() {
+=======
+    init(){
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/ItemTypes.swift
         name = ""
         cost = 0
     }

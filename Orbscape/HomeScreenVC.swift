@@ -79,8 +79,11 @@ class HomeScreenVC: UIGameplayVC{
             }
         )
     }
+<<<<<<< HEAD:Orbscape/Orbscape/HomeScreenVC.swift
     
     // sent over necessary data to respective view controller
+=======
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/HomeScreenVC.swift
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "levelSegue",
            let tapVC = segue.destination as? LevelsVC {

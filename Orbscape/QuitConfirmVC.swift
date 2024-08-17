@@ -26,13 +26,23 @@ class QuitConfirmVC: UIGameplayVC {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+<<<<<<< HEAD:Orbscape/Orbscape/QuitConfirmVC.swift
         starsLabel.text = String(starCountRun) + " ★"
+=======
+        starsLabel.text = String(starCountRun) + "★"
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/QuitConfirmVC.swift
         timeLabel.text = timeRun
     }
     
     // dismiss to tap to start vc
     @IBAction func quitButton(_ sender: Any) {
+<<<<<<< HEAD:Orbscape/Orbscape/QuitConfirmVC.swift
         // WE need to stop the timer somewhere in here
+=======
+        
+        // WE need to stop the timer somewhere in here
+        
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/QuitConfirmVC.swift
         gameDelegate.dismiss(animated: true, completion: nil)
         pauseDelegate.removeBlurredBackgroundView()
         gameDelegate.removeBlurredBackgroundView()
@@ -41,10 +51,19 @@ class QuitConfirmVC: UIGameplayVC {
            let gameVCDelegate = gameDelegate as? GameViewController,
            let navController = gameDelegate.navigationController {
             if quitLevel {
+<<<<<<< HEAD:Orbscape/Orbscape/QuitConfirmVC.swift
                 navController.popToViewController(levelDelegate, animated: false)
                 gameVCDelegate.stopGame()
             } else {
                 navController.popToViewController(tapStartDelegate, animated: false)
+=======
+                print("Quit level")
+                navController.popToViewController(levelDelegate, animated: true)
+                gameVCDelegate.stopGame()
+            } else {
+                print("QCVC: else")
+                navController.popToViewController(tapStartDelegate, animated: true)
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/QuitConfirmVC.swift
                 gameVCDelegate.stopGame()
             }
         }

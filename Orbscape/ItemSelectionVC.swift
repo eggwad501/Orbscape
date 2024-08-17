@@ -156,6 +156,10 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
             destination.delegate = self
             destination.types = types
             destination.itemIndex = selectedIndex
+<<<<<<< HEAD:Orbscape/Orbscape/ItemSelectionVC.swift
+=======
+            //destination.itemsTableViewCell = tableView.cellForRow(at: selectedIndex)
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/ItemSelectionVC.swift
             
             switch types {
             case CustomizeTypes.skins?:
@@ -169,6 +173,10 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
                 destination.itemImage = soundsList[selectedIndex].image
                 destination.itemAudio = soundsList[selectedIndex].sound
 
+<<<<<<< HEAD:Orbscape/Orbscape/ItemSelectionVC.swift
+=======
+                
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/ItemSelectionVC.swift
             case CustomizeTypes.themes?:
                 destination.itemCost = themesList[selectedIndex].cost
                 destination.itemName = themesList[selectedIndex].name

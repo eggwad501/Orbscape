@@ -10,16 +10,32 @@ import UIKit
 import AVFoundation
 import CoreData
 
+<<<<<<< HEAD:Orbscape/Orbscape/Globals.swift
 var localStore = PurchasableItems()
+=======
+// clear core data
+
+
+
+var localStore = PurchasableItems()
+
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/Globals.swift
 var currentTheme: Themes = themesList[localStore.retrieveItem(identifier: "Theme")[1].value(forKey: "equippedIndex") as! Int]
 var currentSkin: Skins = skinsList[localStore.retrieveItem(identifier: "Skin")[1].value(forKey: "equippedIndex") as! Int]
 var currentSound: SoundEffects = soundsList[localStore.retrieveItem(identifier: "Sound")[1].value(forKey: "equippedIndex") as! Int]
 var currentStarsCount = localStore.retrieveItem(identifier: "Player")[0].value(forKey: "stars") as! Int
 
+<<<<<<< HEAD:Orbscape/Orbscape/Globals.swift
 var soundVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "soundVal") as! Float
 var musicVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "musicVal") as! Float
 
 // all the skins available to purchase
+=======
+// Needs CORE DATA
+var soundVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "soundVal") as! Float
+var musicVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "musicVal") as! Float
+
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/Globals.swift
 var skinsList = [
     Skins(
         skin: UIImage(named: "blueSkin")!,
@@ -80,7 +96,10 @@ var skinsList = [
     )
 ]
 
+<<<<<<< HEAD:Orbscape/Orbscape/Globals.swift
 // all the sounds available to purchase
+=======
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/Globals.swift
 var soundsList = [
     SoundEffects(
         sound: Bundle.main.url(forResource: "HappyPopsSound", withExtension: "mp3")!,
@@ -141,7 +160,10 @@ var soundsList = [
     )
 ]
 
+<<<<<<< HEAD:Orbscape/Orbscape/Globals.swift
 // all the theme available to purchase
+=======
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/Globals.swift
 var themesList = [
     Themes(
         colors: [CGColor(red: 0.74, green: 0.33, blue: 0.44, alpha: 1.0),

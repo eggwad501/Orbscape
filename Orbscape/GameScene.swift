@@ -44,13 +44,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
     let tileSize = 64
-    let starChance = 25
+    let starChance = 100
     var difficultyLevel: Int!
     var isGameFinished = false
     var gameEnded = false
     var isBelowEntrance = false
     
     var gradientObject: SKSpriteNode!
+    
     var cameraNode = SKCameraNode()
     
     // performance testers
@@ -86,6 +87,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         
         cameraNode.xScale = 0.5
         cameraNode.yScale = 0.5
+
+        // gravity manager construction
+//        manager.startAccelerometerUpdates()
+//        manager.accelerometerUpdateInterval = 0.15
+//        manager.startAccelerometerUpdates(to: OperationQueue.main) {
+//            (data, error) in
+//            if let error = error {
+//                print("Accelerometer error: \(error.localizedDescription)")
+//            } else if let acceleration = data?.acceleration {
+//                self.physicsWorld.gravity = CGVector(dx: acceleration.x * 9.8, dy: acceleration.y * 9.8)
+//            }
+//        }
+        
+        /*
+         String compares are cheaper than expected, keep the string
+         Array math is fast, sprite loading is slow
+         The camera sees 11x22 sprites at all times
+         Keep 22x44 loaded at all times
+         Difficulty(not rows/cols) and Time taken to load maze
+         75 = 31.443s
+         65 = 15.062s
+         60 = 09.911s, 11 fps
+         55 = 06.029s
+         50 = 03.412s, 24fps
+         40 = 01.750s, 36fps
+         35 = 01.032s, 54fps
+         25 = 00.341s, 60 fps, 9.8k nodes
+        */
         
         // creates the ball
         let squareSize = difficultyLevel * 4 - 1
@@ -120,7 +149,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     }
     
     // gravity manager is used for gyro controls
-    func createGravityManager() {
+    func createGravityManager(){
         manager.startAccelerometerUpdates()
         manager.accelerometerUpdateInterval = 0.15
         manager.startAccelerometerUpdates(to: OperationQueue.main) {
@@ -159,7 +188,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         let nodePosition = node.position
         
         // Convert the node's position from the scene's coordinate system to the view's coordinate system
-        _ = cameraView.contains(nodePosition)
+        let nodePositionInView = cameraView.contains(nodePosition)
         
         // Check if the node's position is within the bounds of the view
         //return view!.bounds.contains(nodePositionInView)
@@ -174,8 +203,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         var rowIndex = 0
         var colIndex = 0
         let mazeSize = mazeArray.count - 1
-        while(rowIndex <= mazeSize) {
-            while(colIndex <= mazeSize) {
+        while(rowIndex <= mazeSize){
+            while(colIndex <= mazeSize){
                 let position = CGPoint(x: tileSize * colIndex, y: -tileSize * rowIndex)
                 if(mazeArray[rowIndex][colIndex] == 1){
                     var horizontalLength = 0
@@ -189,12 +218,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
                         subCol += 1
                     }
                     
-                    let horizontalWall = CGRect(
-                        x: position.x - CGFloat(tileSize / 2),
-                        y: position.y + CGFloat(tileSize / 2),
-                        width: CGFloat(horizontalLength * tileSize),
-                        height: -CGFloat(tileSize))
+                    let horizontalWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(horizontalLength * tileSize), height: -CGFloat(tileSize))
                     generateWall(position, horizontalWall, .red)
+                    
                     
                     mazeArray[rowIndex][colIndex] = 1 // have vert wall start at the same pos as hori wall
                     while(subRow <= mazeSize && mazeArray[subRow][colIndex] == 1){ // go downwards
@@ -202,21 +228,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
                         mazeArray[subRow][colIndex] = -1
                         subRow += 1
                     }
-                    let downWall = CGRect(
-                        x: position.x - CGFloat(tileSize / 2),
-                        y: position.y + CGFloat(tileSize / 2),
-                        width: CGFloat(tileSize),
-                        height: CGFloat(-verticalLength * tileSize))
+                    var downWall = CGRect(x: position.x - CGFloat(tileSize / 2), y: position.y + CGFloat(tileSize / 2), width: CGFloat(tileSize), height: CGFloat(-verticalLength * tileSize))
                     generateWall(position, downWall, UIColor.green)
                     
-                } else if (mazeArray[rowIndex][colIndex] == 0) {
+                }
+                else if(mazeArray[rowIndex][colIndex] == -1){
+                    
+                }
+                else{
                     generateStar(position, starChance)
                 }
+                
                 colIndex += 1
             }
+            
             rowIndex += 1
             colIndex = 0
         }
+        
         generateEntranceExit()
     }
     
@@ -244,18 +273,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(ballObject)
     }
     
-    // stop ball from moving
     func stopBall() {
         ballObject.physicsBody?.isDynamic = false
     }
     
-    // resume ball from moving
     func resumeBall() {
         ballObject.physicsBody?.isDynamic = true
     }
     
     // generates the wall to block off the entrance
-    func generateEntranceWall() {
+    func generateEntranceWall(){
         let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
         let startLine = CGRect(x: mazeSpace / 2 - tileSize, y: 0 + tileSize/2, width: tileSize, height: -tileSize)
         let startWall = SKShapeNode(rect: startLine)
@@ -275,11 +302,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     // generates the finish line
     func generateFinishLine(){
         let mazeSpace = tileSize * (difficultyLevel * 4 - 1)
-        let finishLine = CGRect(
-            x: mazeSpace / 2 - tileSize,
-            y: -mazeSpace + tileSize/2 * 3,
-            width: tileSize,
-            height: -tileSize)
+        let finishLine = CGRect(x: mazeSpace / 2 - tileSize, y: -mazeSpace + tileSize/2 * 3, width: tileSize, height: -tileSize)
         let finishWall = SKShapeNode(rect: finishLine)
         finishWall.fillColor = .clear
         finishWall.strokeColor = .clear
@@ -337,14 +360,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     // runs when the ball collides or makes contact with something else
     func didBegin(_ contact: SKPhysicsContact) {
-        _ = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
+        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
         
+        // Handle collision between ball and wall
+        // TODO: add sfx when colliding with wall or star
+        if(otherObject.categoryBitMask == Collision.wallBody) {
+            //print("Player collided with a wall")
+        }
         
         // handle collision between ball and star
-        if (otherObject.categoryBitMask == Collision.starBody) {
+        else if(otherObject.categoryBitMask == Collision.starBody) {
             
             otherObject.node?.removeFromParent()
+            
             starCount += 1
             sceneDelegate?.updateStarCount(to: starCount)
             
@@ -361,7 +390,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     // runs when the ball stops colliding or making contact with something else
     func didEnd(_ contact: SKPhysicsContact) {
-        _ = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
+        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
         
         if(otherObject.categoryBitMask == Collision.entranceBody) {
@@ -371,7 +400,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         }
     }
     
-    // play sound from game
     func playSound(named soundName: String, volume: Float) {
         let soundAction = SKAction.playSoundFileNamed(soundName, waitForCompletion: false)
         let volumeAction = SKAction.changeVolume(to: volume, duration: 0)
@@ -379,7 +407,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         run(sequence)
     }
     
-    // updating every frame 
     override func update(_ currentTime: TimeInterval) {
         
         // Called before each frame is rendered
@@ -388,13 +415,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
             self.lastUpdateTime = currentTime
             cameraNode.position = ballObject.position
         }
+        
         gradientObject.position = cameraNode.position
+        //print(ballObject.position)
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
         timeSinceGC += dt
         timeSinceStart += dt
         if(timeSinceGC > 3){
+            print("Still running")
             // garbage collector tasks go here
             timeSinceGC = 0
         }
@@ -412,6 +442,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
             gameEnded = true
             sceneDelegate?.triggerSegue(withIdentifier: "endGameSegue")
         }
+        
         self.lastUpdateTime = currentTime
     }
 }

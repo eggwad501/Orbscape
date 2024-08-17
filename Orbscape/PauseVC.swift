@@ -30,6 +30,7 @@ class PauseVC: UIGameplayVC {
         
     }
     
+<<<<<<< HEAD:Orbscape/Orbscape/PauseVC.swift
     override func viewWillAppear(_ animated: Bool) {
         if starCountRun != nil {
             // not nil
@@ -38,6 +39,19 @@ class PauseVC: UIGameplayVC {
             // is nil
             starsLabel.text = "0" + " ★"
             starCountRun = 0
+=======
+    override func viewDidDisappear(_ animated: Bool) {
+        print("PauseVC died")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if starCountRun != nil {
+            // not nil
+            starsLabel.text = String(starCountRun) + "★"
+        } else {
+            // is nil
+            starsLabel.text = "0" + "★"
+>>>>>>> 199cedf3904d64cdb36509fea842b6fe37dd1c1f:Orbscape/PauseVC.swift
         }
         timeLabel.text = timeRun
     }
