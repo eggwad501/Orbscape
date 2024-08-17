@@ -40,6 +40,6 @@ Special Instructions:
 | Gyro Controls | Utilized core motion to allow the player to control the gravity of the world based on accelerometer data | 100% Nick |
 | UI/UX & VC integration | End to end UI/UX design including integrated all view controllers with correct animation | 100% Ronghua |
 | Custom Items Table Selection | Developed dynamic table views and selection, reused for various customization options | 100% Ronghua |
-| Purchasing Conditions | Check if purchasing can be made; update stars after purchasing, update UI image | 50% Pranav, 50% Ronghua |
+| Purchasing Conditions | Check if purchasing can be made; update stars after purchasing, update UI image | 33% Nick, 33% Pranav, 33% Ronghua |
 
 
