@@ -312,7 +312,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Q1d-Ku-Rlz" kind="show" id="Yvp-GQ-dAU"/>
+                                    <segue destination="Q1d-Ku-Rlz" kind="show" identifier="creditsIdentifier" id="Yvp-GQ-dAU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1032,7 +1032,7 @@ to Move</string>
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

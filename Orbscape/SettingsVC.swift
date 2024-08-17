@@ -7,7 +7,12 @@
 
 import UIKit
 
-class SettingsVC: UIGameplayVC {
+protocol settingChanger {
+    func changeCredit(boolean: Bool)
+}
+
+
+class SettingsVC: UIGameplayVC, settingChanger {
 
     @IBOutlet weak var soundSlider: UISlider!
     @IBOutlet weak var musicSlider: UISlider!
@@ -15,10 +20,15 @@ class SettingsVC: UIGameplayVC {
     
     var fromPause: Bool = false
     var pauseVC = "pauseVC"
+    var creditsIdentifier = "creditsIdentifier"
     var gameDelegate: UIGameplayVC!
     var levelDelegate: UIGameplayVC!
     var tapStartDelegate: UIGameplayVC!
     var pauseDelegate: UIGameplayVC!
+    
+    var toCredits: Bool = false
+    
+    var createdPauseVC: UIViewController!
     var starCountRun: Int!
     var timeRun: String!
     
@@ -30,13 +40,14 @@ class SettingsVC: UIGameplayVC {
         showNavigationBar()
     }
 
+    // change the volume of the sound effects
     @IBAction func changedSoundSlider(_ sender: Any) {
         soundVolume = soundSlider.value
         localStore.retrieveItem(identifier: "Insets")[0].setValue(soundSlider.value, forKey: "soundVal")
         localStore.saveContext()
     }
     
-    
+    // change the volume of the background music
     @IBAction func changedMusicSlider(_ sender: Any) {
         musicVolume = musicSlider.value
         BackgroundMusic.shared.updateVolume()
@@ -44,8 +55,9 @@ class SettingsVC: UIGameplayVC {
         localStore.saveContext()
     }
     
+    // redisplaying the pause layout
     override func viewWillDisappear(_ animated: Bool) {
-        if fromPause {
+        if fromPause && !toCredits {
             let destinationVC = storyboard!.instantiateViewController(withIdentifier: pauseVC) as! PauseVC
             destinationVC.modalPresentationStyle = .overFullScreen
             
@@ -55,11 +67,26 @@ class SettingsVC: UIGameplayVC {
             destinationVC.starCountRun = starCountRun
             destinationVC.timeRun = timeRun
             
+            createdPauseVC = destinationVC
+            
             navigationController!.present(destinationVC, animated: true, completion: { })
             destinationVC.view.backgroundColor = .clear
             gameDelegate.overlayBlurredBackgroundView()
-
         }
+    }
+    
+    // send over necessary data to credits vc
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == creditsIdentifier,
+           let destination = segue.destination as? CreditsVC {
+            toCredits = true
+            destination.settingDelegate = self
+        } 
+    }
+    
+    // change condition so pause only appears after setting is closed
+    func changeCredit(boolean: Bool) {
+        toCredits = boolean
     }
     
 }

@@ -23,9 +23,9 @@ class EndGameVC: UIGameplayVC {
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
-        for _ in 1...3 {
-            balls.append(self.createImage(image: currentSkin.skin, maxSize: 100))
-            balls.append(self.createImage(image: UIImage(named: "star")!, maxSize: 30))
+        for count in 1...3 {
+            balls.append(self.createImage(image: currentSkin.skin, maxSize: 100, segNum: count))
+            balls.append(self.createImage(image: UIImage(named: "star")!, maxSize: 40, segNum: count))
         }
         timeLabel.text = timeRun
         totalStarsLabel.text = String(currentStarsCount) + "★"
@@ -43,11 +43,19 @@ class EndGameVC: UIGameplayVC {
     }
 
     // initialize ball objects ready for animation
-    private func createImage(image: UIImage, maxSize: Int) -> UIView {
-        let size = Int.random(in: 20..<maxSize)
+    private func createImage(image: UIImage, maxSize: Int, segNum: Int) -> UIView {
+        let size = Int.random(in: 30..<maxSize)
+        let ySegment = (Int(self.view.bounds.height)/2) / 3
+        var yStart = (ySegment * (segNum - 1)) + 30
+        var yEnd = (ySegment * (segNum)) - 30
+        if yStart > yEnd {
+            let temp = yStart
+            yStart = yEnd
+            yEnd = temp
+        }
         let ball = UIView(frame: CGRect(
-            x: Int.random(in: 1..<Int(self.view.bounds.width)),
-            y: Int.random(in: 1..<Int(self.view.bounds.height)/2 - 30),
+            x: Int.random(in: 30..<(Int(self.view.bounds.width) - 30)),
+            y: Int.random(in: yStart..<yEnd),
             width: size,
             height: size))
         ball.backgroundColor = UIColor.clear
