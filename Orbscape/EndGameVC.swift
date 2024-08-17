@@ -25,6 +25,10 @@ class EndGameVC: UIGameplayVC {
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let gameVC = gameDelegate as? GameViewController{
+            gameVC.stopGame()
+        }
+        
         for _ in 1...3 {
             balls.append(self.createImage(image: currentSkin.skin, maxSize: 100))
             balls.append(self.createImage(image: UIImage(named: "star")!, maxSize: 30))
