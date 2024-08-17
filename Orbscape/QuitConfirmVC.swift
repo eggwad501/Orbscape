@@ -44,11 +44,11 @@ class QuitConfirmVC: UIGameplayVC {
            let navController = gameDelegate.navigationController {
             if quitLevel {
                 print("Quit level")
-                navController.popToViewController(levelDelegate, animated: true)
+                navController.popToViewController(levelDelegate, animated: false)
                 gameVCDelegate.stopGame()
             } else {
                 print("QCVC: else")
-                navController.popToViewController(tapStartDelegate, animated: true)
+                navController.popToViewController(tapStartDelegate, animated: false)
                 gameVCDelegate.stopGame()
             }
         }

@@ -41,6 +41,7 @@ class PauseVC: UIGameplayVC {
         } else {
             // is nil
             starsLabel.text = "0" + "★"
+            starCountRun = 0
         }
         timeLabel.text = timeRun
     }

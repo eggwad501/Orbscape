@@ -665,7 +665,7 @@ Dr. William C. Bulko</string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="retryConfirmIdentifier" modalPresentationStyle="fullScreen" id="tBn-EI-X28"/>
+                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="retryConfirmIdentifier" modalPresentationStyle="overFullScreen" id="tBn-EI-X28"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJq-zu-64r">
@@ -726,7 +726,7 @@ Dr. William C. Bulko</string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="levelConfirmIdentifier" modalPresentationStyle="fullScreen" id="jiM-uO-TDZ"/>
+                                    <segue destination="b1Q-By-7rb" kind="presentation" identifier="levelConfirmIdentifier" modalPresentationStyle="overFullScreen" id="jiM-uO-TDZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1014,7 +1014,7 @@ to Move</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="kG3-gO-3yY"/>
-        <segue reference="tBn-EI-X28"/>
+        <segue reference="jiM-uO-TDZ"/>
         <segue reference="ubv-2u-5Ni"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
