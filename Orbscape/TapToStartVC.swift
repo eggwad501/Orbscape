@@ -29,7 +29,6 @@ class TapToStartVC: UIGameplayVC {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let gameVC = segue.destination as? GameViewController
         if segue.identifier == "startSegue"{
-            print("TTSVC: \(difficulty!)")
             gameVC!.levelDelegate = levelDelegate
             gameVC!.homeDelegete = homeDelegete
             gameVC!.tapStartDelegate = self
