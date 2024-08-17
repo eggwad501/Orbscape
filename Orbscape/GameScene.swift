@@ -232,10 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
                     generateWall(position, downWall, UIColor.green)
                     
                 }
-                else if(mazeArray[rowIndex][colIndex] == -1){
-                    
-                }
-                else{
+                else if(mazeArray[rowIndex][colIndex] == 0){
                     generateStar(position, starChance)
                 }
                 
