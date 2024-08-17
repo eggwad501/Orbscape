@@ -239,7 +239,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(finishWall)
     }
     
-    // generates the walls that would block off the entrance and exit
+    // generates the walls that would block off the entrance and generates finish line
     func generateEntranceExit(){
         generateEntranceWall()
         generateFinishLine()
@@ -283,14 +283,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     // runs when the ball collides or makes contact with something else
     func didBegin(_ contact: SKPhysicsContact) {
-        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
         
         // handle collision between ball and star
         if(otherObject.categoryBitMask == Collision.starBody) {
-            
             otherObject.node?.removeFromParent()
-            
             starCount += 1
             sceneDelegate?.updateStarCount(to: starCount)
             
@@ -304,7 +301,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     // runs when the ball stops colliding or making contact with something else
     func didEnd(_ contact: SKPhysicsContact) {
-        let ballObject = contact.bodyA.categoryBitMask == Collision.ballBody ? contact.bodyA : contact.bodyB
         let otherObject = contact.bodyB.categoryBitMask != Collision.ballBody ? contact.bodyB : contact.bodyA
         
         if(otherObject.categoryBitMask == Collision.entranceBody) {
@@ -314,6 +310,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         }
     }
     
+    // plays a sound on collision
     func playSound(named soundName: String, volume: Float) {
         let soundAction = SKAction.playSoundFileNamed(soundName, waitForCompletion: false)
         let volumeAction = SKAction.changeVolume(to: volume, duration: 0)
@@ -322,7 +319,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
         // Called before each frame is rendered
         // Initialize _lastUpdateTime if it has not already been
         if (self.lastUpdateTime == 0) {
