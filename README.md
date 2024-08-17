@@ -19,7 +19,9 @@ Special Instructions: IOS should be 17.5, Iphone should 4+. Must be played on Ip
 | Core Data | End to end core data. Saves all item(and statuses), settings, and optional functionality for resetting core data | 100% Pranav |
 | Maze Generator | Maze generation for walls and stars, entrance and exit holes | 100% Nhat |
 | Collision| Handling collision between ball, walls, and stars | 100% Nhat |
-| Sounds/music, timer/resources, gyro controls | Integrated sounds/music in app. Enabled countdown during run. Build gyro controls for moving ball  | 100% Nick |
+| Sounds & Music | Integrated sound effects on collision with stars using SKAction. Integrated background music across all views using AVFAudio | 100% Nick |
+| Timer | Created countdown timer that updates the UI and also functions with pausing and resuming | 100% Nick |
+| Gyro Controls | Utilized core motion to allow the player to control the gravity of the world based on accelerometer data | 100% Nick |
 | UI/UX & VC integration | End to end UI design. Integrated all view controllers together. | 100% Ronghua |
 
 
