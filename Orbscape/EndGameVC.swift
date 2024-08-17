@@ -35,12 +35,12 @@ class EndGameVC: UIGameplayVC {
         timeLabel.text = timeRun
         if !finishedMaze {
             statusLabel.text = "TRY AGAIN"
-            totalStarsLabel.text = String(currentStarsCount) + "★"
-            collectedStarsLabel.text = "+ 0★"
+            totalStarsLabel.text = String(currentStarsCount) + " ★"
+            collectedStarsLabel.text = "+ 0 ★"
         } else {
             statusLabel.text = "COMPLETED"
-            totalStarsLabel.text = String(currentStarsCount) + "★"
-            collectedStarsLabel.text = "+ " + String(starCountRun) + "★"
+            totalStarsLabel.text = String(currentStarsCount) + " ★"
+            collectedStarsLabel.text = "+ " + String(starCountRun) + " ★"
             
             currentStarsCount = currentStarsCount + starCountRun
             localStore.retrieveItem(identifier: "Player")[0].setValue(currentStarsCount, forKey: "stars")
