@@ -8,8 +8,6 @@
 import UIKit
 
 class PauseVC: UIGameplayVC {
-    
-    
     @IBOutlet weak var starsLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     
@@ -27,19 +25,13 @@ class PauseVC: UIGameplayVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.popoverPresentationController?.backgroundColor = UIColor.clear
-        
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        print("PauseVC died")
-    }
-    
+    // updates the UI
     override func viewWillAppear(_ animated: Bool) {
         if starCountRun != nil {
-            // not nil
             starsLabel.text = String(starCountRun) + "★"
         } else {
-            // is nil
             starsLabel.text = "0" + "★"
             starCountRun = 0
         }
@@ -99,8 +91,6 @@ class PauseVC: UIGameplayVC {
         gameDelegate.navigationController!.pushViewController(destinationVC, animated: true)
         self.dismiss(animated: true, completion: nil)
         gameDelegate.removeBlurredBackgroundView()
-
-
     }
     
     // empty; so there would be no gradient applied in this view controller

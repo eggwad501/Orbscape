@@ -16,8 +16,6 @@ class TapToStartVC: UIGameplayVC {
     var levelDelegate: UIGameplayVC!
     var homeDelegete: UIGameplayVC!
 
-
-
     // additional setup after loading the view
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +24,7 @@ class TapToStartVC: UIGameplayVC {
         iconImageView.addSubview(image)
     }
     
+    // prepares segue to send over necessary data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let gameVC = segue.destination as? GameViewController
         if segue.identifier == "startSegue"{

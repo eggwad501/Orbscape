@@ -11,17 +11,12 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         localStore = PurchasableItems()
-        
+        // fetches user's background themes
         let request: NSFetchRequest<Theme> = Theme.fetchRequest()
         do {
-            
-            //include this line to clear core data
-            //localStore.clearAllEntities(from: context)
             
             //creating core data
             let count = try context.count(for: request)
@@ -37,12 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
         }
-        
+        // fetches user's ball skin
         let requestTwo: NSFetchRequest<Skin> = Skin.fetchRequest()
         do {
             let count = try context.count(for: requestTwo)
             if count == 0 {
-                print("reinitializing")
                 // No data found, initialize default data
                 for _ in 1...8 {
                     let newObject = Skin(context: context)
@@ -54,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
         }
-        
+        // fetches user's sound effects
         let requestThree: NSFetchRequest<Sound> = Sound.fetchRequest()
         do {
             let count = try context.count(for: requestThree)
@@ -70,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
         }
-        
+        // fetches player's saved stars
         let requestFour: NSFetchRequest<Player> = Player.fetchRequest()
         do {
             let count = try context.count(for: requestFour)
@@ -83,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print("Failed to fetch count: \(error.localizedDescription)")
         }
-        
+        // fetches music and sound volume
         let requestFive: NSFetchRequest<Insets> = Insets.fetchRequest()
         do {
             let count = try context.count(for: requestFive)

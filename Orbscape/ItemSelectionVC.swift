@@ -21,8 +21,6 @@ class itemsTableViewCell: UITableViewCell {
 }
 
 class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSelectChanger {
-    
-
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var starCountLabel: UILabel!
     
@@ -39,6 +37,7 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
         tableView.dataSource = self
         starCountLabel.text = "\(currentStarsCount) ★"
         
+        // updates the screen titles to their respective shops
         switch types {
         case CustomizeTypes.skins?:
             self.title = "SKINS"
@@ -87,7 +86,7 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
         switch types {
         case CustomizeTypes.skins?:
             cell.itemName?.text = skinsList[row].name
-                        
+            // adds respective item images
             let image = imageView(view: cell.itemImage, image: skinsList[row].skin)
             if !skinsList[row].purchased {
                 image.layer.opacity = 0.5
@@ -99,6 +98,7 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
         case CustomizeTypes.soundEffects?:
             cell.itemName?.text = soundsList[row].name
             
+            // adds respective sound icons
             let image = imageView(view: cell.itemImage, image: soundsList[row].image!)
             if !soundsList[row].purchased {
                 image.layer.opacity = 0.5
@@ -149,15 +149,15 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
     
     // sent over necessary data to respective view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == selectedIdentifier,
            let destination = segue.destination as? ConfirmItemVC,
            let selectedIndex = tableView.indexPathForSelectedRow?.row {
             destination.delegate = self
             destination.types = types
             destination.itemIndex = selectedIndex
-            //destination.itemsTableViewCell = tableView.cellForRow(at: selectedIndex)
             
+            // displays the cost, name, and cosmetic of each item
+            // and sends it to confirm item view controller
             switch types {
             case CustomizeTypes.skins?:
                 destination.itemCost = skinsList[selectedIndex].cost
@@ -213,6 +213,5 @@ class ThemesVC: UIGameplayVC, UITableViewDelegate, UITableViewDataSource, ItemSe
     func updateScreen(starCount: Int) {
         starCountLabel.text = "\(starCount) ★"
         tableView.reloadData()
-
     }
 }

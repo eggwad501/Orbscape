@@ -10,21 +10,17 @@ import UIKit
 import AVFoundation
 import CoreData
 
-// clear core data
-
-
-
 var localStore = PurchasableItems()
 
+// current equipped cosmetics and setting preferences
 var currentTheme: Themes = themesList[localStore.retrieveItem(identifier: "Theme")[1].value(forKey: "equippedIndex") as! Int]
 var currentSkin: Skins = skinsList[localStore.retrieveItem(identifier: "Skin")[1].value(forKey: "equippedIndex") as! Int]
 var currentSound: SoundEffects = soundsList[localStore.retrieveItem(identifier: "Sound")[1].value(forKey: "equippedIndex") as! Int]
 var currentStarsCount = localStore.retrieveItem(identifier: "Player")[0].value(forKey: "stars") as! Int
-
-// Needs CORE DATA
 var soundVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "soundVal") as! Float
 var musicVolume: Float = localStore.retrieveItem(identifier: "Insets")[0].value(forKey: "musicVal") as! Float
 
+// list of purchasable skins
 var skinsList = [
     Skins(
         skin: UIImage(named: "blueSkin")!,
@@ -85,6 +81,7 @@ var skinsList = [
     )
 ]
 
+// list of purchasable sounds
 var soundsList = [
     SoundEffects(
         sound: Bundle.main.url(forResource: "HappyPopsSound", withExtension: "mp3")!,
@@ -145,6 +142,7 @@ var soundsList = [
     )
 ]
 
+// list of purchasable themes
 var themesList = [
     Themes(
         colors: [CGColor(red: 0.74, green: 0.33, blue: 0.44, alpha: 1.0),

@@ -46,7 +46,6 @@ class CustomizeVC: UIGameplayVC {
         case themesIdentifier:
             let destination = segue.destination as? ThemesVC
             destination?.types = CustomizeTypes.themes
-
         
         default:
             break

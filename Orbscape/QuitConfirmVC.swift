@@ -19,12 +19,8 @@ class QuitConfirmVC: UIGameplayVC {
     var starCountRun: Int!
     var timeRun: String!
     var quitLevel: Bool!
-
-    // additional setup after loading the view
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
+    // updates the UI
     override func viewWillAppear(_ animated: Bool) {
         starsLabel.text = String(starCountRun) + "★"
         timeLabel.text = timeRun
@@ -32,22 +28,18 @@ class QuitConfirmVC: UIGameplayVC {
     
     // dismiss to tap to start vc
     @IBAction func quitButton(_ sender: Any) {
-        
-        // WE need to stop the timer somewhere in here
-        
         gameDelegate.dismiss(animated: true, completion: nil)
         pauseDelegate.removeBlurredBackgroundView()
         gameDelegate.removeBlurredBackgroundView()
         
+        // moves to the respective view controller and stops the current game
         if levelDelegate != nil && tapStartDelegate != nil,
            let gameVCDelegate = gameDelegate as? GameViewController,
            let navController = gameDelegate.navigationController {
             if quitLevel {
-                print("Quit level")
                 navController.popToViewController(levelDelegate, animated: false)
                 gameVCDelegate.stopGame()
             } else {
-                print("QCVC: else")
                 navController.popToViewController(tapStartDelegate, animated: false)
                 gameVCDelegate.stopGame()
             }
@@ -63,6 +55,4 @@ class QuitConfirmVC: UIGameplayVC {
     // empty; so there would be no gradient applied in this view controller
     override func viewIsAppearing(_ animated: Bool) {
     }
-    
-
 }

@@ -10,6 +10,7 @@ import GameplayKit
 import CoreMotion
 import AVFoundation
 
+// collision bitmasking
 struct Collision {
     static let ballBody: UInt32 = 0x1 << 0
     static let wallBody: UInt32 = 0x1 << 1
@@ -24,6 +25,7 @@ var tileSet: SKTileSet!
 var tileMap: SKTileMapNode!
 var mazeArray: [[Int]]!
 
+// functions passed to other view controllers
 protocol BallProperties {
     func stopBall()
     func resumeBall()
@@ -32,14 +34,8 @@ protocol BallProperties {
 class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     var sceneDelegate: GameSceneDelegate?
-    
-    // Star count
     var starCount = 0
-    
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
-    
-    private var lastUpdateTime : TimeInterval = 0
+    private var lastUpdateTime: TimeInterval = 0
     
     var ballObject: SKSpriteNode!
     let manager = CMMotionManager()
@@ -54,33 +50,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
     
     var cameraNode = SKCameraNode()
     
-    // garbage collector
-    var timeSinceGC: TimeInterval = 0
-    var timeSinceStart: TimeInterval = 0
-    var wallList: [SKSpriteNode] = []
-    var visibleWallList: [SKSpriteNode] = []
-    var hiddenWallList: [SKSpriteNode] = []
-    
-    func elapsedTime(_ startTime: Double, _ endTime: Double, _ msg: String){
-        print(msg)
-        print(endTime - startTime)
-    }
-    
+    // loads the camera, ball, maze, stars into the game
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         self.camera = cameraNode
         self.speed = 0.2
-        
         self.lastUpdateTime = 0
         
         // set up collisions
         self.physicsWorld.contactDelegate = self
         
-        // camera
+        // create the camera
         cameraNode.position = CGPoint(x: frame.midX, y: frame.midY)
         addChild(cameraNode)
         camera = cameraNode
-        
         cameraNode.xScale = 0.5
         cameraNode.yScale = 0.5
         
@@ -88,11 +71,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         let squareSize = difficultyLevel * 4 - 1
         let ballStartPos = (squareSize * 64 / 2 - 32, 100)
         generateBall(ballStartPos)
-           
-        // makes a maze of some difficulty
         makeSquareMaze(difficultyLevel)
-        
-        // create a gradient
+        createGradient(ballStartPos)
+    }
+    
+    // creates the gradient
+    func createGradient(_ ballStartPos: (Int, Int)) {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame.size = frame.size
         gradientLayer.position = CGPoint(x: ballStartPos.0, y: ballStartPos.1)
@@ -104,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         let gradientImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        // add the gradient as a game obj
+        // add the gradient as a game object
         let gradientTexture = SKTexture(image: gradientImage!)
         gradientObject = SKSpriteNode(texture: gradientTexture)
         gradientObject.size = CGSize(width: frame.width, height: frame.height)
@@ -113,7 +97,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         addChild(gradientObject)
     }
     
-    // gravity manager is used for gyro controls
+    // creates a gravity manager; is used for gyro controls
     func createGravityManager(){
         manager.startAccelerometerUpdates()
         manager.accelerometerUpdateInterval = 0.15
@@ -133,9 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         // magic number to avoid double-walls
         let rows = difficulty * 4 - 1
         let cols = difficulty * 4 - 1
-        
         mazeArray = mazeMaker.createMaze(rows, cols)
-        
         loadMaze()
     }
     
@@ -146,16 +128,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         var rowIndex = 0
         var colIndex = 0
         let mazeSize = mazeArray.count - 1
-        while(rowIndex <= mazeSize){
-            while(colIndex <= mazeSize){
+        
+        // uses the mazeArray to generate the in game maze
+        while(rowIndex <= mazeSize) {
+            while(colIndex <= mazeSize) {
                 let position = CGPoint(x: tileSize * colIndex, y: -tileSize * rowIndex)
-                if(mazeArray[rowIndex][colIndex] == 1){
+                if(mazeArray[rowIndex][colIndex] == 1) {
                     var horizontalLength = 0
                     var verticalLength = 0
                     subCol = colIndex
                     subRow = rowIndex
                     
-                    while(subCol <= mazeSize && mazeArray[rowIndex][subCol] == 1){ // go to the right
+                    // extends the wall to the right if applicable
+                    while(subCol <= mazeSize && mazeArray[rowIndex][subCol] == 1) {
                         horizontalLength += 1
                         mazeArray[rowIndex][subCol] = -1
                         subCol += 1
@@ -165,7 +150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
                     generateWall(horizontalWall)
                     
                     
-                    mazeArray[rowIndex][colIndex] = 1 // have vert wall start at the same pos as hori wall
+                    mazeArray[rowIndex][colIndex] = 1
                     while(subRow <= mazeSize && mazeArray[subRow][colIndex] == 1){ // go downwards
                         verticalLength += 1
                         mazeArray[subRow][colIndex] = -1
@@ -351,18 +336,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate, BallProperties {
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
-        timeSinceGC += dt
-        timeSinceStart += dt
-        if(timeSinceGC > 3){
-            print("Still running")
-            // garbage collector tasks go here
-            timeSinceGC = 0
-        }
-        
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dt)
-        }
 
         // camera stops following ball after passing through the finish line
         if(!isGameFinished){

@@ -11,7 +11,6 @@ protocol settingChanger {
     func changeCredit(boolean: Bool)
 }
 
-
 class SettingsVC: UIGameplayVC, settingChanger {
 
     @IBOutlet weak var soundSlider: UISlider!
@@ -32,6 +31,7 @@ class SettingsVC: UIGameplayVC, settingChanger {
     var starCountRun: Int!
     var timeRun: String!
     
+    // update sliders
     override func viewDidLoad() {
         super.viewDidLoad()
         if let gameVC = gameDelegate as? GameViewController{
@@ -64,7 +64,6 @@ class SettingsVC: UIGameplayVC, settingChanger {
         if fromPause && !toCredits {
             let destinationVC = storyboard!.instantiateViewController(withIdentifier: pauseVC) as! PauseVC
             destinationVC.modalPresentationStyle = .overFullScreen
-            
             destinationVC.gameDelegate = gameDelegate
             destinationVC.levelDelegate = levelDelegate
             destinationVC.tapStartDelegate = tapStartDelegate
@@ -72,7 +71,6 @@ class SettingsVC: UIGameplayVC, settingChanger {
             destinationVC.timeRun = timeRun
             
             createdPauseVC = destinationVC
-            
             navigationController!.present(destinationVC, animated: true, completion: { })
             destinationVC.view.backgroundColor = .clear
             gameDelegate.overlayBlurredBackgroundView()
@@ -92,5 +90,4 @@ class SettingsVC: UIGameplayVC, settingChanger {
     func changeCredit(boolean: Bool) {
         toCredits = boolean
     }
-    
 }

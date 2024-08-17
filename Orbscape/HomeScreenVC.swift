@@ -79,6 +79,8 @@ class HomeScreenVC: UIGameplayVC{
             }
         )
     }
+    
+    // sends necessary data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "levelSegue",
            let tapVC = segue.destination as? LevelsVC {

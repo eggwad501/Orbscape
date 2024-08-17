@@ -22,7 +22,4 @@ class CreditsVC: UIGameplayVC {
             sceneDelegate.changeCredit(boolean: false)
         }
     }
-    
-    
-
 }

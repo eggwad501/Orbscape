@@ -27,6 +27,7 @@ class LevelsVC: UIGameplayVC {
         ballAnimation(view: self.iconImageView)
     }
     
+    // sends over necessary data to the next screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tapToStartVC = segue.destination as? TapToStartVC
         tapToStartVC!.levelDelegate = self
